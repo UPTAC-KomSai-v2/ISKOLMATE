@@ -12,6 +12,20 @@ Follow the instructions on the site to install everything needed for Laravel dev
 
 Next visit [nodejs.org](https://nodejs.org/en/download/prebuilt-installer) and download version `v22.11.0(LTS)` for your specific operating system.
 
+## Setting up this repository
+
+Open a terminal/powershell in this folder and run these commands:
+
+```sh
+composer install
+npm install
+npm run build
+```
+
+## Running a development server
+
+Open a terminal/powershell in this folder and run `composer run dev`
+
 ## Troubleshooting
 
 If you face issues running the Laravel dev server, you may need to change your `php.ini` file.
