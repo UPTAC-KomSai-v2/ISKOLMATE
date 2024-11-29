@@ -14,6 +14,8 @@ Next visit [nodejs.org](https://nodejs.org/en/download/prebuilt-installer) and d
 
 ## Setting up this repository
 
+Clone this respository to a place convenient for you.
+
 Open a terminal/powershell in this folder and run these commands:
 
 ```sh
