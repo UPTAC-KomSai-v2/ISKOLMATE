@@ -22,6 +22,15 @@ npm install
 npm run build
 ```
 
+Then make a copy of `.env.example` and rename it to `.env`. Change the values to match your database setup (port, username, password, etc)
+
+Finally run these commands, make sure to say yes when asked:
+
+```sh
+php artisan key:generate
+php artisan migrate
+```
+
 ## Running a development server
 
 Open a terminal/powershell in this folder and run `composer run dev`
