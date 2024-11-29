@@ -4,6 +4,8 @@ CMSC-127 Machine Problem Project
 
 ## Environment Setup
 
+Install git if you don't have it yet. If you are on windows you can do so via [git-scm.com](https://git-scm.com/downloads/win).
+
 Visit [php.new](https://php.new/) and select your specific operating system.
 
 Follow the instructions on the site to install everything needed for Laravel development.
