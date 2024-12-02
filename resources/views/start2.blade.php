@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iskolmate</title>
-    <link rel="stylesheet" href="final_css.css">
+    <link rel="stylesheet" href="{{asset('css/final_css.css')}}">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         <!-- Buttons -->
         <div class="button-container">
             <button class="btn">Login</button>
-            <button class="btn" onclick="location.href='type.html'">Sign Up</button>
+            <button class="btn" onclick="location.href='{{route('get-type')}}'">Sign Up</button>
         </div>
     </div>
 </body>

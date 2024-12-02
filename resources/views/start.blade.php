@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iskolmate</title>
-    <link rel="stylesheet" href="final_css.css">
+    <title>ISKOLMATE</title>
+    <link rel="stylesheet" href="{{asset('css/final_css.css')}}">
+
 </head>
 
 <body>
