@@ -11,6 +11,9 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    /* we set timestamps to false so that Eloquent does not expect a created_at and updated_at column*/
+    public $timestamps = false; 
+
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +22,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
         'password',
     ];
 
@@ -30,7 +32,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
