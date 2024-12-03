@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="back-button">
-            <a href="javascript:history.back();" title="Go Back">&#9664;</a>
+            <a href="/signup" title="Go Back">&#9664;</a>
         </div>
 
         <div class="logo">
