@@ -49,7 +49,7 @@ function updateTime(){
     }
     else {
       timeCheckEl.innerHTML = "MN";
-    }    
+    }
 
     time.innerHTML = (hour % 12 || 12) + ":" + min + ":" + sec;
     date.innerHTML = now.toLocaleDateString();
