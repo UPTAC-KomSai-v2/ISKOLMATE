@@ -23,7 +23,7 @@
         <!-- Buttons -->
         <div class="button-container">
             <button class="btn">Login</button>
-            <button class="btn" onclick="location.href='{{route('get-type')}}'">Sign Up</button>
+            <button class="btn" onclick="#">Sign Up</button>
         </div>
     </div>
 </body>
