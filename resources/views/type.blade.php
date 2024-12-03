@@ -19,8 +19,8 @@
 
         <!-- Buttons -->
         <div class="button-container">
-            <button class="btn" onclick="location.href='teacher_signup.blade.php'">Teacher</button>
-            <button class="btn" onclick="location.href='student_signup.blade.php'">Student</button>
+            <a class="btn" href="/teacher_signup">Teacher</a>
+            <a class="btn" href="/student_signup">Student</a>
         </div>
     </div>
 </body>
