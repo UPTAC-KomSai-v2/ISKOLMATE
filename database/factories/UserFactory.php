@@ -28,8 +28,8 @@ class UserFactory extends Factory
             'uid' => fake()->unique()->randomNumber(5, false),
             'name' => fake()->name(),
             'program' => $role === 'instructor'
-            ? fake()->randomElement(['DNSM', 'DH', 'DSS', 'DM'])
-            : fake()->randomElement(['BS Computer Science', 'BS Biology']),
+                ? fake()->randomElement(['DNSM', 'DH', 'DSS', 'DM'])
+                : fake()->randomElement(['BS Computer Science', 'BS Biology']),
             'password' => static::$password ??= Hash::make('password'),
             'availability' => fake()->numberBetween(0,1),
             'role' => $role
