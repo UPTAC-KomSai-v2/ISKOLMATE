@@ -7,7 +7,7 @@ Route::get('/', function () {
 });
 
 Route::get('/signup', function () {
-    return view('type');
+    return view('signup');
 });
 
 Route::get('/student_signup', function () {
