@@ -6,32 +6,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Sign-Up</title>
-    <link rel="stylesheet" href="{{asset('css/login.css')}}">
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/script.js'])
+    @endif
 </head>
+    <body class="m-0 p-0 bg-slate-900 text-white flex justify-center items-center h-dvh font-['Poppins'_,_sans-serif]">
+        <div class="relative bg-slate-900 w-full max-w-lg text-center p-7 rounded-2xl shadow-[15px_15px_30px_#181824_,-15px_-15px_30px_#242434]">
+            <!-- Back -->
+            <div class="absolute top-5 left-5">
+                <a href="/start2" title="Go Back" class="text-2xl bg-slate-900 p-2.5 rounded-full shadow-[10px_10px_20px_#181824_,_-10px_-10px_20px_#242434] hover:shadow-[inset_10px_10px_20px_#181824_,_inset_-10px_-10px_20px_#242434] hover:bg-gradient-to-tr from-slate-800 to-slate-900">&#9664;</a>
+            </div>
 
-<body>
-    <div class="container">
-        <div class="back-button">
-            <a href="/signup" title="Go Back">&#9664;</a>
+            <div>
+                <img src="up.png" alt="UP Logo" class="inline-block mb-2.5 p-2.5 rounded-full w-24 shadow-[inset_10px_10px_20px_#181824_,_inset_-10px_-10px_20px_#242434]">
+            </div>
+            <div class="text-3xl my-2.5 drop-shadow-[1px_1px_5px_rgba(0,0,0,0.4)]">Iskolmate</div>
+            <div class="text-base mb-5 text-neutral-300">your partner in suffering</div>
+
+
+            <div class="text-center">
+                <h2 class="text-2xl mb-[20px] font-bold">Sign-up as a Teacher</h2>
+                <form action="#" method="POST" class="w-full">
+                    <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="name" placeholder="Name" required>
+                    <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="instructor_number" placeholder="Instructor Number" required>
+                    <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="password" name="password" placeholder="Password" required>
+                    <button type="submit" class="w-full p-2.5 mt-[10px] rounded-xl shadow-[10px_10px_20px_#181824_,_-10px_-10px_20px_#242434] hover:bg-gradient-to-tr from-slate-900 to-slate-950">Submit</button>   
+                </form>
+            </div>
         </div>
-
-        <div class="logo">
-            <img src="up.png" alt="UP Logo">
-        </div>
-        <div class="title">Iskolmate</div>
-        <div class="tagline">your partner in suffering</div>
-
-
-        <div class="form-container">
-            <h2>Sign-up as a Teacher</h2>
-            <form action="#" method="POST">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="text" name="instructor_number" placeholder="Instructor Number" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit" class="btn">Submit</button>
-            </form>
-        </div>
-    </div>
-</body>
-
+    </body>
 </html>
