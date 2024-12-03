@@ -35,6 +35,12 @@ php artisan migrate
 
 Open a terminal/powershell in this folder and run `composer run dev`
 
+## Contribution
+
+For uniformity, commit messages should be imperative and present-tense. FOr intuition, your commit message should implicitly follow the phrase "This commit will..."
+
+For example, "This commit will `update the README.md to reflect commit message rules`" 
+
 ## Troubleshooting
 
 If you face issues running the Laravel dev server, you may need to change your `php.ini` file.
