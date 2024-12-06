@@ -14,6 +14,12 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            keyframes: {
+                loading: {
+                    '0%': { width: '0' },
+                    '100%': { width: '100%' },
+                }
+            }
         },
     },
     plugins: [],
