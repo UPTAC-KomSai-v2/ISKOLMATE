@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-Route::post('/start2', [UserController::class, 'store'])->name('start2');
+Route::post('/start2', [UserController::class, 'store'])->name('start2'); # the name method  assigns a name to the route and allows us to call it like {{ route('start2') }} in the login form HTML.
 
 Route::get('/start2', [UserController::class, 'show'])->name('start2');
 

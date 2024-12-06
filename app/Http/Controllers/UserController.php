@@ -17,11 +17,11 @@ class UserController extends Controller
         $user = new User;
 
         $user->name = $request->name;
-        $user->student_number = $request->student_number;
+        $user->uid = $request->student_number;
         $user->password = $request->password;
         $user->program = $request->program;
         $user->availability = 0;
-        $user->role = 'null';
+        $user->role = 'Student';
 
         $user->save();
 
