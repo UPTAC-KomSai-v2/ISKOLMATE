@@ -25,7 +25,7 @@ class UserFactory extends Factory
     {
         $role = fake()->randomElement(['student', 'instructor']);
         return [
-            'uid' => fake()->unique()->randomNumber(5, false),
+            'uid' => fake()->numberBetween(1987,2024) . fake()->unique()->numberbetween(1,99999), # create more realistic fake data, despite uniqueness being only on the 5digit code
             'name' => fake()->name(),
             'program' => $role === 'instructor'
             ? fake()->randomElement(['DNSM', 'DH', 'DSS', 'DM'])
