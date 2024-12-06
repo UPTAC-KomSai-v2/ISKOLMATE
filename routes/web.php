@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
+Route::post('/start2', [UserController::class, 'store'])->name('start2');
+
+Route::get('/start2', [UserController::class, 'show'])->name('start2');
 
 Route::get('/', function () {
     return view('start');
