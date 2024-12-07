@@ -43,6 +43,20 @@ Route::get('/announcements3', function () {
 Route::get('/tasks', function () {
     return view('tasks');
 });
+
+Route::get('/input_tasks', function () {
+    return view('input_tasks');
+});
+
+Route::get('/input_tasks1', function () {
+    return view('input_tasks1');
+});
+
+Route::get('/show_tasks', function () {
+    return view('show_tasks');
+});
+
+
 Route::get('/availability', function () {
     return view('availability');
 });
