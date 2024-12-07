@@ -29,7 +29,9 @@
         </p>
         <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer" onclick="location.href='#'">
       </div>
-      <div onclick="location.href='announcements2'" class="bg-fuchsia-900 text-white rounded-3xl flex border-2 hover:shadow-[inset_35px_35px_20px_#181824_,_inset_-35px_-35px_20px_#242434] hover:cursor-pointer border-white m-2 h-20 justify-center items-center md:text-2xl font-bold">Make an announcement</div>
+      <div class="relative w-full flex justify-center right-28">
+        <div onclick="location.href='announcements2'" class="bg-fuchsia-900 rounded-3xl flex border-2 hover:shadow-[inset_35px_35px_20px_#181824_,_inset_-35px_-35px_20px_#242434] hover:cursor-pointer border-white  p-2.5 h-16 justify-center items-center md:text-2xl md:mx-40 sm:text-xs font-bold">Make an announcement</div>
+      </div>
     </div>
     <div class="flex-col p-[10pt] border-solid border-[black]rounded-lg m-2 grid gap-4 grid-cols-3 w-auto h-80 ">    
        <div  class="overflow-hidden flex-col  bg-white text-black rounded-3xl flex border-2  border-white m-2 h-80 ml-0  md:text-2xl font-bold">
