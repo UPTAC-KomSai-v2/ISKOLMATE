@@ -12,11 +12,13 @@
 <body class="bg-slate-900">
   <div class="flex-col justify-center m-8 rounded-3xl bg-slate-900 p-8 w-auto h-auto border-2 border-white shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434]">
     <div class="relative flex items-center bg-slate-900 text-white md:text-2xl p-10 m-2 border-2 border-white rounded-2xl w-auto h-1/2">
+      <div class="lg:text-4xl mr-10">Tasks</div>  
       <h1 class="lg:text-8xl pr-5 cursor-pointer" id="currentTime"></h1>
-      <div class="">
+      <div class="flex-row">
         <h2 class="lg:text-4xl cursor-pointer" id="currentDate"></h2>
         <h2 class="lg:text-4xl cursor-pointer" id="checkTime"></h2>
       </div>
+          
       <div class="absolute flex items-center right-10 top-8 clear-left">
         <p class="text-right leading-4">
           <span class="sm:text-xs">PROFILE NAME</span> <br/>
@@ -25,13 +27,22 @@
         <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer" onclick="location.href='#'">
       </div>
     </div>
-    <div class="rounded-lg m-2 m-2 grid gap-4 grid-cols-3 w-auto h-80 ">
-      <a href="announcements" class="relative bg-slate-900 text-white rounded-3xl flex border-2 hover:bg-gradient-to-tr from-slate-800 to-slate-950 hover:cursor-pointer border-white m-2 h-80 ml-0 justify-center items-center md:text-2xl font-bold">
-        <div class="absolute bg-red-400 w-10 h-10 rounded-full right-[-10px] top-[-10px]" id="checkAnnouncements" hidden></div>
-        ANNOUNCEMENTS
-      </a>
-      <a href="tasks" class="bg-slate-900 text-white rounded-3xl flex border-2 hover:bg-gradient-to-tr from-slate-800 to-slate-950 hover:cursor-pointer border-white m-2 h-80 justify-center items-center md:text-2xl font-bold">TASKS</a>
-      <a href="availability" class="bg-slate-900 text-white rounded-3xl flex border-2 hover:bg-gradient-to-tr from-slate-800 to-slate-950 hover:cursor-pointer border-white m-2 h-80 mr-0 justify-center items-center md:text-2xl font-bold">AVAILABILITY</a>
+    <div class="flex-col p-[10pt] border-solid border-[black]rounded-lg m-2 grid gap-4 grid-cols-3 w-auto h-80 ">    
+       <div  class="overflow-hidden flex-col  bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-2 h-80 ml-0  md:text-2xl font-bold">
+            <a href="input_tasks"><div class="text-left bg-[blue] text-[white] p-[10pt]">Input Tasks</div></a>
+            <div class="border-2 p-2">Task 1</div>
+            <div class="border-2 p-2">Task 2</div>
+            <div class="border-2 p-2">Task 3</div>
+            <div class="border-2 p-2">Task 4</div>
+      </div>
+      <div class="overflow-hidden flex-col bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-3 h-80 ml-0 md:text-2xl font-bold">
+            <a href="show_tasks"> <div class= "text-left bg-[blue] text-[white] p-[10pt]">Show Tasks</div></a>
+            <div class="border-2 p-2">Task 1</div>
+            <div class="border-2 p-2">Task 2</div>
+            <div class="border-2 p-2">Task 3</div>
+            <div class="border-2 p-2">Task 4</div>
+      </div>
+       
     </div>
   </div>
 </body>

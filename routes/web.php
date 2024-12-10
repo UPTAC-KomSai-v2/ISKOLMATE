@@ -35,3 +35,33 @@ Route::get('/teacher_signup', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+Route::get('/announcements', function () {
+    return view('announcements');
+});
+Route::get('/announcements2', function () {
+    return view('announcements2');
+});
+Route::get('/announcements3', function () {
+    return view('announcements3');
+});
+Route::get('/tasks', function () {
+    return view('tasks');
+});
+
+Route::get('/input_tasks', function () {
+    return view('input_tasks');
+});
+
+Route::get('/input_tasks1', function () {
+    return view('input_tasks1');
+});
+
+Route::get('/show_tasks', function () {
+    return view('show_tasks');
+});
+
+
+Route::get('/availability', function () {
+    return view('availability');
+});
