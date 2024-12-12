@@ -1,5 +1,5 @@
 <x-dashboard-layout :name="$name" :position="$position">
-    <form action="{{ route('announcement.store') }}" method="POST">
+    <form action="{{ route('announcements.store') }}" method="POST">
         @crsf
         <div class="flex flex-col col-span-2 h-full">
             <textarea class="overflow-y-scroll resize-none border-2 black m-2 table-cell align-middle" cols="15" rows="3" name="" id="" placeholder="TITLE"></textarea>
