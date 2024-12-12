@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
+use App\Models\Announcement;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -52,7 +54,8 @@ Route::get('/teacher_signup', function () {
 
 Route::get('/announcements', function () {
     $user = Auth::user();
-    return view('announcements', [ 'name' => $user->name, 'position' => $user->role ]);
+    $announcements = App\Models\Announcement::all();
+    return view('announcements', [ 'name' => $user->name, 'position' => $user->role, 'announcements' => $announcements ]);
 })->middleware('auth');
 
 Route::get('/announcements2', function () {
@@ -64,6 +67,8 @@ Route::get('/announcements3', function () {
     $user = Auth::user();
     return view('announcements3', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth');
+
+Route::post('/announcements', [AnnouncementController::class, 'store'])->middleware('auth')->name('announcements.store');
 
 Route::get('/tasks', function () {
     $user = Auth::user();
