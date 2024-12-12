@@ -45,10 +45,10 @@
             <div class="role-selection text-center mb-8">
                 <h2 class="text-xl font-semibold mb-4">Which one are you logging in to?</h2>
                 <button
-                    class="px-4 py-2 rounded-md bg-[#1e1e2f] text-white shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] hover:shadow-[inset_10px_10px_20px_#141418,inset_-10px_-10px_20px_#282838] transition"
+                    class="px-4 py-2 rounded-md bg-[#1e1e2f] text-white shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] hover:shadow-[inset_10px_10px_20px_#141418,inset_-10px_-10px_20px_#282838] transition hover:duration-300 hover:text-[#FEB71C]"
                     onclick="toggleForm('student')">I am a Student</button>
                 <button
-                    class="px-4 py-2 rounded-md bg-[#1e1e2f] text-white shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] hover:shadow-[inset_10px_10px_20px_#141418,inset_-10px_-10px_20px_#282838] transition ml-4"
+                    class="px-4 py-2 rounded-md bg-[#1e1e2f] text-white shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] hover:shadow-[inset_10px_10px_20px_#141418,inset_-10px_-10px_20px_#282838] transition ml-4 hover:duration-300 hover:text-[#FEB71C]"
                     onclick="toggleForm('teacher')">I am a Teacher</button>
             </div>
 
@@ -69,7 +69,7 @@
                     <input type="password" name="password" placeholder="Password" required
                         class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <button type="submit"
-                        class="w-full p-4 text-lg font-bold bg-[#1e1e2f] text-white rounded-lg shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] hover:bg-[#252538] hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] transition">
+                        class="w-full p-4 text-lg font-bold bg-[#1e1e2f] text-white rounded-lg shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] hover:bg-[#252538] hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] transition hover:duration-300 hover:text-[#FEB71C]">
                         Submit
                     </button>
                 </form>

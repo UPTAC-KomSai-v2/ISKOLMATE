@@ -25,12 +25,14 @@
             <!-- Buttons -->
             <div class="button-container flex justify-around gap-4">
                 <button
-                    class="btn w-[45%] max-w-[300px] px-4 py-2 bg-[#1e1e2f] text-white border-2 border-white rounded-lg font-bold text-lg shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434] transition duration-300"
+                    class="btn w-[45%] max-w-[300px] px-4 py-2 bg-[#1e1e2f] text-white border-2 border-white rounded-lg font-bold text-lg shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434] transition duration-300
+                    hover:text-[#FEB71C] hover:border-[#FEB71C]"
                     onclick="location.href='login'">
                     Login
                 </button>
                 <button
-                    class="btn w-[45%] max-w-[300px] px-4 py-2 bg-[#1e1e2f] text-white border-2 border-white rounded-lg font-bold text-lg shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434] transition duration-300"
+                    class="btn w-[45%] max-w-[300px] px-4 py-2 bg-[#1e1e2f] text-white border-2 border-white rounded-lg font-bold text-lg shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434] transition duration-300
+                    hover:text-[#FEB71C] hover:border-[#FEB71C]"
                     onclick="location.href='choices'">
                     Sign Up
                 </button>
