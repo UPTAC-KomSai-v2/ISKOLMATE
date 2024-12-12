@@ -1,10 +1,11 @@
+<!-- login teacher -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Sign-Up</title>
+    <title>Teacher Sign-Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -19,7 +20,6 @@
             </a>
         </div>
 
-        <!-- Logo -->
         <div class="logo flex justify-center items-center mb-6">
             <img src="up.png" alt="UP Logo"
                 class="w-[100px] rounded-full p-2.5 bg-[#1e1e2f] shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]" />
@@ -31,18 +31,15 @@
 
         <!-- Form Container -->
         <div class="form-container">
-            <h2 class="text-xl font-semibold mb-6">Sign-up as a Student</h2>
+            <h2 class="text-xl font-semibold mb-6">Sign-up as a Teacher</h2>
             <form action="#" method="POST" class="space-y-4">
                 <!-- Name -->
                 <input type="text" name="name" placeholder="Name" required
                     class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-                <!-- Student Number -->
-                <input type="text" name="student_number" placeholder="Student Number" required
-                    class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-                <!-- Program -->
-                <input type="text" name="program" placeholder="Program" required
+                <!-- Instructor ID -->
+                <input type="text" name="InstructorID" placeholder="Instructor ID" required
                     class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
                 <!-- Password -->
