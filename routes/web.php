@@ -104,4 +104,4 @@ Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middle
 
 Route::get('/dashboard/groups/{group_id}', [GroupController::class, 'viewGroupMembers'])->middleware('auth')->name('group.members');
 
-Route::delete('/dashboard/groups/{group_id}', [GroupController::class, 'deleteGroup'])->middleware('auth')->name('group.delete');
+Route::post('/dashboard/groups/{group_id}', [GroupController::class, 'deleteGroups'])->middleware('auth')->name('group.delete');

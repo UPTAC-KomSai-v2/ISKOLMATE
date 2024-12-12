@@ -1,5 +1,5 @@
 <x-dashboard-layout :name="$name" :position="$position">
-    <div class="rounded-lg m-5 flex flex-col w-auto h-80 text-white justify-between items-center md:text-5xl font-bold col-span-3">
+    <div class="rounded-lg m-5 flex flex-col w-auto h-80 text-white justify-between items-center md:text-5xl font-bold col-span-6">
         <div class="flex-grow flex justify-center flex-col">
             <h1>Announcement has been posted successfully!</h1>
         </div>
