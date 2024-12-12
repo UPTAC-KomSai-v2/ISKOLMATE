@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
 
 Route::post('/student_signup', [UserController::class, 'storeStudent'])->name('student_signup');
@@ -90,3 +90,14 @@ Route::get('/availability', function () {
 Route::get('/user_profile', function () {
     return view('user_profile');
 })->middleware('auth');
+
+// Group routes
+Route::post('/dashboard/groups/create', [GroupController::class, 'storeGroup'])->name('group.create');
+
+Route::get('/dashboard/groups/create', function () {
+    return view('groups.create');
+});
+
+Route::get('/dashboard/groups', function () {
+    return view('groups.view');
+})->name('group.view');
