@@ -41,13 +41,13 @@ function updateTime(){
     if(hour < 12) {
       timeCheckEl.innerHTML = "AM";
     }
-    else if(hour > 12) {
+    else if(hour >= 12) {
       timeCheckEl.innerHTML = "PM";
     }
-    else if(hour == 12) {
+    else if(hour == 12 && min == 0) {
       timeCheckEl.innerHTML = "NN";
     }
-    else {
+    else if(hour == 0 && min == 0) {
       timeCheckEl.innerHTML = "MN";
     }
 

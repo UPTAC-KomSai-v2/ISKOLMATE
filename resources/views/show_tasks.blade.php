@@ -9,7 +9,10 @@
             @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/script.js'])
         @endif
     </head>
-<body class="bg-slate-900">
+<body class="bg-slate-900 text-white font-['Poppins'_,_sans-serif]">
+  <div class="absolute top-10 left-8 z-20">
+    <a href="/tasks" title="Go Back" class="text-2xl p-2.5 rounded-full">&#9664;</a>
+  </div>
   <div class="justify-center m-8 rounded-3xl bg-slate-900 p-8 w-auto h-auto border-2 border-white shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434]">
     <!-- Header Section -->
     <div class="relative flex items-center bg-slate-900 text-white md:text-2xl p-10 m-2 border-2 border-white rounded-2xl w-auto h-1/2 ml-40"> <!-- Added "ml-40" -->
