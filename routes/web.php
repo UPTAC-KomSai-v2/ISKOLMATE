@@ -5,24 +5,22 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Auth;
 
-# the name method assigns a name to the route and allows us to call it like {{ route('start2') }} in the login form HTML.
 Route::post('/student_signup', [UserController::class, 'storeStudent'])->name('student_signup');
 
 Route::post('/teacher_signup', [UserController::class, 'storeTeacher'])->name('teacher_signup');
 
+Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
 Route::get('/start2', [UserController::class, 'show'])->name('start2');
-
-// for login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-
-Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/dashboard', function() {
     $user = Auth::user();
     return view('dashboard', [ 'name' => $user->name, 'position' => $user->role ]);
 })->name('dashboard')->middleware('auth');
-
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
     return view('start2');
