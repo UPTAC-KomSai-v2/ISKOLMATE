@@ -61,7 +61,7 @@ class UserController extends Controller
         $user->password = $request->password;
         $user->program = $request->program;
         $user->availability = 0;
-        $user->role = 'Student';
+        $user->role = 'Teacher';
 
         $user->save();
 

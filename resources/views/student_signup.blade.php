@@ -33,14 +33,24 @@
             <!-- Form Container -->
             <div class="form-container">
                 <h2 class="text-xl font-semibold mb-6">Sign-up as a Student</h2>
-                <form action="#" method="POST" class="space-y-4">
+                <form action="{{route('student_signup')}}" method="POST" class="space-y-4">
+                    @csrf
+                    
                     <!-- Name -->
                     <input type="text" name="name" placeholder="Name" required
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
+                    @if ($errors->has('name'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('name') }}</div>
+                    @endif
+
                     <!-- Student Number -->
                     <input type="text" name="student_number" placeholder="Student Number" required
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                    @if ($errors->has('uid'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('uid') }}</div>
+                    @endif
 
                     <!-- Dropdown for Degree Program -->
                     <select name="program"
@@ -58,9 +68,17 @@
                         <option value="BA Political Science">BA Psychology</option>
                     </select>
 
+                    @if ($errors->has('program'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('program') }}</div>
+                    @endif
+
                     <!-- Password -->
                     <input type="password" name="password" placeholder="Password" required
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                    @if ($errors->has('password'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
+                    @endif
 
                     <!-- Submit Button -->
                     <button type="submit"

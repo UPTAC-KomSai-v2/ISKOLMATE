@@ -33,29 +33,47 @@
             <!-- Form Container -->
             <div class="form-container">
                 <h2 class="text-xl font-semibold mb-6">Sign-up as a Teacher</h2>
-                <form action="#" method="POST" class="space-y-4">
+                <form action="{{route('teacher_signup')}}" method="POST" class="space-y-4">
+                    @csrf
+
                     <!-- Name -->
                     <input type="text" name="name" placeholder="Name" required
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                    @if ($errors->has('name'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('name') }}</div>
+                    @endif
 
                     <!-- Instructor ID -->
                     <input type="text" name="instructor_id" placeholder="Instructor ID" required
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
+                    @if ($errors->has('uid'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('uid') }}</div>
+                    @endif
+
                     <!-- Dropdown for Division -->
-                    <select name="program"
+                    <select name="division"
                         class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
                         required>
-                        <option value="" disabled selected>Select your program</option>
+                        <option value="" disabled selected>Select your division</option>
                         <option value="Division of Humanities">Division of Humanities</option>
                         <option value="Division of Social Sciences">Division of Social Sciences</option>
                         <option value="Division of Natural Sciences and Mathematics">Division of Natural Sciences and Mathematics</option>
                         <option value="Division of Management">Division of Management</option>
                     </select>
 
+                    @if ($errors->has('division'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('division') }}</div>
+                    @endif
+
                     <!-- Password -->
                     <input type="password" name="password" placeholder="Password" required
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                    @if ($errors->has('password'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
+                    @endif
 
                     <!-- Submit Button -->
                     <button type="submit"
