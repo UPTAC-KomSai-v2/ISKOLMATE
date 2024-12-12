@@ -19,13 +19,13 @@
       </div>
       <div class="absolute flex items-center right-10 top-8 clear-left">
         <p class="text-right leading-4">
-          <span class="sm:text-xs">PROFILE NAME</span> <br/>
-          <span class="sm:text-xs">DESIGNATION</span>
+          <span class="sm:text-xs">{{ $name }}</span> <br/>
+          <span class="sm:text-xs">{{ $position }}</span>
         </p>
         <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer" onclick="location.href='#'">
       </div>
     </div>
-    <div class="rounded-lg m-2 m-2 grid gap-4 grid-cols-3 w-auto h-80 ">
+    <div class="rounded-lg m-2 grid gap-4 grid-cols-3 w-auto h-80 ">
       <a href="announcements" class="relative bg-slate-900 text-white rounded-3xl flex border-2 hover:bg-gradient-to-tr from-slate-800 to-slate-950 hover:cursor-pointer border-white m-2 h-80 ml-0 justify-center items-center md:text-2xl font-bold">
         <div class="absolute bg-red-400 w-10 h-10 rounded-full right-[-10px] top-[-10px]" id="checkAnnouncements" hidden></div>
         ANNOUNCEMENTS
