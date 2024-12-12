@@ -99,7 +99,7 @@ class UserController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return back()->withErrors([
+        return redirect()->route('login')->withErrors([
             'uid' => 'The provided credentials do not match our records.',
         ]);
     }

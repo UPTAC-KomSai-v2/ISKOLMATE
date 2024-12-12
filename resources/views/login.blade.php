@@ -25,16 +25,6 @@
         </script>
     </head>
     <body class="bg-[#1e1e2f] text-white font-sans min-h-screen flex items-center justify-center">
-        @if ($errors->any()) 
-            <div class="bg-red-200 p-3">
-                <ul>
-                    @foreach ($errors->all() as $error) 
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        
         <div
             class="container mx-auto w-[90%] max-w-md p-8 bg-[#1e1e2f] rounded-2xl shadow-[15px_15px_30px_#141418,-15px_-15px_30px_#282838]">
             <div class="back-button mb-6">
@@ -61,6 +51,12 @@
                     class="px-4 py-2 rounded-md bg-[#1e1e2f] text-white shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] hover:shadow-[inset_10px_10px_20px_#141418,inset_-10px_-10px_20px_#282838] transition ml-4"
                     onclick="toggleForm('teacher')">I am a Teacher</button>
             </div>
+
+            @if ($errors->any()) 
+                @foreach ($errors->all() as $error) 
+                    <div class="text-red-500 text-sm mb-2">{{ $error }}</div>
+                @endforeach
+            @endif
 
             <!-- Student Form -->
             <div id="student-form" class="form-container hidden">
