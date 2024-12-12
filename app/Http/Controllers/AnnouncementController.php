@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\AnnouncementCreator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementController extends Controller
 {
@@ -20,6 +22,21 @@ class AnnouncementController extends Controller
         ]);
 
         return redirect()->route('announcements')->with('success', 'Announcement posted successfully!');
+    }
+
+    public function destroy($id)
+    {
+        $announcement-> Announcement::findORFail($id);
+
+        $creator = AnnouncementCreator::where('announcement_id', $id)->where('user_id', Auth::id())->first();
+
+        if(!$creator){
+            return redirect()->route('announcements')->with('error', 'You are not the announcement creator! User not authorized to delete this announcement!');
+        }
+
+        $announcement->delete();
+        $creator->delete();
+        return redirect()->route('announcements')->with('success', 'Announcement deleted successfully!');
     }
 }
 
