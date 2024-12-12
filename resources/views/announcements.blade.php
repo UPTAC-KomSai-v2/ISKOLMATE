@@ -14,8 +14,12 @@
             @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/script.js'])
         @endif
     </head>
-<body class="bg-[#1e1e2f]">
-  <div class="flex-col justify-center m-8 rounded-3xl bg-[#1e1e2f] p-8 w-auto h-auto shadow-[10px_10px_5px_#181824_,-15px_-15px_30px_#242434]">
+<body class="bg-[#1e1e2f] text-white font-['Poppins'_,_sans-serif]">
+  
+  <div class="absolute top-10 left-8 z-20">
+    <a href="/dashboard" title="Go Back" class="text-2xl p-2.5 rounded-full">&#9664;</a>
+  </div>
+  <div class="absolute flex-col justify-center m-8 rounded-3xl bg-[#1e1e2f] p-8 w-auto h-auto shadow-[10px_10px_5px_#181824_,-15px_-15px_30px_#242434]">
     <div class="relative flex items-center bg-[#1e1e2f] text-white md:text-2xl p-10 m-2 border-2 border-white rounded-2xl w-auto h-1/2">
       <h1 class="lg:text-8xl pr-5 cursor-pointer" id="currentTime"></h1>
       <div class="">

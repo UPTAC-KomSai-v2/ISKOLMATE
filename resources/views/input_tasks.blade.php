@@ -10,9 +10,9 @@
         @endif
     </head>
 
-<body class="bg-slate-900">
-    <div>
-        <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-left rounded-full ml-5 w-10 cursor-pointer mr-12" onclick="location.href='tasks'">
+<body class="bg-slate-900 text-white font-['Poppins'_,_sans-serif]">
+    <div class="absolute top-10 left-8 z-20">
+        <a href="/tasks" title="Go Back" class="text-2xl p-2.5 rounded-full">&#9664;</a>
     </div>
     <div class="justify-center m-8 rounded-3xl bg-slate-900 p-8 w-auto h-auto border-2 border-white shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434]">
         <div class="absolute bg-red-400 w-10 h-10 right-[-10px] top-[-10px]" hidden></div>

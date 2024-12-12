@@ -1,4 +1,3 @@
-<!-- login student -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,34 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Sign-Up</title>
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/script.js'])
-    @endif
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="m-0 p-0 bg-slate-900 text-white flex justify-center items-center h-dvh font-['Poppins'_,_sans-serif]">
-    <div class="relative bg-slate-900 w-full max-w-lg text-center p-7 rounded-2xl shadow-[15px_15px_30px_#181824_,-15px_-15px_30px_#242434]">
-        <!-- Back -->
-        <div class="absolute top-5 left-5">
-            <a href="/start2" title="Go Back" class="text-2xl bg-slate-900 p-2.5 rounded-full shadow-[10px_10px_20px_#181824_,_-10px_-10px_20px_#242434] hover:shadow-[inset_10px_10px_20px_#181824_,_inset_-10px_-10px_20px_#242434] hover:bg-gradient-to-tr from-slate-800 to-slate-900">&#9664;</a>
+<body class="bg-[#1e1e2f] text-white font-sans min-h-screen flex items-center justify-center">
+    <div
+        class="container mx-auto w-[90%] max-w-md p-10 bg-[#1e1e2f] rounded-[20px] shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] text-center relative">
+        <!-- Back Button -->
+        <div class="absolute top-3 left-3">
+            <a href="javascript:history.back();" title="Go Back"
+                class="block w-10 h-10 bg-[#1e1e2f] text-white text-center leading-[40px] text-2xl rounded-full shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] transition hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838]">
+                ◁
+            </a>
         </div>
 
-        <div>
-            <img src="up.png" alt="UP Logo" class="inline-block mb-2.5 p-2.5 rounded-full w-24 shadow-[inset_10px_10px_20px_#181824_,_inset_-10px_-10px_20px_#242434]">
+        <!-- Logo -->
+        <div class="logo flex justify-center items-center mb-6">
+            <img src="up.png" alt="UP Logo"
+                class="w-[100px] rounded-full p-2.5 bg-[#1e1e2f] shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]" />
         </div>
-        <div class="text-3xl my-2.5 drop-shadow-[1px_1px_5px_rgba(0,0,0,0.4)]">Iskolmate</div>
-        <div class="text-base mb-5 text-neutral-300">your partner in suffering</div>
 
+        <!-- Title and Tagline -->
+        <div class="title text-2xl font-bold mb-2">Iskolmate</div>
+        <div class="tagline text-gray-400 mb-8">your partner in suffering</div>
 
-        <div class="text-center">
-            <h2 class="text-2xl mb-[20px] font-bold">Sign-up as a Student</h2>
-            <form action="{{ route('start2') }}" method="POST" class="w-full"> 
-                @csrf
-                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="name" placeholder="Name" required>
-                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="student_number" placeholder="Student Number" required>
-                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="program" placeholder="Program" required>
-                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="password" name="password" placeholder="Password" required>
-                <button type="submit" class="w-full p-2.5 mt-[10px] rounded-xl shadow-[10px_10px_20px_#181824_,_-10px_-10px_20px_#242434] hover:bg-gradient-to-tr from-slate-900 to-slate-950">Submit</button>   
+        <!-- Form Container -->
+        <div class="form-container">
+            <h2 class="text-xl font-semibold mb-6">Sign-up as a Student</h2>
+            <form action="#" method="POST" class="space-y-4">
+                <!-- Name -->
+                <input type="text" name="name" placeholder="Name" required
+                    class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                <!-- Student Number -->
+                <input type="text" name="student_number" placeholder="Student Number" required
+                    class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                <!-- Dropdown for Degree Program -->
+                <select name="program"
+                    class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
+                    required>
+                    <option value="" disabled selected>Select your program</option>
+                    <option value="BS Computer Science">BS Computer Science</option>
+                    <option value="BS Biology">BS Biology</option>
+                    <option value="BS Applied Mathematics">BS Applied Mathematics</option>
+                    <option value="BS Accountancy">BS Accountancy</option>
+                    <option value="BA Literature">BA Literature</option>
+                    <option value="BA Political Science">BA Political Science</option>
+                    <option value="BA Political Science">BA Multimedia Arts</option>
+                    <option value="BA Political Science">BA Economics</option>
+                    <option value="BA Political Science">BA Psychology</option>
+                </select>
+
+                <!-- Password -->
+                <input type="password" name="password" placeholder="Password" required
+                    class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="w-full p-4 text-lg font-bold bg-[#1e1e2f] text-white rounded-lg shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] hover:bg-[#252538] hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] transition">
+                    Submit
+                </button>
             </form>
         </div>
     </div>

@@ -8,11 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function toggleForm(role) {
-            // Hide both forms initially
+   
             document.getElementById('student-form').style.display = 'none';
             document.getElementById('teacher-form').style.display = 'none';
 
-            // Show the selected form
+          
             if (role === 'student') {
                 document.getElementById('student-form').style.display = 'block';
             } else if (role === 'teacher') {
@@ -63,10 +63,26 @@
         <!-- Student Form -->
         <div id="student-form" class="form-container hidden">
             <h2 class="text-xl font-semibold mb-4 text-center">Login as a Student</h2>
-            <form action="{{ route('login') }}" method="POST" class="space-y-4">
-                @csrf
-                <input type="text" name="uid" placeholder="Student Number" required
+            <form action="#" method="POST" class="space-y-4">
+                <input type="text" name="student_number" placeholder="Student Number" required
                     class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                <!-- Dropdown for Degree Program 
+                <select name="program"
+                    class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
+                    required>
+                    <option value="" disabled selected>Select your program</option>
+                    <option value="BS Computer Science">BS Computer Science</option>
+                    <option value="BS Biology">BS Biology</option>
+                    <option value="BS Applied Mathematics">BS Applied Mathematics</option>
+                    <option value="BS Accountancy">BS Accountancy</option>
+                    <option value="BA Literature">BA Literature</option>
+                    <option value="BA Political Science">BA Political Science</option>
+                    <option value="BA Political Science">BA Multimedia Arts</option>
+                    <option value="BA Political Science">BA Economics</option>
+                    <option value="BA Political Science">BA Psychology</option>
+                </select>-->
+
                 <input type="password" name="password" placeholder="Password" required
                     class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <button type="submit"
@@ -79,9 +95,8 @@
         <!-- Teacher Form -->
         <div id="teacher-form" class="form-container hidden">
             <h2 class="text-xl font-semibold mb-4 text-center">Login as a Teacher</h2>
-            <form action="{{ route('login') }}" method="POST" class="space-y-4">
-                @csrf
-                <input type="text" name="uid" placeholder="Instructor ID" required
+            <form action="#" method="POST" class="space-y-4">
+                <input type="text" name="Instrucotr ID" placeholder="Instructor ID" required
                     class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500">
 
                 <input type="password" name="password" placeholder="Password" required

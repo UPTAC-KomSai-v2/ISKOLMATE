@@ -22,7 +22,7 @@
           <span class="sm:text-xs">{{ $name }}</span> <br/>
           <span class="sm:text-xs">{{ $position }}</span>
         </p>
-        <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer" onclick="location.href='#'">
+        <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer" onclick="location.href='user_profile'"">
       </div>
     </div>
     <div class="rounded-lg m-2 grid gap-4 grid-cols-3 w-auto h-80 ">

@@ -2,21 +2,6 @@
 
 CMSC-127 Machine Problem Project
 
-### December 03, 2024
-
-Added `dashboard.blade.php`, `script.js`, `no-picture.png`
-
-Added `script.js` to `public/js` and `resources/js`
-
-Added `process-timeout: 900` in `composer.json`
-
-Copied CSS and JS files to `public`
-
-Linked PHP files to CSS in `public/css`
-
-Changed starting route to `dashboard.blade.php` in `route/web.php`
-
-
 ## Environment Setup
 
 Install git if you don't have it yet. If you are on windows you can do so via [git-scm.com](https://git-scm.com/downloads/win).
