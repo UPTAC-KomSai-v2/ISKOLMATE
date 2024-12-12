@@ -11,7 +11,7 @@
                 $isCreator = AnnouncementCreator::where('anc_id', $announcement->id)->where('u_id', Auth::id())->exists();
             @endphp
             @if($isCreator)
-                <form action="{{route('$announcement.destroy', '$announcement->id') }}" method="POST" onsubmit="return confirm('Are you sure you wish to delete this announcement?');">
+                <form action="{{route('$announcement.destroy', $announcement->id) }}" method="POST" onsubmit="return confirm('Are you sure you wish to delete this announcement?');">
                 @csrf @method('DELETE')
                     <button type="submit" class="px-4 py-2 rounded-md bg-[#1e1e2f] text-white shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838]"> DELETE </button>
             @endif
@@ -28,7 +28,7 @@
                 $isCreator = AnnouncementCreator::where('anc_id', $announcement->id)->where('u_id', Auth::id())->exists();
             @endphp
             @if($isCreator)
-                <form action="{{route('$announcement.destroy', '$announcement->id') }}" method="POST" onsubmit="return confirm('Are you sure you wish to delete this announcement?');">
+                <form action="{{route('$announcement.destroy', $announcement->id) }}" method="POST" onsubmit="return confirm('Are you sure you wish to delete this announcement?');">
                     @csrf @method('DELETE')
                     <button type="submit" class="px-4 py-2 rounded-md bg-[#1e1e2f] text-white shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838]"> DELETE </button>
             @endif
@@ -45,10 +45,16 @@
                 $isCreator = AnnouncementCreator::where('anc_id', $announcement->id)->where('u_id', Auth::id())->exists();
             @endphp
             @if($isCreator)
-                <form action="{{route('$announcement.destroy', '$announcement->id') }}" method="POST" onsubmit="return confirm('Are you sure you wish to delete this announcement?');">
+                <form action="{{route('$announcement.destroy', $announcement->id) }}" method="POST" onsubmit="return confirm('Are you sure you wish to delete this announcement?');">
                     @csrf @method('DELETE')
                     <button type="submit" class="px-4 py-2 rounded-md bg-[#1e1e2f] text-white shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838]"> DELETE </button>
             @endif
         @endforeach
+    </div>
+    <div 
+        class="flex">
+        <a href="/announcements2" class="bg-[#8D1436] w-80 text-white rounded-3xl flex border-2 hover:shadow-lg m-2 h-16 justify-center items-center md:text-2xl font-bold">
+            Create Announcement
+        </a>
     </div>
 </x-dashboard-layout>
