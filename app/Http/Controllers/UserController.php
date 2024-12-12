@@ -15,20 +15,20 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            //'firstname' => 'required|string|max:255',
-            //'secondname' => 'required|string|max:255',
-            //'lastname' => 'required|string|max:255',
-            'uid' => 'required|numeric|digits:9|unique:users,uid',
+            //'name' => 'required|string|max:255',
+            'firstname' => 'required|string|max:255',
+            'secondname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'id' => 'required|numeric|digits:9|unique:users,id',
             'password' => 'required|string|min:8',
         ]);
 
         $user = new User;
 
-        $user->name = $request->name;
-        //$user->firstname = $request->firstname;
-        //$user->secondname = $request->secondname;
-        //$user->lastname = $request->lastname;
+        //$user->name = $request->name;
+        $user->firstname = $request->firstname;
+        $user->secondname = $request->secondname;
+        $user->lastname = $request->lastname;
         $user->uid = $request->uid;
         $user->password = $request->password;
         $user->student_number = 0;
