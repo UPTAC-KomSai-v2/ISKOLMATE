@@ -50,10 +50,6 @@ class UserController extends Controller
         $user->role = 'Student';
 
         $user->save();
-
-        Log::info('Storing user', ['user' => $user]);
-
-
         return redirect()->route('start2');
     }
 
@@ -81,10 +77,6 @@ class UserController extends Controller
         $user->role = 'Teacher';
 
         $user->save();
-
-        Log::info('Storing user', ['user' => $user]);
-
-
         return redirect()->route('start2');
     }
 
