@@ -13,13 +13,9 @@ Route::get('/start2', [UserController::class, 'show'])->name('start2');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/dashboard', function() {
-    if (Auth::check()) {
-        $user = Auth::user();
-        return view('dashboard', [ 'name' => $user->name, 'position' => $user->role ]);
-    } else {
-        return redirect('login');
-    }
-})->name('dashboard');
+    $user = Auth::user();
+    return view('dashboard', [ 'name' => $user->name, 'position' => $user->role ]);
+})->name('dashboard')->middleware('auth');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
