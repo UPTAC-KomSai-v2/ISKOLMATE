@@ -84,7 +84,7 @@ class GroupController extends Controller
 
         $members = DB::select('select users.name from users join user_group on users.id = user_group.u_id where user_group.g_id = ?', [ $group_id ]);
 
-        return view('group.details', [
+        return view('groups.details', [
             'members' => $members,
             'group' => $group[0]
         ]);
