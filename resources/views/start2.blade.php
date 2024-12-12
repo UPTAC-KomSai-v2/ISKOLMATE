@@ -23,7 +23,7 @@
 
         <!-- Buttons -->
         <div class="flex justify-around gap-4 mt-5">
-            <a href="" class="w-1/2 max-w-72 p-4 text-base font-bold text-white border-2 rounded-xl cursor-pointer bg-slate-900 shadow-inner hover:shadow-slate-800 hover:bg-gradient-to-t from-slate-800 to-slate-900">Login</a>
+            <a href="/login" class="w-1/2 max-w-72 p-4 text-base font-bold text-white border-2 rounded-xl cursor-pointer bg-slate-900 shadow-inner hover:shadow-slate-800 hover:bg-gradient-to-t from-slate-800 to-slate-900">Login</a>
             <a href="/signup" class="w-1/2 max-w-72 p-4 text-base font-bold text-white border-2 rounded-xl cursor-pointer bg-slate-900 hover:bg-gradient-to-t from-slate-800 to-slate-900">Signup</a>
         </div>
     </div>
