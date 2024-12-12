@@ -8,11 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function toggleForm(role) {
-            // Hide both forms initially
+   
             document.getElementById('student-form').style.display = 'none';
             document.getElementById('teacher-form').style.display = 'none';
 
-            // Show the selected form
+          
             if (role === 'student') {
                 document.getElementById('student-form').style.display = 'block';
             } else if (role === 'teacher') {
@@ -59,7 +59,7 @@
                 <input type="text" name="student_number" placeholder="Student Number" required
                     class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500">
 
-                <!-- Dropdown for Degree Program -->
+                <!-- Dropdown for Degree Program 
                 <select name="program"
                     class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
                     required>
@@ -73,7 +73,7 @@
                     <option value="BA Political Science">BA Multimedia Arts</option>
                     <option value="BA Political Science">BA Economics</option>
                     <option value="BA Political Science">BA Psychology</option>
-                </select>
+                </select>-->
 
                 <input type="password" name="password" placeholder="Password" required
                     class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-blue-500">

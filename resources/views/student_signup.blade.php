@@ -41,9 +41,21 @@
                 <input type="text" name="student_number" placeholder="Student Number" required
                     class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-                <!-- Program -->
-                <input type="text" name="program" placeholder="Program" required
-                    class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <!-- Dropdown for Degree Program -->
+                <select name="program"
+                    class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
+                    required>
+                    <option value="" disabled selected>Select your program</option>
+                    <option value="BS Computer Science">BS Computer Science</option>
+                    <option value="BS Biology">BS Biology</option>
+                    <option value="BS Applied Mathematics">BS Applied Mathematics</option>
+                    <option value="BS Accountancy">BS Accountancy</option>
+                    <option value="BA Literature">BA Literature</option>
+                    <option value="BA Political Science">BA Political Science</option>
+                    <option value="BA Political Science">BA Multimedia Arts</option>
+                    <option value="BA Political Science">BA Economics</option>
+                    <option value="BA Political Science">BA Psychology</option>
+                </select>
 
                 <!-- Password -->
                 <input type="password" name="password" placeholder="Password" required
