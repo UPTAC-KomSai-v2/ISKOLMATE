@@ -33,9 +33,9 @@
                 @if ($errors->has('name'))
                     <div class="text-red-500 text-sm">{{ $errors->first('name') }}</div>
                 @endif
-                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="student_number" placeholder="Student Number" required>
-                @if ($errors->has('student_number'))
-                    <div class="text-red-500 text-sm">{{ $errors->first('student_number') }}</div>
+                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="uid" placeholder="Student Number" required>
+                @if ($errors->has('uid'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('uid') }}</div>
                 @endif
                 <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="program" placeholder="Program" required>
                 @if ($errors->has('program'))
