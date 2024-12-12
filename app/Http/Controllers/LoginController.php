@@ -24,18 +24,9 @@ class LoginController extends Controller
 
         if (Auth::attempt(['id' => $request->uid, 'password' => $request->password])) {
             $request->session()->regenerate();
-            // start debug
-            if (Auth::check()) {
-                Log::info('Authenticated user:', [Auth::user()]);
-            } else {
-                Log::error('Auth check failed.');
-            }
-            Log::info('User logged in successfully');
-            // end debug
             return redirect()->intended('dashboard');
         }
 
-        Log::info('User not logged in');
         return back()->withErrors([
             'uid' => 'The provided credentials do not match our records.',
         ]);
