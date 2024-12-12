@@ -10,7 +10,6 @@ window.onload = updateScreen; //load update screen
 //update screen every 1 second
 function updateScreen(){ 
   updateTime();
-  updateAnnouncement();
 
   setInterval(() => {
     updateTime();
@@ -19,6 +18,9 @@ function updateScreen(){
 }
 
 function updateAnnouncement() {
+  if (!checkAnnouncementsEl)
+    return;
+
   if(announcementNum > 0) {
     checkAnnouncementsEl.removeAttribute("hidden");
   }
