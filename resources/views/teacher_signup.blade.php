@@ -38,10 +38,20 @@
                     <input type="text" name="name" placeholder="Name" required
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-
                     <!-- Instructor ID -->
-                    <input type="text" name="InstructorID" placeholder="Instructor ID" required
+                    <input type="text" name="instructor_id" placeholder="Instructor ID" required
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                    <!-- Dropdown for Division -->
+                    <select name="program"
+                        class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
+                        required>
+                        <option value="" disabled selected>Select your program</option>
+                        <option value="Division of Humanities">Division of Humanities</option>
+                        <option value="Division of Social Sciences">Division of Social Sciences</option>
+                        <option value="Division of Natural Sciences and Mathematics">Division of Natural Sciences and Mathematics</option>
+                        <option value="Division of Management">Division of Management</option>
+                    </select>
 
                     <!-- Password -->
                     <input type="password" name="password" placeholder="Password" required
