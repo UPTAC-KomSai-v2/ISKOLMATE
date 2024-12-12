@@ -30,9 +30,21 @@
             <form action="{{ route('start2') }}" method="POST" class="w-full"> 
                 @csrf
                 <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="name" placeholder="Name" required>
+                @if ($errors->has('name'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('name') }}</div>
+                @endif
                 <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="student_number" placeholder="Student Number" required>
+                @if ($errors->has('student_number'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('student_number') }}</div>
+                @endif
                 <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="program" placeholder="Program" required>
+                @if ($errors->has('program'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('program') }}</div>
+                @endif
                 <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="password" name="password" placeholder="Password" required>
+                @if ($errors->has('password'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
+                @endif
                 <button type="submit" class="w-full p-2.5 mt-[10px] rounded-xl shadow-[10px_10px_20px_#181824_,_-10px_-10px_20px_#242434] hover:bg-gradient-to-tr from-slate-900 to-slate-950">Submit</button>   
             </form>
         </div>
