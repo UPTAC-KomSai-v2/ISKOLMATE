@@ -101,3 +101,5 @@ Route::get('/dashboard/groups/create', function () {
 Route::get('/dashboard/groups', function () {
     return view('groups.view');
 })->name('group.view');
+
+Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');
