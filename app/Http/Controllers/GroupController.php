@@ -82,11 +82,44 @@ class GroupController extends Controller
             return redirect()->route('group.view');
         }
 
-        $members = DB::select('select users.name from users join user_group on users.id = user_group.u_id where user_group.g_id = ?', [ $group_id ]);
+        $members = DB::select('select users.name, users.id from users join user_group on users.id = user_group.u_id where user_group.g_id = ?', [ $group_id ]);
 
         return view('groups.details', [
             'members' => $members,
-            'group' => $group[0]
+            'group' => $group[0],
+            'user' => $request->user(),
         ]);
+    }
+
+    public function includeUser(Request $request, $group_id)
+    {
+        $request->validate([
+            'uid' => 'required|numeric|digits:9',
+        ]);
+
+        DB::transaction(function () use ($request, $group_id) {
+            DB::insert('insert into user_group (u_id, g_id) values (?, ?)', [
+                $request->uid,
+                $group_id
+            ]);
+        });
+
+        return redirect()->route('group.members', $group_id);
+    }
+
+    public function excludeUser(Request $request, $group_id)
+    {
+        $request->validate([
+            'uid' => 'required|numeric|digits:9',
+        ]);
+
+        DB::transaction(function () use ($request, $group_id) {
+            DB::delete('delete from user_group where u_id = ? and g_id = ?', [
+                $request->uid,
+                $group_id
+            ]);
+        });
+
+        return redirect()->route('group.members', $group_id);
     }
 }

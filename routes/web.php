@@ -105,3 +105,7 @@ Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middle
 Route::get('/dashboard/groups/{group_id}', [GroupController::class, 'viewGroupMembers'])->middleware('auth')->name('group.members');
 
 Route::post('/dashboard/groups/{group_id}', [GroupController::class, 'deleteGroups'])->middleware('auth')->name('group.delete');
+
+Route::post('/dashboard/groups/{group_id}/include', [GroupController::class, 'includeUser'])->middleware('auth')->name('group.include');
+
+Route::post('/dashboard/groups/{group_id}/exclude', [GroupController::class, 'excludeUser'])->middleware('auth')->name('group.exclude');
