@@ -60,3 +60,7 @@ Route::get('/show_tasks', function () {
 Route::get('/availability', function () {
     return view('availability');
 });
+
+Route::get('/user_profile', function () {
+    return view('user_profile');
+});
