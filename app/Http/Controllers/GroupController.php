@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Group;
+use GuzzleHttp\Psr7\Message;
 
 class GroupController extends Controller
 {
@@ -34,7 +35,7 @@ class GroupController extends Controller
             ]);
         });
 
-        return redirect()->route('group.view');
+        return redirect()->route('group.view')->with('message', 'Group created successfully!');
     }
 
     public function viewGroups(Request $request)
@@ -53,6 +54,39 @@ class GroupController extends Controller
 
         return view('groups.view', [
             'groups' => $groups
+        ]);
+    }
+
+    public function deleteGroups(Request $request, $group_id)
+    {
+        $group = DB::select('select * from groups where group_id = ? limit 1', [ $group_id ]);
+
+        if(!$group) {
+            return redirect()->route('group.view');
+        }
+
+        DB::transaction(function () use ($group_id) {
+            DB::delete('delete from user_group where g_id = ?', [ $group_id ]);
+
+            DB::delete('delete from groups where group_id = ?', [$group_id]);
+        });
+
+        return redirect()->route('group.view')->with('message', 'Group deleted successfully!');
+    }
+
+    public function viewGroupMembers(Request $request, $group_id)
+    {
+        $group = DB::select('select * from groups where group_id = ? limit 1', [ $group_id ]);
+
+        if(!$group) {
+            return redirect()->route('group.view');
+        }
+
+        $members = DB::select('select users.name from users join user_group on users.id = user_group.u_id where user_group.g_id = ?', [ $group_id ]);
+
+        return view('group.details', [
+            'members' => $members,
+            'group' => $group[0]
         ]);
     }
 }
