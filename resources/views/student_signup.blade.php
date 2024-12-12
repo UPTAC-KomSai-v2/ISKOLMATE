@@ -66,7 +66,29 @@
                     class="w-full p-4 text-lg font-bold bg-[#1e1e2f] text-white rounded-lg shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] hover:bg-[#252538] hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] transition">
                     Submit
                 </button>
-            </form>
+        <!-- Old signup code -->
+        <!-- <div class="text-center">
+            <h2 class="text-2xl mb-[20px] font-bold">Sign-up as a Student</h2>
+            <form action="{{ route('start2') }}" method="POST" class="w-full"> 
+                @csrf
+                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="name" placeholder="Name" required>
+                @if ($errors->has('name'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('name') }}</div>
+                @endif
+                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="uid" placeholder="Student Number" required>
+                @if ($errors->has('uid'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('uid') }}</div>
+                @endif
+                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="program" placeholder="Program" required>
+                @if ($errors->has('program'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('program') }}</div>
+                @endif
+                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="password" name="password" placeholder="Password" required>
+                @if ($errors->has('password'))
+                    <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
+                @endif
+                <button type="submit" class="w-full p-2.5 mt-[10px] rounded-xl shadow-[10px_10px_20px_#181824_,_-10px_-10px_20px_#242434] hover:bg-gradient-to-tr from-slate-900 to-slate-950">Submit</button>   
+            </form> -->
         </div>
     </div>
 </body>
