@@ -26,11 +26,25 @@
 
 
         <div class="text-center">
-            <h2 class="text-2xl mb-[20px] font-bold">Sign-up as a Student</h2>
+            <h2 class="text-2xl mb-4 font-bold">Sign-up as a Student</h2>
             <form action="#" method="POST" class="w-full">
-                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="name" placeholder="Name" required>
+                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="firstName" placeholder="First Name" required>
+                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="lastName" placeholder="Last Name" required>
                 <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="student_number" placeholder="Student Number" required>
-                <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="program" placeholder="Program" required>
+                <!-- <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="program" placeholder="Program" required> -->
+                 <select name="program" class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" required>
+                    <option class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white"  value="">Degree Program</option>
+                    <option value="balit">BA Literature</option>
+                    <option value="bama">BA Media Arts</option>
+                    <option value="baps">BA Political Science</option>
+                    <option value="bapsych">BA Psychology</option>
+                    <option value="bsa">BS Accountancy</option>
+                    <option value="bsam">BS Applied Mathematics</option>
+                    <option value="bsbio">BS Biology</option>
+                    <option value="bscs">BS Computer Science</option>
+                    <option value="bsecon">BS Economics</option>
+                    <option value="bsm">BS Management</option>
+                 </select>
                 <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="password" name="password" placeholder="Password" required>
                 <button type="submit" class="w-full p-2.5 mt-[10px] rounded-xl shadow-[10px_10px_20px_#181824_,_-10px_-10px_20px_#242434] hover:bg-gradient-to-tr from-slate-900 to-slate-950">Submit</button>   
             </form>
