@@ -51,19 +51,23 @@ Route::get('/teacher_signup', function () {
 });
 
 Route::get('/announcements', function () {
-    return view('announcements');
+    $user = Auth::user();
+    return view('announcements', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth');
 
 Route::get('/announcements2', function () {
-    return view('announcements2');
+    $user = Auth::user();
+    return view('announcements2', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth');
 
 Route::get('/announcements3', function () {
-    return view('announcements3');
+    $user = Auth::user();
+    return view('announcements3', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth');
 
 Route::get('/tasks', function () {
-    return view('tasks');
+    $user = Auth::user();
+    return view('tasks', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth');
 
 Route::get('/input_tasks', function () {
@@ -79,7 +83,8 @@ Route::get('/show_tasks', function () {
 })->middleware('auth');
 
 Route::get('/availability', function () {
-    return view('availability');
+    $user = Auth::user();
+    return view('availability', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth');
 
 Route::get('/user_profile', function () {
