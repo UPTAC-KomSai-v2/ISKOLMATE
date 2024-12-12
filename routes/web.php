@@ -101,3 +101,7 @@ Route::get('/dashboard/groups/create', function () {
 Route::get('/dashboard/groups', [GroupController::class, 'viewGroups'])->middleware('auth')->name('group.view');
 
 Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');
+
+Route::get('/dashboard/groups/{group_id}', [GroupController::class, 'viewGroupMembers'])->middleware('auth')->name('group.members');
+
+Route::delete('/dashboard/groups/{group_id}', [GroupController::class, 'deleteGroup'])->middleware('auth')->name('group.delete');
