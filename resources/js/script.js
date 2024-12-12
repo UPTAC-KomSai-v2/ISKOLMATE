@@ -9,6 +9,9 @@ window.onload = updateScreen; //load update screen
 
 //update screen every 1 second
 function updateScreen(){ 
+  updateTime();
+  updateAnnouncement();
+
   setInterval(() => {
     updateTime();
     updateAnnouncement();

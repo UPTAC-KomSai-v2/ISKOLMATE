@@ -12,7 +12,9 @@
 <body class="bg-slate-900">
   <div class="flex-col justify-center m-8 rounded-3xl bg-slate-900 p-8 w-auto h-auto border-2 border-white shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434]">
     <div class="relative flex items-center bg-slate-900 text-white md:text-2xl p-10 m-2 border-2 border-white rounded-2xl w-auto h-1/2">
-      <h1 class="lg:text-8xl pr-5 cursor-pointer" id="currentTime"></h1>
+      <h1 class="lg:text-8xl pr-5 cursor-pointer" id="currentTime">
+        00:00:00 <!-- Prevent content shifting -->
+      </h1>
       <div class="">
         <h2 class="lg:text-4xl cursor-pointer" id="currentDate"></h2>
         <h2 class="lg:text-4xl cursor-pointer" id="checkTime"></h2>
