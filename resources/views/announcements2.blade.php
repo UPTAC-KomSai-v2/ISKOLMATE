@@ -1,5 +1,5 @@
 <x-dashboard-layout :name="$name" :position="$position">
-    <div class="flex flex-col col-span-2 h-full">
+    <div class="flex flex-col col-span-4 h-full">
         <textarea class="overflow-y-scroll resize-none border-2 black m-2 table-cell align-middle text-[#505050] md:text-2xl" cols="15" rows="3" name="" id="" placeholder="TITLE"></textarea>
         <textarea class="overflow-y-scroll resize-none m-2 text-[#505050]" cols="50" rows="15" placeholder="BODY"></textarea>
     </div>

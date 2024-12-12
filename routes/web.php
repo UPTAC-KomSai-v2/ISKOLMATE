@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
 
 Route::post('/student_signup', [UserController::class, 'storeStudent'])->name('student_signup');
@@ -87,4 +87,25 @@ Route::get('/availability', function () {
     return view('availability', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth');
 
+Route::get('/user_profile', function () {
+    return view('user_profile');
+})->middleware('auth');
+
+// Group routes
+Route::post('/dashboard/groups/create', [GroupController::class, 'storeGroup'])->middleware('auth')->name('group.create');
+
+Route::get('/dashboard/groups/create', function () {
+    return view('groups.create');
+})->middleware('auth');
+
+Route::get('/dashboard/groups', [GroupController::class, 'viewGroups'])->middleware('auth')->name('group.view');
+
 Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');
+
+Route::get('/dashboard/groups/{group_id}', [GroupController::class, 'viewGroupMembers'])->middleware('auth')->name('group.members');
+
+Route::post('/dashboard/groups/{group_id}', [GroupController::class, 'deleteGroups'])->middleware('auth')->name('group.delete');
+
+Route::post('/dashboard/groups/{group_id}/include', [GroupController::class, 'includeUser'])->middleware('auth')->name('group.include');
+
+Route::post('/dashboard/groups/{group_id}/exclude', [GroupController::class, 'excludeUser'])->middleware('auth')->name('group.exclude');

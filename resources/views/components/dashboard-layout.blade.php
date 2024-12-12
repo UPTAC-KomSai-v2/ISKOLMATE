@@ -19,7 +19,7 @@
             </a>
         </div>
     </div>
-    <div class="rounded-lg m-2 grid gap-4 grid-cols-3 w-auto">
+    <div class="rounded-lg m-2 mt-4 grid gap-4 grid-cols-6 w-auto">
         {{ $slot }}
     </div>
 </x-dashboard-no-time-layout>
