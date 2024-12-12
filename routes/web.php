@@ -87,6 +87,4 @@ Route::get('/availability', function () {
     return view('availability', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth');
 
-Route::get('/user_profile', function () {
-    return view('user_profile');
-})->middleware('auth');
+Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');
