@@ -13,8 +13,15 @@ Route::get('/start2', [UserController::class, 'show'])->name('start2');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/dashboard', function() {
-    return view('dashboard');
-})->middleware("auth:web");
+    if (Auth::check()) {
+        $user = Auth::user();
+        return view('dashboard', [ 'name' => $user->name, 'position' => $user->role ]);
+    } else {
+        return redirect('login');
+    }
+})->name('dashboard');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
     return view('start');

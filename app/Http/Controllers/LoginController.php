@@ -22,7 +22,7 @@ class LoginController extends Controller
             'password' => 'required|string'
         ]);
 
-        if (Auth::attempt(['uid' => $request->uid, 'password' => $request->password])) {
+        if (Auth::attempt(['id' => $request->uid, 'password' => $request->password])) {
             $request->session()->regenerate();
             // start debug
             if (Auth::check()) {
@@ -32,12 +32,22 @@ class LoginController extends Controller
             }
             Log::info('User logged in successfully');
             // end debug
-            return redirect('dashboard');
+            return redirect()->intended('dashboard');
         }
 
         Log::info('User not logged in');
         return back()->withErrors([
             'uid' => 'The provided credentials do not match our records.',
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
