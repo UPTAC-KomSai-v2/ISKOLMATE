@@ -1,13 +1,22 @@
-<x-dashboard-no-time-layout :back="'/dashboard'">
+<x-dashboard-no-time-layout :back="route('dashboard')">
     <div class="flex justify-start rounded-3xl bg-slate-900 w-auto h-auto sm:max-h-max">
         <div class="bg-slate-900 text-white p-10 m-2 border-2 border-white rounded-2xl lg:w-4/12 lg:h-[500px]">
             <img src="{{asset('no-picture.png')}}" alt="Photo" class="rounded-lg mx-auto my-10 lg:w-[200px] lg:h-[200px]">
-            <h1 class="lg:text-4xl font-bold mt-2">Name</h1>
-            <p class="mt-8 lg:text-base sm:text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h1 class="lg:text-4xl font-bold mt-2">{{ $name }}</h1>
+            <p class="mt-8 lg:text-base sm:text-xs">
+                {{ $position }} <br>
+                {{ $program }}
+            </p>
         </div>
         <div class="flex-flex-col justify-items-start bg-slate-900 text-white md:text-2xl lg:p-20 sm:p-10 m-2 border-2 border-white rounded-2xl w-8/12 h-[500px]">
             <div class="lg:text-base sm:text-xs w-9/12">
-                <p class="p-2.5">Course</p><hr>
+                <p class="p-2.5">
+                    @if ($is_teacher)
+                        Teaches
+                    @else
+                        Courses
+                    @endif
+                </p><hr>
                 <p class="p-2.5">Detail 1</p><hr>
                 <p class="p-2.5">Detail 2</p><hr>
                 <p class="p-2.5">Detail 3</p><hr>

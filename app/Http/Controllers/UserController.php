@@ -14,6 +14,18 @@ class UserController extends Controller
         return view('start2');
     }
 
+    public function showProfile(Request $request)
+    {
+        $user = $request->user();
+
+        return view('user_profile', [
+            'name' => $user->name,
+            'position' => $user->role,
+            'program' => $user->program,
+            'is_teacher' => $user->is_teacher()
+        ]);
+    }
+
     public function storeStudent(Request $request)
     {
         $request->validate([

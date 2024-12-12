@@ -14,7 +14,7 @@
                 <span class="sm:text-xs">{{ $name }}</span> <br/>
                 <span class="sm:text-xs">{{ $position }}</span>
             </p>
-            <a href="/user_profile">
+            <a href="{{ route('user.profile') }}">
                 <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer">
             </a>
         </div>

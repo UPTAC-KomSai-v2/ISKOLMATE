@@ -64,4 +64,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Section::class, 'teaches', 'ins_id', 'sec_id');
     }
+
+    /**
+     * Specifies whether the User is a teacher or not
+     * 
+     * @return bool
+     */
+    public function is_teacher(): bool
+    {
+        return $this->role == 'Teacher';
+    }
 }
