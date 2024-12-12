@@ -43,11 +43,11 @@
 
         <!-- Buttons -->
         <div class="button-container flex gap-4 justify-center">
-            <button onclick="location.href='teacher_signup.blade.php'"
+            <button onclick="location.href='teacher_signup'"
                 class="btn w-[45%] max-w-[300px] px-6 py-3 bg-[#1e1e2f] text-white font-bold rounded-[10px] border-2 border-white shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] transition hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]">
                 Teacher
             </button>
-            <button onclick="location.href='student_signup.blade.php'"
+            <button onclick="location.href='student_signup'"
                 class="btn w-[45%] max-w-[300px] px-6 py-3 bg-[#1e1e2f] text-white font-bold rounded-[10px] border-2 border-white shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] transition hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]">
                 Student
             </button>
