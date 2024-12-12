@@ -37,7 +37,7 @@
                     @csrf
 
                     <!-- Name -->
-                    <input type="text" name="name" placeholder="Name" required
+                    <input type="text" name="name" placeholder="Name" required value="{{ old('name') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
                     @if ($errors->has('name'))
@@ -45,7 +45,7 @@
                     @endif
 
                     <!-- Instructor ID -->
-                    <input type="text" name="instructor_id" placeholder="Instructor ID" required
+                    <input type="text" name="instructor_id" placeholder="Instructor ID" required value="{{ old('instructor_id') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
                     @if ($errors->has('uid'))
@@ -53,7 +53,7 @@
                     @endif
 
                     <!-- Dropdown for Division -->
-                    <select name="division"
+                    <select name="division" value="{{ old('division') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
                         required>
                         <option value="" disabled selected>Select your division</option>

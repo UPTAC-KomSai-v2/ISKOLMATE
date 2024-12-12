@@ -37,7 +37,7 @@
                     @csrf
                     
                     <!-- Name -->
-                    <input type="text" name="name" placeholder="Name" required
+                    <input type="text" name="name" placeholder="Name" required value="{{ old('name') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
                     @if ($errors->has('name'))
@@ -45,7 +45,7 @@
                     @endif
 
                     <!-- Student Number -->
-                    <input type="text" name="student_number" placeholder="Student Number" required
+                    <input type="text" name="student_number" placeholder="Student Number" required value="{{ old('student_number') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
                     @if ($errors->has('uid'))
@@ -53,7 +53,7 @@
                     @endif
 
                     <!-- Dropdown for Degree Program -->
-                    <select name="program"
+                    <select name="program" value="{{ old('program') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
                         required>
                         <option value="" disabled selected>Select your program</option>
