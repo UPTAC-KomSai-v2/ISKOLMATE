@@ -18,6 +18,14 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/choices', function () {
+    return view('choices');
+});
+
 Route::get('/student_signup', function () {
     return view('student_signup');
 });
@@ -25,7 +33,6 @@ Route::get('/student_signup', function () {
 Route::get('/teacher_signup', function () {
     return view('teacher_signup');
 });
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
