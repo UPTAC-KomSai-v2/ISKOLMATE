@@ -72,10 +72,12 @@ Route::get('/tasks', function () {
 
 Route::get('/input_tasks', function () {
     return view('input_tasks');
+    return view('tasks', [ 'title' => $task->title, 'description' => $task->description, 'deadline' => $task->deadline ]);
 })->middleware('auth');
 
 Route::get('/input_tasks1', function () {
     return view('input_tasks1');
+    return view('tasks', [ 'title' => $task->title, 'description' => $task->description, 'deadline' => $task->deadline ]);
 })->middleware('auth');
 
 Route::get('/show_tasks', function () {
