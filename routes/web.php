@@ -92,14 +92,12 @@ Route::get('/user_profile', function () {
 })->middleware('auth');
 
 // Group routes
-Route::post('/dashboard/groups/create', [GroupController::class, 'storeGroup'])->name('group.create');
+Route::post('/dashboard/groups/create', [GroupController::class, 'storeGroup'])->middleware('auth')->name('group.create');
 
 Route::get('/dashboard/groups/create', function () {
     return view('groups.create');
-});
+})->middleware('auth');
 
-Route::get('/dashboard/groups', function () {
-    return view('groups.view');
-})->name('group.view');
+Route::get('/dashboard/groups', [GroupController::class, 'viewGroups'])->middleware('auth')->name('group.view');
 
 Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');

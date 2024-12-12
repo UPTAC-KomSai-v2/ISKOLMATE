@@ -21,7 +21,7 @@ class GroupController extends Controller
             'name' => 'required|string|max:255|min:1'
         ]);
 
-        $user = Auth::user();
+        $user = $request->user();
 
         DB::transaction(function () use ($request, $user) {
             $group = Group::create([
@@ -35,5 +35,24 @@ class GroupController extends Controller
         });
 
         return redirect()->route('group.view');
+    }
+
+    public function viewGroups(Request $request)
+    {
+        $user = $request->user();
+
+        $user_groups = DB::select('select * from user_group where u_id = ?', [ $user->id ]);
+
+        $user_group_ids = array();
+
+        foreach ($user_groups as $user_group) {
+            array_push($user_group_ids, $user_group->g_id);
+        }
+
+        $groups = Group::whereIn('group_id', $user_group_ids)->get();
+
+        return view('groups.view', [
+            'groups' => $groups
+        ]);
     }
 }
