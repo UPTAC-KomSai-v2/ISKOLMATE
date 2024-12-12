@@ -28,8 +28,6 @@ class TaskController extends Controller
             'deadline' => 'required|date'
         ]);
 
-        $task = new Activity;
-
         DB::transaction(function () use ($request, $task) {
             $task = Activity::create([
                 'title' => $request->title,
@@ -37,10 +35,9 @@ class TaskController extends Controller
                 'deadline' => $request->deadline
             ]);
 
-            DB::insert('insert into activities (title, description, deadline) values (?, ?, ?)', [
-                $title->title,
-                $description->description,
-                $deadline->deadline,
+            DB::insert('insert into activity_creator (act_id, u_id) values (?, ?)', [
+                $task->id,
+                $request->user()->id,
             ]);
         });
 
