@@ -16,9 +16,14 @@ class AnnouncementController extends Controller
             'text' => 'required|string',
         ]);
 
-        Announcement::create([
+        $announcement = Announcement::create([
             'title' => $validated['title'],
             'text' => $validated['text'],
+        ]);
+
+        AnnouncementCreator::create([
+            'announcement_id' => $announcement->id,
+            'user_id' => Auth::id(),
         ]);
 
         return redirect()->route('announcements')->with('success', 'Announcement posted successfully!');
@@ -26,7 +31,7 @@ class AnnouncementController extends Controller
 
     public function destroy($id)
     {
-        $announcement-> Announcement::findORFail($id);
+        $announcement = Announcement::findOrFail($id);
 
         $creator = AnnouncementCreator::where('announcement_id', $id)->where('user_id', Auth::id())->first();
 

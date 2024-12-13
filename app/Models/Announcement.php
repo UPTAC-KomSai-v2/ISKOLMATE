@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Announcement extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'text'];
+    protected $fillable = ['title', 'text',];
+
+    public function creators()
+    {
+        return $this->hasMany(AnnouncementCreator::class, 'announcement_id');
+    }
 }
