@@ -17,7 +17,7 @@
             <a href="{{ route('user.profile') }}">
                 <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer">
             </a>
-            <a href="logout" class="text-base float-right bottom-[-10px]">Logout</a>
+            <a href="logout" class="text-base float-right bottom-[-10px] hover:duration-300 hover:text-[#8D1436]">Logout</a>
         </div>
     </div>
     <div class="rounded-lg m-2 mt-4 grid gap-4 grid-cols-6 w-auto">
