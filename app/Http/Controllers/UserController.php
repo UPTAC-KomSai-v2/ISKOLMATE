@@ -73,7 +73,7 @@ class UserController extends Controller
         // $user->lastname = $request->lastname;
         $user->id = $request->instructor_id;
         $user->password = $request->password;
-        $user->program = $request->program;
+        $user->program = $request->division;
         $user->availability = 0;
         $user->role = 'Teacher';
 
