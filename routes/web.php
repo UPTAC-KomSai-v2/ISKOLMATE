@@ -23,7 +23,7 @@ Route::get('/dashboard', function() {
 })->name('dashboard')->middleware('auth');
 
 Route::get('/', function () {
-    return view('start2');
+    return view('start');
 });
 
 Route::get('/start', function () {
