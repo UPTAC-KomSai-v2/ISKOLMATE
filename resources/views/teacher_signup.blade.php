@@ -48,8 +48,8 @@
                     <input type="text" name="instructor_id" placeholder="Instructor ID" required value="{{ old('instructor_id') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-                    @if ($errors->has('uid'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('uid') }}</div>
+                    @if ($errors->has('instructor_id'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('instructor_id') }}</div>
                     @endif
 
                     <!-- Dropdown for Division -->

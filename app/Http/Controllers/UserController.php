@@ -33,7 +33,7 @@ class UserController extends Controller
             // 'firstname' => 'required|string|max:255',
             // 'secondname' => 'required|string|max:255',
             // 'lastname' => 'required|string|max:255',
-            'student_number' => 'required|numeric|digits:9|unique:users,id',
+            'student_id' => 'required|numeric|digits:9|unique:users,id',
             'password' => 'required|string|min:8',
         ]);
 
@@ -43,7 +43,7 @@ class UserController extends Controller
         // $user->firstname = $request->firstname;
         // $user->secondname = $request->secondname;
         // $user->lastname = $request->lastname;
-        $user->id = $request->student_number;
+        $user->id = $request->student_id;
         $user->password = $request->password;
         $user->program = $request->program;
         $user->availability = 0;

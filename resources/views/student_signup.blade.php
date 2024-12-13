@@ -45,11 +45,11 @@
                     @endif
 
                     <!-- Student Number -->
-                    <input type="text" name="student_number" placeholder="Student Number" required value="{{ old('student_number') }}"
+                    <input type="text" name="student_id" placeholder="Student Number" required value="{{ old('student_number') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-                    @if ($errors->has('uid'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('uid') }}</div>
+                    @if ($errors->has('student_id'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('student_id') }}</div>
                     @endif
 
                     <!-- Dropdown for Degree Program -->
