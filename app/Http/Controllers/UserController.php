@@ -50,7 +50,6 @@ class UserController extends Controller
         $user->role = 'Student';
 
         $user->save();
-
         return redirect()->route('start2');
     }
 
@@ -78,7 +77,6 @@ class UserController extends Controller
         $user->role = 'Teacher';
 
         $user->save();
-
         return redirect()->route('start2');
     }
 
