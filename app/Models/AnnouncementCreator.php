@@ -10,7 +10,8 @@ class AnnouncementCreator extends Model
     use HasFactory;
 
     protected $table = 'announcement_creator';
-    protected $fillable = ['anc_id', 'u_id'];
+    protected $fillable = ['annc_id', 'u_id'];
+    public $timestamps = false;
 
     // Relationship User Model
     public function user(){
@@ -18,7 +19,7 @@ class AnnouncementCreator extends Model
     }
     // Relationship Announcement Model
     public function announcement(){
-        return $this->belongsTo(Announcement::class, 'anc_id');
+        return $this->belongsTo(Announcement::class, 'annc_id');
     }
 
 }

@@ -9,6 +9,7 @@ class Announcement extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'text',];
+    public $timestamps = false;
 
     public function creators()
     {

@@ -55,7 +55,7 @@ Route::get('/announcements', function () {
     $user = Auth::user();
     $announcements = App\Models\Announcement::all();
     return view('announcements', [ 'name' => $user->name, 'position' => $user->role, 'announcements' => $announcements ]);
-})->middleware('auth');
+})->middleware('auth')->name('announcements');
 
 Route::get('/announcements2', function () {
     $user = Auth::user();
@@ -69,7 +69,7 @@ Route::get('/announcements3', function () {
 
 Route::post('/announcements', [AnnouncementController::class, 'store'])->middleware('auth')->name('announcements.store');
 
-Route::delete('/announcements/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy')->middleware('auth');
+Route::delete('/announcements/{announcement}', [AnnouncementController::class, 'destroy'])->middleware('auth')->name('announcement.destroy');
 
 Route::get('/tasks', function () {
     $user = Auth::user();
