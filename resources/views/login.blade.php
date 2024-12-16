@@ -28,7 +28,7 @@
         <div
             class="container mx-auto w-[90%] max-w-md p-8 bg-[#1e1e2f] rounded-2xl shadow-[15px_15px_30px_#141418,-15px_-15px_30px_#282838]">
             <div class="back-button mb-6">
-                <a href="javascript:history.back();" title="Go Back"
+                <a href="{{ route('start2') }}" title="Go Back"
                     class="block w-10 h-10 bg-[#1e1e2f] rounded-full text-center text-2xl leading-10 text-white shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] transition">
                     ◁
                 </a>
