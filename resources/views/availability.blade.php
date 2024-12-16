@@ -8,7 +8,7 @@
             <label for="description" class="form-label font-bold">Select End Time:</label>
             <input type="time" id="end_time" name="end_time" class = "bg-[#83173C] text-[#FEB71B]">
             <button class="bg-[#83173C] text-[#fff] border cursor-pointer px-4 py-2 w-48 rounded border-solid border-[#ccc] mb-4 hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500
-                        hover:text-[#FEB71C] hover:border-[#FEB71C]" onclick="location.href='input_tasks1'">
+                        hover:text-[#FEB71C] hover:border-[#FEB71C] mt-5" onclick="location.href='input_tasks1'">
                 Set Availability
             </button>
             <button class="bg-[#83173C] text-[#fff] border cursor-pointer px-4 py-2 w-48 rounded border-solid border-[#ccc] hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500
