@@ -14,19 +14,14 @@
     <!-- Main Section -->
     <div class="flex items-start">
         <!-- Icons Section -->
-        <div class="flex flex-col items-center justify-start mr-12">
-            <img src="{{asset('no-picture.png')}}" alt="Icon 1" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='tasks'">
-            <img src="{{asset('no-picture.png')}}" alt="Icon 2" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='dashboard'">
-        </div>
+        <!-- <div class="flex flex-col items-center justify-start mr-12"> -->
+            <!-- <img src="{{asset('no-picture.png')}}" alt="Icon 1" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='tasks'"> -->
+            <!-- <img src="{{asset('no-picture.png')}}" alt="Icon 2" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='dashboard'"> -->
+        <!-- </div> -->
 
         <!-- Tasks Column -->
-        <div class="overflow-hidden flex-col bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-2 h-80 ml-0 md:text-2xl font-bold w-full">
+        <div class="overflow-auto flex-col bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-2 h-80 ml-0 md:text-2xl font-bold w-full">
             <div class="border-2 p-2">Task 1</div>
-            <div class="border-2 p-2">Task 2</div>
-            <div class="border-2 p-2">Task 3</div>
-            <div class="border-2 p-2">Task 4</div>
-            <div class="border-2 p-2">Task 5</div>
-            <div class="border-2 p-2">Task 6</div>
         </div>
     </div>
 </x-dashboard-no-time-layout>

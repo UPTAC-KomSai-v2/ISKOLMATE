@@ -2,6 +2,9 @@ let time = document.getElementById("currentTime");
 let date = document.getElementById("currentDate");
 let timeCheckEl = document.getElementById("checkTime");
 let checkAnnouncementsEl = document.getElementById("checkAnnouncements");
+let toggle = document.getElementById("togglePass");
+
+// let passwordEl = document.getElementById("password");
 
 let announcementNum = 1; //Placeholder only for testing announcement popup
 
@@ -58,4 +61,16 @@ function updateTime(){
 
     time.innerHTML = (hour % 12 || 12) + ":" + min + ":" + sec;
     date.innerHTML = now.toLocaleDateString();
+}
+
+function togglePassword() {
+  var passwordEl = document.getElementById("passwordEl");
+  console.log("NADARA AKO");
+  // var x = document.getElementById("myInput");
+  if (passwordEl.type === "password") {
+    passwordEl.type = "text";
+  } else {
+    passwordEl.type = "password";
+  }
+
 }

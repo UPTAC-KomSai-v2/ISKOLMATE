@@ -73,8 +73,26 @@
                     @endif
 
                     <!-- Password -->
-                    <input type="password" name="password" placeholder="Password" required
+                    <div>
+                        <input type="password" name="password" placeholder="Password" required id="passwordEl"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <span class="cursor-pointer hover:text-orange-400 w-full" onclick="togglePassword()" id="togglePass">Show Password</span>
+                    </div>
+
+                    <script>
+                        function togglePassword(){
+                            var togglePassEl = document.getElementById("togglePass");
+                            var passwordEl = document.getElementById("passwordEl");
+                            if (passwordEl.type === "password") {
+                                passwordEl.type = "text";
+                                togglePassEl.innerHTML = "Hide Password";
+
+                            } else {
+                                passwordEl.type = "password";
+                                togglePassEl.innerHTML = "Show Password";
+                            }
+                        }
+                    </script>
 
                     @if ($errors->has('password'))
                         <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>

@@ -99,6 +99,7 @@ Route::get('/user_profile', function () {
     return view('user_profile');
 })->middleware('auth');
 
+
 // Group routes
 Route::post('/dashboard/groups/create', [GroupController::class, 'storeGroup'])->middleware('auth')->name('group.create');
 
