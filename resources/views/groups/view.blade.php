@@ -1,4 +1,4 @@
-<x-dashboard-no-time-layout :back="'/dashboard'">
+<x-dashboard-no-time-layout :back="route('dashboard')">
     <div class="flex flex-col gap-2">
         <div class="flex justify-between">
             <div class="lg:text-2xl font-bold">GROUPS</div>    

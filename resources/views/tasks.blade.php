@@ -1,4 +1,4 @@
-<x-dashboard-layout :name="$name" :position="$position" :back="'/dashboard'">
+<x-dashboard-layout :name="$name" :position="$position" :back="route('dashboard')">
     <div class="col-span-6 overflow-auto flex-col bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-2 h-80 ml-0  md:text-2xl font-bold hover:duration-500 hover:border-[#FEB71C]">
         @foreach($tasks as $task)
             <a href="{{ route('tasks.show', $task->id) }}" class="border-2 p-2">{{ $task->title }}</a>
@@ -9,7 +9,7 @@
         @endforeach
 
     </div>
-    <a href="input_tasks"><div class="rounded-lg text-center bg-[#8D1436] text-[white] p-[10pt] hover:text-[#FEB71C] hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">Input Tasks</div></a>
+    <a href="{{ route('tasks.create') }}"><div class="rounded-lg text-center bg-[#8D1436] text-[white] p-[10pt] hover:text-[#FEB71C] hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">Input Tasks</div></a>
     <!-- <div class="col-span-3 overflow-hidden flex-col bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-3 h-80 ml-0 md:text-2xl font-bold hover:duration-500 hover:border-[#FEB71C]">
         <a href="show_tasks"> <div class= "text-left bg-[#8D1436] text-[white] p-[10pt] hover:text-[#FEB71C] hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">Show Tasks</div></a>
         <div class="border-2 p-2 hover:bg-[#d8879e] hover:duration-500">Task 1</div>

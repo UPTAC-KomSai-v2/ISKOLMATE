@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\TaskController;
 use App\Models\Activity;
+use App\Models\Announcement;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
@@ -53,16 +54,16 @@ Route::get('/teacher_signup', function () {
     return view('teacher_signup');
 });
 
-Route::get('/announcements', function () {
+Route::get('/dashboard/announcements', function () {
     $user = Auth::user();
-    $announcements = App\Models\Announcement::all();
+    $announcements = Announcement::all();
     return view('announcements', [ 'name' => $user->name, 'position' => $user->role, 'announcements' => $announcements ]);
-})->middleware('auth')->name('announcements');
+})->middleware('auth')->name('announcements.view');
 
-Route::get('/announcements2', function () {
+Route::get('/dashboard/announcements/create', function () {
     $user = Auth::user();
     return view('announcements2', [ 'name' => $user->name, 'position' => $user->role ]);
-})->middleware('auth');
+})->middleware('auth')->name('announcements.create');
 
 Route::get('/announcements3', function () {
     $user = Auth::user();
@@ -73,7 +74,7 @@ Route::post('/announcements', [AnnouncementController::class, 'store'])->middlew
 
 Route::delete('/announcements/{announcement}', [AnnouncementController::class, 'destroy'])->middleware('auth')->name('announcement.destroy');
 
-Route::get('/tasks', function () {
+Route::get('/dashboard/tasks', function () {
     $user = Auth::user();
     $tasks = Activity::all();
 
@@ -88,17 +89,17 @@ Route::get('/tasks', function () {
     return view('tasks', [ 'name' => $user->name, 'position' => $user->role, 'tasks' => $user_tasks]);
 })->middleware('auth')->name('tasks.list');
 
-Route::get('/input_tasks', function () {
+Route::get('/dashboard/tasks/create', function () {
     return view('input_tasks');
     return view('tasks', [ 'title' => $task->title, 'description' => $task->description, 'deadline' => $task->deadline ]);
 })->middleware('auth')->name('tasks.create');
 
-Route::get('/input_tasks1', function () {
+Route::get('/dashboard/tasks/success', function () {
     return view('input_tasks1');
     return view('tasks', [ 'title' => $task->title, 'description' => $task->description, 'deadline' => $task->deadline ]);
 })->middleware('auth')->name('tasks.message');
 
-Route::get('/show_tasks/{id}', function ($id) {
+Route::get('/dashboard/tasks/{id}', function ($id) {
     $user = Auth::user();
     $task = Activity::find($id);
 
@@ -113,15 +114,12 @@ Route::post('/tasks/store', [TaskController::class, 'store'])->middleware('auth'
 
 Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->middleware('auth')->name('tasks.destroy');
 
-Route::get('/availability', function () {
+Route::get('/dashboard/availability', function () {
     $user = Auth::user();
     return view('availability', [ 'name' => $user->name, 'position' => $user->role ]);
-})->middleware('auth');
+})->middleware('auth')->name('availability');
 
-Route::get('/user_profile', function () {
-    return view('user_profile');
-})->middleware('auth');
-
+Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');
 
 // Group routes
 Route::post('/dashboard/groups/create', [GroupController::class, 'storeGroup'])->middleware('auth')->name('group.create');
@@ -131,8 +129,6 @@ Route::get('/dashboard/groups/create', function () {
 })->middleware('auth');
 
 Route::get('/dashboard/groups', [GroupController::class, 'viewGroups'])->middleware('auth')->name('group.view');
-
-Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');
 
 Route::get('/dashboard/groups/{group_id}', [GroupController::class, 'viewGroupMembers'])->middleware('auth')->name('group.members');
 

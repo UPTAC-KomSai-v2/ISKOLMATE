@@ -23,7 +23,7 @@
                 <p class="p-2.5">Detail 4</p> -->
             </div>
             <div class="flex lg:space-x-32 lg:text-base sm:text-xs sm:space-x-8 lg:my-20 sm:my-10 mx-auto w-auto justify-center text-center ">
-                <a href="/availability" class="lg:px-20 sm:px-10 lg:py-5 sm:py-2 border-white border rounded-md hover:bg-gradient-to-tr from-slate-800 to-slate-950 hover:cursor-pointer">Set Availability</a>
+                <a href="{{ route('availability') }}" class="lg:px-20 sm:px-10 lg:py-5 sm:py-2 border-white border rounded-md hover:bg-gradient-to-tr from-slate-800 to-slate-950 hover:cursor-pointer">Set Availability</a>
                 <a href="" class="lg:px-20 sm:px-10 lg:py-5 sm:py-2 border-white border rounded-md hover:bg-gradient-to-tr from-slate-800 to-slate-950 hover:cursor-pointer">Show Schedule</a>
             </div>
         </div>

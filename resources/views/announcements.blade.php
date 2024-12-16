@@ -1,11 +1,22 @@
 @php use App\Models\AnnouncementCreator; @endphp
-<x-dashboard-layout :name="$name" :position="$position" :back="'/dashboard'">
+@php use App\Models\User; @endphp
+<x-dashboard-layout :name="$name" :position="$position" :back="route('dashboard')">
     <div
         class="col-span-6 overflow-auto flex-col  bg-white text-black rounded-3xl flex border-2  border-white m-2 h-80 ml-0  md:text-2xl">
         <div class="text-left bg-[#8D1436] text-[white] p-[10pt]">All Announcements</div>
 
         @foreach($announcements as $announcement)
-            <div class="border-2 p-2 font-bold">{{$announcement->title}}</div>
+            <div class="border-2 p-2 font-bold flex justify-between">
+                <span>
+                    {{$announcement->title}}
+                </span>
+                @php
+                    $creator = User::find($announcement->get_owner_id());
+                @endphp
+                <span>
+                    {{ $creator->name }}
+                </span>
+            </div>
             <div class="border-2 p-3">{{$announcement->text}}</div>
             @php
                 $isCreator = AnnouncementCreator::where('annc_id', $announcement->id)->where('u_id', Auth::id())->exists();
@@ -21,7 +32,7 @@
     </div>
     <div
         class="flex">
-        <a href="/announcements2" class="bg-[#8D1436] w-80 text-center p-10 text text-white rounded-3xl flex border-2 hover:shadow-lg m-2 h-16 justify-center items-center md:text-2xl font-bold
+        <a href="{{ route('announcements.create') }}" class="bg-[#8D1436] w-80 text-center p-10 text text-white rounded-3xl flex border-2 hover:shadow-lg m-2 h-16 justify-center items-center md:text-2xl font-bold
         hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500 hover:text-[#FEB71C] hover:border-[#FEB71C]">
             Create Announcement
         </a>

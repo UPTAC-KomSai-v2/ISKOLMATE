@@ -1,4 +1,4 @@
-<x-dashboard-no-time-layout :back="'/tasks'">
+<x-dashboard-no-time-layout :back="route('tasks.list')">
     <div class="absolute bg-red-400 w-10 h-10 right-[-10px] top-[-10px]" hidden></div>
     <div class="relative flex items-center bg-slate-900 text-white md:text-5xl w-auto h-1/2">
         <div class="lg:text-2xl font-bold">INPUT TASKS</div>

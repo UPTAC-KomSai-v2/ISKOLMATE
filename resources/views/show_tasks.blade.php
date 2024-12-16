@@ -1,4 +1,4 @@
-<x-dashboard-no-time-layout :back="'/tasks'">
+<x-dashboard-no-time-layout :back="route('tasks.list')">
     <!-- Header Section -->
     <div class="relative flex items-center bg-slate-900 text-white md:text-2xl p-10 m-2 border-2 border-white rounded-2xl w-auto h-1/2 ml-40"> <!-- Added "ml-40" -->
         <div class="lg:text-8xl">Tasks</div>

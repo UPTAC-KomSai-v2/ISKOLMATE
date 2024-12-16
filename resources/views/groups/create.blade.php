@@ -1,4 +1,4 @@
-<x-dashboard-no-time-layout :back="'/dashboard/groups'">
+<x-dashboard-no-time-layout :back="route('group.view')">
     <div class="lg:text-2xl font-bold">CREATE GROUP</div>
 
     <form action="{{ route('group.create') }}" method="POST" class="space-y-4">
