@@ -97,6 +97,8 @@ class GroupController extends Controller
             'uid' => 'required|numeric|digits:9',
         ]);
 
+        // $group_pair = DB::select('select * from user_group where g_id = ? and u_id = ? limit 1', [ $group_id, $request->uid ]);
+
         DB::transaction(function () use ($request, $group_id) {
             DB::insert('insert into user_group (u_id, g_id) values (?, ?)', [
                 $request->uid,

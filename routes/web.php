@@ -75,9 +75,17 @@ Route::delete('/announcements/{announcement}', [AnnouncementController::class, '
 
 Route::get('/tasks', function () {
     $user = Auth::user();
-    $tasks = App\Models\Activity::all();
+    $tasks = Activity::all();
 
-    return view('tasks', [ 'name' => $user->name, 'position' => $user->role, 'tasks' => $tasks]);
+    $user_tasks = [];
+
+    foreach ($tasks as $task) {
+        if ($task->get_owner_id() == $user->id) {
+            array_push($user_tasks, $task);
+        }
+    }
+
+    return view('tasks', [ 'name' => $user->name, 'position' => $user->role, 'tasks' => $user_tasks]);
 })->middleware('auth')->name('tasks.list');
 
 Route::get('/input_tasks', function () {
@@ -92,10 +100,10 @@ Route::get('/input_tasks1', function () {
 
 Route::get('/show_tasks/{id}', function ($id) {
     $user = Auth::user();
-    $task = App\Models\Activity::find($id);
+    $task = Activity::find($id);
 
     if ($task->get_owner_id() != $user->id) {
-        return redirect().route('tasks.list');
+        return redirect()->route('tasks.list');
     }
 
     return view('show_tasks', [ 'name' => $user->name, 'position' => $user->role, 'task' => $task ]);
