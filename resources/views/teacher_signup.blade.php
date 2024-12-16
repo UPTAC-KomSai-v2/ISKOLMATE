@@ -15,7 +15,7 @@
             class="container mx-auto w-[90%] max-w-md p-10 bg-[#1e1e2f] rounded-[20px] shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] text-center relative">
             <!-- Back Button -->
             <div class="absolute top-3 left-3">
-                <a href="javascript:history.back();" title="Go Back"
+                <a href="{{ route('signup.choice') }}" title="Go Back"
                     class="block w-10 h-10 bg-[#1e1e2f] text-white text-center leading-[40px] text-2xl rounded-full shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] transition hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838]">
                     ◁
                 </a>

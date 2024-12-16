@@ -28,10 +28,10 @@
             class="container mx-auto w-[90%] max-w-md p-6 bg-[#1e1e2f] rounded-[20px] shadow-[15px_15px_30px_#181824,-15px_-15px_30px_#242434] relative text-center">
             <!-- Back Button -->
             <div class="absolute top-5 left-5">
-                <button onclick="history.back()"
+                <a href="{{ route('start2') }}"
                     class="w-12 h-12 bg-[#1e1e2f] rounded-full shadow-[8px_8px_15px_#141418,-8px_-8px_15px_#282838] flex justify-center items-center text-white text-lg font-bold transition hover:shadow-[inset_8px_8px_15px_#141418,inset_-8px_-8px_15px_#282838]">
                     ◁
-                </button>
+                </a>
             </div>
 
             <!-- Title -->

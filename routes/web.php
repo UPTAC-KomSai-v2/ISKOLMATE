@@ -43,7 +43,7 @@ Route::get('/login', function () {
 
 Route::get('/choices', function () {
     return view('choices');
-});
+})->name('signup.choice');
 
 Route::get('/student_signup', function () {
     return view('student_signup');
@@ -93,6 +93,10 @@ Route::get('/input_tasks1', function () {
 Route::get('/show_tasks/{id}', function ($id) {
     $user = Auth::user();
     $task = App\Models\Activity::find($id);
+
+    if ($task->get_owner_id() != $user->id) {
+        return redirect().route('tasks.list');
+    }
 
     return view('show_tasks', [ 'name' => $user->name, 'position' => $user->role, 'task' => $task ]);
 })->middleware('auth')->name('tasks.show');
