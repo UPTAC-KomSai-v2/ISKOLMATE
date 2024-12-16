@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\TaskController;
+use App\Models\Activity;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
@@ -73,22 +75,31 @@ Route::delete('/announcements/{announcement}', [AnnouncementController::class, '
 
 Route::get('/tasks', function () {
     $user = Auth::user();
-    return view('tasks', [ 'name' => $user->name, 'position' => $user->role ]);
-})->middleware('auth');
+    $tasks = App\Models\Activity::all();
+
+    return view('tasks', [ 'name' => $user->name, 'position' => $user->role, 'tasks' => $tasks]);
+})->middleware('auth')->name('tasks.list');
 
 Route::get('/input_tasks', function () {
     return view('input_tasks');
     return view('tasks', [ 'title' => $task->title, 'description' => $task->description, 'deadline' => $task->deadline ]);
-})->middleware('auth');
+})->middleware('auth')->name('tasks.create');
 
 Route::get('/input_tasks1', function () {
     return view('input_tasks1');
     return view('tasks', [ 'title' => $task->title, 'description' => $task->description, 'deadline' => $task->deadline ]);
-})->middleware('auth');
+})->middleware('auth')->name('tasks.message');
 
-Route::get('/show_tasks', function () {
-    return view('show_tasks');
-})->middleware('auth');
+Route::get('/show_tasks/{id}', function ($id) {
+    $user = Auth::user();
+    $task = App\Models\Activity::find($id);
+
+    return view('show_tasks', [ 'name' => $user->name, 'position' => $user->role, 'task' => $task ]);
+})->middleware('auth')->name('tasks.show');
+
+Route::post('/tasks/store', [TaskController::class, 'store'])->middleware('auth')->name('tasks.store');
+
+Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->middleware('auth')->name('tasks.destroy');
 
 Route::get('/availability', function () {
     $user = Auth::user();

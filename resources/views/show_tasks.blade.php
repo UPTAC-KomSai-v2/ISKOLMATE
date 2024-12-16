@@ -21,7 +21,7 @@
 
         <!-- Tasks Column -->
         <div class="overflow-auto flex-col bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-2 h-80 ml-0 md:text-2xl font-bold w-full">
-            <div class="border-2 p-2">Task 1</div>
+            <div class="border-2 p-2">{{ $task->description }}</div>
         </div>
     </div>
 </x-dashboard-no-time-layout>
