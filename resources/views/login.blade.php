@@ -63,6 +63,7 @@
                 <h2 class="text-xl font-semibold mb-4 text-center">Login as a Student</h2>
                 <form action="{{route('login')}}" method="POST" class="space-y-4">
                     @csrf
+                    <input type="hidden" name="role" value="Student">
                     <input type="text" name="uid" placeholder="Student Number" required
                         class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500">
 
@@ -80,6 +81,7 @@
                 <h2 class="text-xl font-semibold mb-4 text-center">Login as a Teacher</h2>
                 <form action="{{route('login')}}" method="POST" class="space-y-4">
                     @csrf
+                    <input type="hidden" name="role" value="Teacher">
                     <input type="text" name="uid" placeholder="Instructor ID" required
                         class="w-full p-3 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500">
 

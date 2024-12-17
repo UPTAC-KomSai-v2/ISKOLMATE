@@ -29,24 +29,20 @@ class UserController extends Controller
     public function storeStudent(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            // 'firstname' => 'required|string|max:255',
-            // 'secondname' => 'required|string|max:255',
-            // 'lastname' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'student_id' => 'required|numeric|digits:9|unique:users,id',
             'password' => 'required|string|min:8',
+            'affiliation' => 'required|string|max:255',
         ]);
 
         $user = new User;
 
-        $user->name = $request->name;
-        // $user->firstname = $request->firstname;
-        // $user->secondname = $request->secondname;
-        // $user->lastname = $request->lastname;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->id = $request->student_id;
         $user->password = $request->password;
-        $user->program = $request->program;
-        $user->availability = 0;
+        $user->affiliation = $request->affiliation;
         $user->role = 'Student';
 
         $user->save();
@@ -56,24 +52,20 @@ class UserController extends Controller
     public function storeTeacher(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            // 'firstname' => 'required|string|max:255',
-            // 'secondname' => 'required|string|max:255',
-            // 'lastname' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'instructor_id' => 'required|numeric|digits:9|unique:users,id',
             'password' => 'required|string|min:8',
+            'affiliation' => 'required|string|max:255',
         ]);
 
         $user = new User;
 
-        $user->name = $request->name;
-        // $user->firstname = $request->firstname;
-        // $user->secondname = $request->secondname;
-        // $user->lastname = $request->lastname;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->id = $request->instructor_id;
         $user->password = $request->password;
-        $user->program = $request->division;
-        $user->availability = 0;
+        $user->affiliation = $request->affiliation;
         $user->role = 'Teacher';
 
         $user->save();
@@ -89,16 +81,22 @@ class UserController extends Controller
     {
         $request->validate([
             'uid' => 'required|string',
-            'password' => 'required|string'
+            'password' => 'required|string',
+            'role' => 'required|string|in:Student,Teacher',
         ]);
 
-        if (Auth::attempt(['id' => $request->uid, 'password' => $request->password])) {
+        if (Auth::attempt([
+            'id' => $request->uid, 
+            'password' => $request->password,
+            'role' => $request->role
+        ])) {
             $request->session()->regenerate();
+
             return redirect()->intended('dashboard');
         }
 
         return redirect()->route('login')->withErrors([
-            'uid' => 'The provided credentials do not match our records.',
+            'uid' => 'The provided credentials or role do not match our records.',
         ]);
     }
 

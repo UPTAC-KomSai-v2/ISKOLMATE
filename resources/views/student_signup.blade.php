@@ -36,12 +36,20 @@
                 <form action="{{route('student_signup')}}" method="POST" class="space-y-4">
                     @csrf
                     
-                    <!-- Name -->
-                    <input type="text" name="name" placeholder="Name" required value="{{ old('name') }}"
+                    <!-- First Name -->
+                    <input type="text" name="first_name" placeholder="First Name" required value="{{ old('name') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-                    @if ($errors->has('name'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('name') }}</div>
+                    @if ($errors->has('first_name'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('first_name') }}</div>
+                    @endif
+
+                    <!-- Last Name -->
+                    <input type="text" name="last_name" placeholder="Last Name" required value="{{ old('name') }}"
+                        class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                    @if ($errors->has('last_name'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('last_name') }}</div>
                     @endif
 
                     <!-- Student Number -->
@@ -53,7 +61,7 @@
                     @endif
 
                     <!-- Dropdown for Degree Program -->
-                    <select name="program" value="{{ old('program') }}"
+                    <select name="affiliation" value="{{ old('affiliation') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
                         required>
                         <option value="" disabled selected>Select your program</option>
@@ -68,8 +76,8 @@
                         <option value="BA Political Science">BA Psychology</option>
                     </select>
 
-                    @if ($errors->has('program'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('program') }}</div>
+                    @if ($errors->has('affiliation'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('affiliation') }}</div>
                     @endif
 
                     <!-- Password -->
@@ -103,29 +111,7 @@
                         class="w-full p-4 text-lg font-bold bg-[#1e1e2f] text-white rounded-lg shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] hover:bg-[#252538] hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] transition">
                         Submit
                     </button>
-            <!-- Old signup code -->
-            <!-- <div class="text-center">
-                <h2 class="text-2xl mb-[20px] font-bold">Sign-up as a Student</h2>
-                <form action="{{ route('start2') }}" method="POST" class="w-full"> 
-                    @csrf
-                    <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="name" placeholder="Name" required>
-                    @if ($errors->has('name'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('name') }}</div>
-                    @endif
-                    <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="uid" placeholder="Student Number" required>
-                    @if ($errors->has('uid'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('uid') }}</div>
-                    @endif
-                    <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="text" name="program" placeholder="Program" required>
-                    @if ($errors->has('program'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('program') }}</div>
-                    @endif
-                    <input class="w-11/12 p-2.5 my-2.5 text-base rounded-lg bg-slate-900 shadow-[inset_10px_10px_20px_#181824,_inset_-10px_-10px_20px_#242434] border-2 border-white" type="password" name="password" placeholder="Password" required>
-                    @if ($errors->has('password'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
-                    @endif
-                    <button type="submit" class="w-full p-2.5 mt-[10px] rounded-xl shadow-[10px_10px_20px_#181824_,_-10px_-10px_20px_#242434] hover:bg-gradient-to-tr from-slate-900 to-slate-950">Submit</button>   
-                </form> -->
+                </form>
             </div>
         </div>
     </body>

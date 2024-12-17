@@ -36,12 +36,19 @@
                 <form action="{{route('teacher_signup')}}" method="POST" class="space-y-4">
                     @csrf
 
-                    <!-- Name -->
-                    <input type="text" name="name" placeholder="Name" required value="{{ old('name') }}"
+                    <!--First Name -->
+                    <input type="text" name="first_name" placeholder="First Name" required value="{{ old('name') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-                    @if ($errors->has('name'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('name') }}</div>
+                    @if ($errors->has('first_name'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('first_name') }}</div>
+                    @endif
+
+                    <input type="text" name="last_name" placeholder="Last Name" required value="{{ old('name') }}"
+                        class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+
+                    @if ($errors->has('last_name'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('last_name') }}</div>
                     @endif
 
                     <!-- Instructor ID -->
@@ -53,7 +60,7 @@
                     @endif
 
                     <!-- Dropdown for Division -->
-                    <select name="division" value="{{ old('division') }}"
+                    <select name="affiliation" value="{{ old('affiliation') }}"
                         class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
                         required>
                         <option value="" disabled selected>Select your division</option>
@@ -63,13 +70,31 @@
                         <option value="Division of Management">Division of Management</option>
                     </select>
 
-                    @if ($errors->has('division'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('division') }}</div>
+                    @if ($errors->has('affiliation'))
+                        <div class="text-red-500 text-sm">{{ $errors->first('affiliation') }}</div>
                     @endif
 
                     <!-- Password -->
-                    <input type="password" name="password" placeholder="Password" required
+                    <div>
+                        <input type="password" name="password" placeholder="Password" required id="passwordEl"
                         class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <span class="cursor-pointer hover:text-orange-400 w-full" onclick="togglePassword()" id="togglePass">Show Password</span>
+                    </div>
+                        
+                    <script>
+                        function togglePassword(){
+                            var togglePassEl = document.getElementById("togglePass");
+                            var passwordEl = document.getElementById("passwordEl");
+                            if (passwordEl.type === "password") {
+                                passwordEl.type = "text";
+                                togglePassEl.innerHTML = "Hide Password";
+
+                            } else {
+                                passwordEl.type = "password";
+                                togglePassEl.innerHTML = "Show Password";
+                            }
+                        }
+                    </script>
 
                     @if ($errors->has('password'))
                         <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
