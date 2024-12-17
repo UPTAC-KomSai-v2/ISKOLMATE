@@ -20,6 +20,19 @@ class AvailabilityController extends Controller
         $startTime = $validated['start_time'];
         $endTime = $validated['end_time'];
         $userId = Auth::id();
+
+        // try {
+        //     DB::transaction(function() use ($userId, $availabilityDate, $startTime, $endTime) {
+        //         DB::insert('INSERT INTO availabilities (user_id, date, time_start, time_end) VALUES (?, ?, ?, ?)', [
+        //             $userId,
+        //             $availabilityDate,
+        //             $startTime,
+        //             $endTime
+        //         ]);
+        //     });
+        // } catch (\Exception $e) {
+        //     return back()->with('error', 'Failed to set availability. Error: ' . $e->getMessage());
+        // }
             
         Availability::create([
             'user_id' => Auth::id(),
