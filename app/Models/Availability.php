@@ -9,13 +9,13 @@ class Availability extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $table = 'availability';
+    protected $table = 'availabilities';
     protected $primaryKey = 'av_id';
 
     protected $fillable = [
         'user_id',
         'time_start',
         'time_end',
-        'date',
+        'availability_date',
     ];
 }

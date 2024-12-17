@@ -65,7 +65,7 @@ class TaskController extends Controller
             'u_id' => $user->id,
         ]);
 
-        return redirect()->route('tasks.show', $task->id)->with('success', 'Task posted successfully!');
+        return redirect()->route('tasks.message', $task->id)->with('success', 'Task posted successfully!');
     }
 
     public function destroy($id)

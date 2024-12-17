@@ -14,7 +14,7 @@
                     $creator = User::find($announcement->get_owner_id());
                 @endphp
                 <span>
-                    {{ $creator->name }}
+                    {{ $creator->role }} : {{ $creator->first_name }} {{ $creator->last_name }} 
                 </span>
             </div>
             <div class="border-2 p-3">{{$announcement->text}}</div>
