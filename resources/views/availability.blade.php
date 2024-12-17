@@ -1,3 +1,5 @@
+@props(['first_name' => '', 'last_name' => '', 'position' => '', 'back' => ''])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -10,12 +12,12 @@
         @endif
     </head>
     <body class="bg-slate-900 font-['Poppins'_,_sans-serif] text-white">
-        @if (isset($back) && $back != '')
-        <div class="absolute top-10 left-8 z-20">
-            <a href={{$back}} title="Go Back" class="text-2xl p-2.5 rounded-full">&#9664;</a>
-        </div>
-        @endif
+        <!-- @if (isset($back) && $back != '') -->
+        <!-- @endif -->
         <div class="flex-col justify-center m-8 rounded-3xl bg-slate-900 p-8 w-auto h-auto border-2 border-white shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434]">
+            <div class="absolute top-10 left-8 z-20">
+                <a href="/dashboard" title="Go Back" class="text-2xl p-2.5 rounded-full">&#9664;</a>
+            </div>
         <div class="relative flex items-center bg-slate-900 text-white md:text-2xl p-10 m-2 border-2 border-white rounded-2xl w-auto h-1/2">
         <h1 class="lg:text-8xl pr-5 cursor-pointer" id="currentTime">
             00:00:00 <!-- Prevent content shifting -->
@@ -59,21 +61,61 @@
         </div>
 
     </div>
-    <div class="text-black bg-white border-2 rounded-lg grid gap-4 grid-cols-3">
-        <h2>DATE</h2>
-        <h2>TIME START</h2>
-        <h2>TIME END</h2>
+    <div class="text-center h-60 text-black bg-white border-2 rounded-lg grid gap-4 grid-rows-2 grid-rows-[24px_auto]">
+        <div class="bg-[#8D1436] rounded text-center grid grid-cols-3 h-10">
+            <p class="text-white p-2.5">DATE</p>
+            <p class="text-white p-2.5">TIME START</p>
+            <p class="text-white p-2.5">TIME END</p>
+        </div>
+        <div class="grid grid-cols-3 overflow-auto">
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>            
+        </div>
+        
     </div>
-    <div class="text-black bg-white border-2 rounded-lg grid gap-4 grid-cols-1">
-        <form action="" class="w-auto grid h-1/5 gap-1 grid-cols-4">
-            <input type="date" id="availability_date" name="availability_date" class = "rounded bg-[#83173C] text-[#FEB71B]">
-            <input type="time" id="start_time" name="start_time" class = "bg-[#83173C] rounded text-[#FEB71B]">
-            <input type="time" id="end_time" name="end_time" class = "bg-[#83173C] rounded text-[#FEB71B]">
-            <button type="text-submit" class="bg-[#83173C] text-[#fff] border cursor-pointer px-2 py-2 w-full h-full rounded border-solid border-[#ccc] hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500 hover:text-[#FEB71C] hover:border-[#FEB71C]">
-                Search
-            </button>
-        </form>
+    <div class="text-center h-60 text-black bg-white border-2 rounded-lg grid gap-4 grid-rows-2 grid-rows-[46px_auto]">
+        <div class="bg-[#83173C] text-black border-2 rounded-lg grid gap-4 grid-cols-1">
+            <form action="" class="w-auto grid h-1/5 grid-cols-4 bg-[#83173C] gap-1 items-center">
+                <input type="date" id="availability_date" name="availability_date" class = "p-1 bg-[#83173C] text-[#FEB71B]">
+                <input type="time" id="start_time" name="start_time" class = "p-1 bg-[#83173C] text-[#FEB71B]">
+                <input type="time" id="end_time" name="end_time" class = "p-1 bg-[#83173C] text-[#FEB71B]">
+                <button type="text-submit" class="text-[#fff] border cursor-pointer px-2 py-2 w-full h-full hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500 hover:text-[#FEB71C] hover:border-[#FEB71C]">
+                    Search
+                </button>
+            </form>
+        </div>
+        <div class="grid grid-cols-3 overflow-auto">
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>
+            <h2 class="h-10">DATE</h2>
+            <h2 class="h-10">TIME START</h2>
+            <h2 class="h-10">TIME END</h2>            
+        </div>
     </div>
+    
     </div>
         </div>
     </body>
