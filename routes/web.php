@@ -7,6 +7,7 @@ use App\Models\Announcement;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\AvailabilityController;
 use Illuminate\Support\Facades\Auth;
 
 Route::post('/student_signup', [UserController::class, 'storeStudent'])->name('student_signup');
@@ -20,6 +21,8 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/start2', [UserController::class, 'show'])->name('start2');
+
+Route::post('/dashboard/availability', [AvailabilityController::class, 'storeAvailability'])->name('availability.store');
 
 Route::get('/dashboard', function() {
     $user = Auth::user();
@@ -57,7 +60,7 @@ Route::get('/teacher_signup', function () {
 Route::get('/dashboard/announcements', function () {
     $user = Auth::user();
     $announcements = Announcement::all();
-    return view('announcements', [ 'name' => $user->name, 'position' => $user->role, 'announcements' => $announcements ]);
+    return view('announcements', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'announcements' => $announcements ]);
 })->middleware('auth')->name('announcements.view');
 
 Route::get('/dashboard/announcements/create', function () {
@@ -86,7 +89,7 @@ Route::get('/dashboard/tasks', function () {
         }
     }
 
-    return view('tasks', [ 'name' => $user->name, 'position' => $user->role, 'tasks' => $user_tasks]);
+    return view('tasks', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'tasks' => $user_tasks]);
 })->middleware('auth')->name('tasks.list');
 
 Route::get('/dashboard/tasks/create', function () {
@@ -116,7 +119,7 @@ Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->middleware('au
 
 Route::get('/dashboard/availability', function () {
     $user = Auth::user();
-    return view('availability', [ 'name' => $user->name, 'position' => $user->role ]);
+    return view('availability', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role ]);
 })->middleware('auth')->name('availability');
 
 Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');

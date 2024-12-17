@@ -33,6 +33,19 @@
                     </li>
                 @endforeach
             </ul>
+            {{-- Display Error Message --}}
+            @if (session('error'))
+                <div class="text-red-500 text-sm mb-2">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            {{-- Display Success Message --}}
+            @if (session('message'))
+                <div class="text-red-500 text-sm mb-2">
+                    {{ session('message') }}
+                </div>
+            @endif
         </div>
 
         <div>

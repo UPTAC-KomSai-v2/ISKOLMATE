@@ -1,4 +1,4 @@
-<x-dashboard-layout :name="$name" :position="$position" :back="route('dashboard')">
+<x-dashboard-layout :first_name="$first_name" :last_name="$last_name" :position="$position" :back="route('dashboard')">
     <div class="col-span-6 overflow-auto flex-col bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-2 h-80 ml-0  md:text-2xl font-bold hover:duration-500 hover:border-[#FEB71C]">
         @foreach($tasks as $task)
             <a href="{{ route('tasks.show', $task->id) }}" class="border-2 p-2">{{ $task->title }}</a>

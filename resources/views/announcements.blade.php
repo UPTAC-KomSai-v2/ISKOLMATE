@@ -1,6 +1,6 @@
 @php use App\Models\AnnouncementCreator; @endphp
 @php use App\Models\User; @endphp
-<x-dashboard-layout :name="$name" :position="$position" :back="route('dashboard')">
+<x-dashboard-layout :first_name="$first_name" :last_name="$last_name" :position="$position" :back="route('dashboard')">
     <div
         class="col-span-6 overflow-auto flex-col  bg-white text-black rounded-3xl flex border-2  border-white m-2 h-80 ml-0  md:text-2xl">
         <div class="text-left bg-[#8D1436] text-[white] p-[10pt]">All Announcements</div>

@@ -44,13 +44,11 @@ class GroupController extends Controller
 
         $user_groups = DB::select('select * from user_group where u_id = ?', [ $user->id ]);
 
-        $user_group_ids = array();
+        $user_group_ids = array_column($user_groups, 'g_id');
 
-        foreach ($user_groups as $user_group) {
-            array_push($user_group_ids, $user_group->g_id);
-        }
-
-        $groups = Group::whereIn('group_id', $user_group_ids)->get();
+        $groups = Group::whereIn('group_id', $user_group_ids)
+            ->whereNotIn('group_id', [1, 2])
+            ->get();
 
         return view('groups.view', [
             'groups' => $groups
@@ -99,14 +97,22 @@ class GroupController extends Controller
 
         // $group_pair = DB::select('select * from user_group where g_id = ? and u_id = ? limit 1', [ $group_id, $request->uid ]);
 
-        DB::transaction(function () use ($request, $group_id) {
-            DB::insert('insert into user_group (u_id, g_id) values (?, ?)', [
-                $request->uid,
-                $group_id
-            ]);
-        });
+        try {
+            DB::transaction(function () use ($request, $group_id) {
+                DB::insert('insert into user_group (u_id, g_id) values (?, ?)', [
+                    $request->uid,
+                    $group_id
+                ]);
+            });
 
-        return redirect()->route('group.members', $group_id);
+            return redirect()->route('group.members', $group_id);
+    
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() == 23000) { // MySQL duplicate entry error code
+                return redirect()->route('group.members', $group_id)
+                    ->with('error', 'User is already a member of the group.');
+            }
+        }
     }
 
     public function excludeUser(Request $request, $group_id)
