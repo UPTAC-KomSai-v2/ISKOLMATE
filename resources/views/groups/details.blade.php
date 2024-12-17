@@ -18,7 +18,7 @@
             <ul>
                 @foreach ($members as $member)
                     <li class="flex gap-3">
-                        {{ $member->name }}
+                        {{ $member->first_name }} {{ $member->last_name }}
                         @if ($user->id != $member->id)
                         <form action="{{ route('group.exclude', $group->group_id) }}" method="post">
                             @csrf

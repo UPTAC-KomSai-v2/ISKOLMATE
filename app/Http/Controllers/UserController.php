@@ -19,9 +19,10 @@ class UserController extends Controller
         $user = $request->user();
 
         return view('user_profile', [
-            'name' => $user->name,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
             'position' => $user->role,
-            'program' => $user->program,
+            'program' => $user->affiliation,
             'is_teacher' => $user->is_teacher()
         ]);
     }

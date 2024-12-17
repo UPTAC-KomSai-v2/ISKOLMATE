@@ -1,4 +1,4 @@
-@props(['name' => '', 'position' => '', 'back' => ''])
+@props(['first_name' => '', 'last_name' => '', 'position' => '', 'back' => ''])
 
 <x-dashboard-no-time-layout :back="$back">
     <div class="relative flex items-center bg-slate-900 text-white md:text-2xl p-10 m-2 border-2 border-white rounded-2xl w-auto h-1/2">
@@ -11,7 +11,8 @@
         </div>
         <div class="absolute flex items-center right-10 top-8 clear-left">
             <p class="text-right leading-4">
-                <span class="sm:text-xs">{{ $name }}</span> <br/>
+                <span class="sm:text-xs">{{ $first_name }}</span> 
+                <span class="sm:text-xs">{{ $last_name }}</span> <br/>
                 <span class="sm:text-xs">{{ $position }}</span>
             </p>
             <a href="{{ route('user.profile') }}">

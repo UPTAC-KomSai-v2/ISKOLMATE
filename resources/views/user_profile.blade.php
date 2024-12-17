@@ -2,7 +2,7 @@
     <div class="flex justify-start rounded-3xl bg-slate-900 w-auto h-auto sm:max-h-max">
         <div class="bg-slate-900 text-white p-10 m-2 border-2 border-white rounded-2xl lg:w-4/12 lg:h-[500px]">
             <img src="{{asset('no-picture.png')}}" alt="Photo" class="rounded-lg mx-auto my-10 lg:w-[200px] lg:h-[200px]">
-            <h1 class="lg:text-4xl font-bold mt-2">{{ $name }}</h1>
+            <h1 class="lg:text-4xl font-bold mt-2">{{ $first_name }} {{ $last_name }}</h1>
             <p class="mt-8 lg:text-base sm:text-xs">
                 {{ $position }} <br>
                 {{ $program }}

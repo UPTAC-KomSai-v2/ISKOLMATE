@@ -23,7 +23,7 @@ Route::get('/start2', [UserController::class, 'show'])->name('start2');
 
 Route::get('/dashboard', function() {
     $user = Auth::user();
-    return view('dashboard', [ 'name' => $user->name, 'position' => $user->role ]);
+    return view('dashboard', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role ]);
 })->name('dashboard')->middleware('auth');
 
 Route::get('/', function () {

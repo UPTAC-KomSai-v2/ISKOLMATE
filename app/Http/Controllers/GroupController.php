@@ -82,7 +82,7 @@ class GroupController extends Controller
             return redirect()->route('group.view');
         }
 
-        $members = DB::select('select users.name, users.id from users join user_group on users.id = user_group.u_id where user_group.g_id = ?', [ $group_id ]);
+        $members = DB::select('select users.first_name, users.last_name, users.id from users join user_group on users.id = user_group.u_id where user_group.g_id = ?', [ $group_id ]);
 
         return view('groups.details', [
             'members' => $members,
