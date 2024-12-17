@@ -31,16 +31,20 @@ class AvailabilityController extends Controller
         //         ]);
         //     });
         // } catch (\Exception $e) {
-        //     return back()->with('error', 'Failed to set availability. Error: ' . $e->getMessage());
-        // }
-            
-        Availability::create([
-            'user_id' => Auth::id(),
-            'time_start' => $startTime,
-            'time_end' => $endTime,
-            'availability_date' => $availabilityDate,
-        ]);
+            //     return back()->with('error', 'Failed to set availability. Error: ' . $e->getMessage());
+            // }
+        try {
+            Availability::create([
+                'user_id' => Auth::id(),
+                'time_start' => $startTime,
+                'time_end' => $endTime,
+                'date' => $availabilityDate,
+            ]);
+    
+            return redirect()->route('availability')->with('success', 'Availability set successfully');
 
-        return redirect()->route('dashboard')->with('success', 'Availability set successfully');
+        } catch(\Exception $e) {
+            return back()->with('errors', 'Failed to set availability. Error: ' . $e->getMessage());
+        }
     }
 }
