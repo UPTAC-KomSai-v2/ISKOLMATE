@@ -6,7 +6,8 @@
             @csrf
             <input type="hidden" name="role" value="Teacher">
 
-            <input type="text" name="uid" placeholder="Instructor ID" required class="w-full p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="text" name="uid" placeholder="Instructor ID" required value="{{ old('uid') }}"
+                class="w-full p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
 
             @if ($errors->has('uid'))
                 <div class="text-red-500 text-sm">{{ $errors->first('uid') }}</div>
@@ -14,7 +15,8 @@
 
             <!-- Password -->
             <div class="relative w-full">
-                <input type="password" name="password" placeholder="Password" required id="passInput" class="w-full p-2 pr-12 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="password" name="password" placeholder="Password" required id="passInput"
+                    class="w-full p-2 pr-12 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
                 <span class="absolute h-full flex items-center top-0 right-3 text-black cursor-pointer" id="togglePass">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 opacity-50" id="passHide">
                         <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
@@ -32,7 +34,8 @@
                 <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
             @endif
 
-            <button type="submit" class="w-[45%] max-w-[300px] px-4 py-2 rounded-lg font-bold text-lg bg-slate-900 text-white border-2 border-white from-slate-800 to-slate-950 hover:bg-gradient-to-tr cursor-pointer hover:text-hover hover:border-hover hover:duration-500">
+            <button type="submit"
+                class="w-[45%] max-w-[300px] px-4 py-2 rounded-lg font-bold text-lg bg-slate-900 text-white border-2 border-white from-slate-800 to-slate-950 hover:bg-gradient-to-tr cursor-pointer hover:text-hover hover:border-hover hover:duration-500">
                 Login
             </button>
         </form>

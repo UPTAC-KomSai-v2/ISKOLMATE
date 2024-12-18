@@ -7,11 +7,11 @@
 
             <div class="flex w-full gap-4">
                 <!--First Name -->
-                <input type="text" name="first_name" placeholder="First Name" required value="{{ old('name') }}"
+                <input type="text" name="first_name" placeholder="First Name" required value="{{ old('first_name') }}"
                     class="w-full p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
 
                     <!-- Last Name -->
-                <input type="text" name="last_name" placeholder="Last Name" required value="{{ old('name') }}"
+                <input type="text" name="last_name" placeholder="Last Name" required value="{{ old('last_name') }}"
                     class="w-full p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
             </div>
 
