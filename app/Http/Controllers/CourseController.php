@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\Group;
 use GuzzleHttp\Psr7\Message;
 
-class GroupController extends Controller
+class CourseController extends Controller
 {
     public function storeGroup(Request $request)
     {
@@ -180,5 +180,9 @@ class GroupController extends Controller
         });
 
         return redirect()->route('group.members', $group_id);
+    }
+
+    public function viewCreate() {
+        return view('groups.create');
     }
 }

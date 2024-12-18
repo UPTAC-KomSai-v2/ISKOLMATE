@@ -22,12 +22,12 @@
                 </div>
 
                 <div class="flex flex-col justify-center items-end w-1/4">
-                    <button type="submit" class="bg-[#8D1436] border cursor-pointer px-4 py-2 w-32 rounded border-solid border-[#ccc] mb-4 hover:border-[#FEB71C] hover:text-[#FEB71C] hover:font-bold hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">
+                    <button type="submit" class="bg-[#8D1436] border cursor-pointer px-4 py-2 w-32 rounded border-solid border-[#ccc] mb-4 hover:border-hover hover:text-hover hover:font-bold hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">
                         Confirm
                     </button>
 
                     <a href="{{ route('tasks.list') }}">
-                        <button class="bg-[#8D1436] border cursor-pointer px-4 py-2 w-32 rounded border-solid border-[#ccc] hover:border-[#FEB71C] hover:text-[#FEB71C] hover:font-bold hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">
+                        <button class="bg-[#8D1436] border cursor-pointer px-4 py-2 w-32 rounded border-solid border-[#ccc] hover:border-hover hover:text-hover hover:font-bold hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">
                             Cancel
                         </button>
                     </a>

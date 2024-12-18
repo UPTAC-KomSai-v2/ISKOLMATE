@@ -55,7 +55,7 @@
                         <input type="time" id="start_time" name="start_time" class = "bg-[#83173C] text-[#FEB71B]">
                         <label for="description" class="form-label font-bold">Select End Time:</label>
                         <input type="time" id="end_time" name="end_time" class = "bg-[#83173C] text-[#FEB71B]">
-                        <button type="submit" class="bg-[#83173C] text-[#fff] border cursor-pointer px-4 py-2 w-48 rounded border-solid border-[#ccc] mb-4 hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500 hover:text-[#FEB71C] hover:border-[#FEB71C] mt-5">
+                        <button type="submit" class="bg-[#83173C] text-[#fff] border cursor-pointer px-4 py-2 w-48 rounded border-solid border-[#ccc] mb-4 hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500 hover:text-hover hover:border-hover mt-5">
                             Set Availability
                         </button>
                     </form>
@@ -95,7 +95,7 @@
                         <input type="date" id="search-date" class = "p-1 bg-[#83173C] text-[#FEB71B]">
                         <input type="time" id="search-start-time" class = "p-1 bg-[#83173C] text-[#FEB71B]">
                         <input type="time" id="search-end-time" class = "p-1 bg-[#83173C] text-[#FEB71B]">
-                        <button type="text-submit" onclick="searchAvailability()" class="text-[#fff] border cursor-pointer px-2 py-2 w-full h-full hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500 hover:text-[#FEB71C] hover:border-[#FEB71C]">
+                        <button type="text-submit" onclick="searchAvailability()" class="text-[#fff] border cursor-pointer px-2 py-2 w-full h-full hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500 hover:text-hover hover:border-hover">
                             Search
                         </button>
                     </div>

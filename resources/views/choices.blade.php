@@ -25,7 +25,7 @@
     </head>
     <body class="bg-[#1e1e2f] text-white font-sans min-h-screen flex items-center justify-center">
         <div
-            class="container mx-auto w-[90%] max-w-md p-6 bg-[#1e1e2f] rounded-[20px] shadow-[15px_15px_30px_#181824,-15px_-15px_30px_#242434] relative text-center">
+            class="mx-auto w-[90%] max-w-md p-6 bg-[#1e1e2f] rounded-[20px] shadow-[15px_15px_30px_#181824,-15px_-15px_30px_#242434] relative text-center">
             <!-- Back Button -->
             <div class="absolute top-5 left-5">
                 <a href="{{ route('start2') }}"
@@ -35,24 +35,24 @@
             </div>
 
             <!-- Title -->
-            <div class="title text-2xl font-bold text-white mb-4">Iskolmate</div>
+            <div class="text-2xl font-bold text-white mb-4">Iskolmate</div>
 
             <!-- Tagline -->
-            <div class="tagline text-gray-400 mb-6">your partner in suffering</div>
+            <div class="text-gray-400 mb-6">your partner in suffering</div>
 
             <!-- Question -->
-            <div class="question text-lg text-gray-300 mb-6">Which one are you signing up for?</div>
+            <div class="text-lg text-gray-300 mb-6">Which one are you signing up for?</div>
 
             <!-- Buttons -->
-            <div class="button-container flex gap-4 justify-center">
-                <button onclick="location.href='teacher_signup'"
-                    class="btn w-[45%] max-w-[300px] px-6 py-3 bg-[#1e1e2f] text-white font-bold rounded-[10px] border-2 border-white shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] transition hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]">
+            <div class="flex gap-4 justify-center">
+                <a href="{{ route('signup.teacher') }}"
+                    class="w-[45%] max-w-[300px] px-6 py-3 bg-[#1e1e2f] text-white font-bold rounded-[10px] border-2 border-white shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] transition hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]">
                     Teacher
-                </button>
-                <button onclick="location.href='student_signup'"
-                    class="btn w-[45%] max-w-[300px] px-6 py-3 bg-[#1e1e2f] text-white font-bold rounded-[10px] border-2 border-white shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] transition hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]">
+                </a>
+                <a href="{{ route('signup.student') }}"
+                    class="w-[45%] max-w-[300px] px-6 py-3 bg-[#1e1e2f] text-white font-bold rounded-[10px] border-2 border-white shadow-[10px_10px_20px_#181824,-10px_-10px_20px_#242434] transition hover:bg-gradient-to-br hover:from-[#2c2c3f] hover:to-[#1b1b2d] hover:shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]">
                     Student
-                </button>
+                </a>
             </div>
         </div>
     </body>

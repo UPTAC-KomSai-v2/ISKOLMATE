@@ -31,7 +31,9 @@
         <div>
             <ul>
                 @foreach ($groups as $group)
-                    <a href="{{ route('group.members', $group->group_id) }}">{{ $group->group_name }}</a>
+                    <li>
+                        <a href="{{ route('group.members', $group->group_id) }}">{{ $group->group_name }}</a>
+                    </li>
                 @endforeach
             </ul>
         </div>

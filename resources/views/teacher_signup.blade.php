@@ -12,7 +12,7 @@
     </head>
     <body class="bg-[#1e1e2f] text-white font-sans min-h-screen flex items-center justify-center">
         <div
-            class="container mx-auto w-[90%] max-w-md p-10 bg-[#1e1e2f] rounded-[20px] shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] text-center relative">
+            class="mx-auto w-[90%] max-w-md p-10 bg-[#1e1e2f] rounded-[20px] shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] text-center relative">
             <!-- Back Button -->
             <div class="absolute top-3 left-3">
                 <a href="{{ route('signup.choice') }}" title="Go Back"
@@ -21,19 +21,19 @@
                 </a>
             </div>
 
-            <div class="logo flex justify-center items-center mb-6">
+            <div class="flex justify-center items-center mb-6">
                 <img src="up.png" alt="UP Logo"
                     class="w-[100px] rounded-full p-2.5 bg-[#1e1e2f] shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]" />
             </div>
 
             <!-- Title and Tagline -->
-            <div class="title text-2xl font-bold mb-2">Iskolmate</div>
-            <div class="tagline text-gray-400 mb-8">your partner in suffering</div>
+            <div class="text-2xl font-bold mb-2">Iskolmate</div>
+            <div class="text-gray-400 mb-8">your partner in suffering</div>
 
             <!-- Form Container -->
-            <div class="form-container">
+            <div>
                 <h2 class="text-xl font-semibold mb-6">Sign-up as a Teacher</h2>
-                <form action="{{route('teacher_signup')}}" method="POST" class="space-y-4">
+                <form action="{{route('signup.teacher')}}" method="POST" class="space-y-4">
                     @csrf
 
                     <!--First Name -->
