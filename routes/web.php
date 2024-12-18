@@ -23,6 +23,8 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/start2', [UserController::class, 'show'])->name('start2');
 
 Route::post('/dashboard/availability', [AvailabilityController::class, 'storeAvailability'])->name('availability.store');
+Route::post('/dashboard/search-availability', [AvailabilityController::class, 'searchAvailability'])->name('availability.search');
+Route::delete('/dashboard/delete-availability/{id}', [AvailabilityController::class, 'destroy'])->middleware('auth')->name('availability.destroy');
 
 Route::get('/dashboard', function() {
     $user = Auth::user();
@@ -119,7 +121,8 @@ Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->middleware('au
 
 Route::get('/dashboard/availability', function () {
     $user = Auth::user();
-    return view('availability', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role ]);
+    $personalAvailabilities = \App\Models\Availability::where('user_id', $user->id)->get();
+    return view('availability', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role , 'personal_availabilities' => $personalAvailabilities]);
 })->middleware('auth')->name('availability');
 
 Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');

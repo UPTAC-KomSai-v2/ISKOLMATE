@@ -11,7 +11,7 @@ let announcementNum = 1; //Placeholder only for testing announcement popup
 window.onload = updateScreen; //load update screen
 
 //update screen every 1 second
-function updateScreen(){ 
+function updateScreen(){
   updateTime();
 
   setInterval(() => {
@@ -41,11 +41,11 @@ function updateTime(){
     if(now.getMinutes() < 10){
       min = "0" + min;
     }
-    
+
     if(now.getSeconds() < 10){
       sec = "0" + sec;
     }
-  
+
     if(hour < 12) {
       timeCheckEl.innerHTML = "AM";
     }
@@ -72,5 +72,4 @@ function togglePassword() {
   } else {
     passwordEl.type = "password";
   }
-
 }

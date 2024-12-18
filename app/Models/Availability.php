@@ -16,6 +16,12 @@ class Availability extends Model
         'user_id',
         'time_start',
         'time_end',
-        'availability_date',
+        'date',
     ];
+
+    // #################### RELATIONSHIPS ####################
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
