@@ -18,6 +18,10 @@ class GroupController extends Controller
             return redirect()->route('/');
         }
 
+        if (!$users->is_teacher()) {
+            return redirect()->route('group.view')->with('message', 'You are not permitted to create courses!');
+        }
+
         $request->validate([
             'name' => 'required|string|max:255|min:1'
         ]);
@@ -35,7 +39,7 @@ class GroupController extends Controller
             ]);
         });
 
-        return redirect()->route('group.view')->with('message', 'Group created successfully!');
+        return redirect()->route('group.view')->with('message', 'Course created successfully!');
     }
 
     public function viewGroups(Request $request)
@@ -57,6 +61,12 @@ class GroupController extends Controller
 
     public function deleteGroups(Request $request, $group_id)
     {
+        $user = $request->user();
+
+        if (!$users->is_teacher()) {
+            return redirect()->route('group.view')->with('message', 'You are not permitted to delete courses!');
+        }
+
         $group = DB::select('select * from groups where group_id = ? limit 1', [ $group_id ]);
 
         if(!$group) {
@@ -69,7 +79,7 @@ class GroupController extends Controller
             DB::delete('delete from groups where group_id = ?', [$group_id]);
         });
 
-        return redirect()->route('group.view')->with('message', 'Group deleted successfully!');
+        return redirect()->route('group.view')->with('message', 'Course deleted successfully!');
     }
 
     public function viewGroupMembers(Request $request, $group_id)
@@ -91,6 +101,10 @@ class GroupController extends Controller
 
     public function includeUser(Request $request, $group_id)
     {
+        if (!$users->is_teacher()) {
+            return redirect()->route('group.view')->with('message', 'You are not permitted to edit courses!');
+        }
+
         $request->validate([
             'uid' => 'required|numeric|digits:9',
         ]);
@@ -117,6 +131,10 @@ class GroupController extends Controller
 
     public function excludeUser(Request $request, $group_id)
     {
+        if (!$users->is_teacher()) {
+            return redirect()->route('group.view')->with('message', 'You are not permitted to edit courses!');
+        }
+
         $request->validate([
             'uid' => 'required|numeric|digits:9',
         ]);
