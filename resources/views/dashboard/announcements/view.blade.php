@@ -8,7 +8,7 @@
         @foreach($announcements as $announcement)
             <div class="border-2 p-2 font-bold flex justify-between">
                 <span>
-                    {{$announcement->title}}
+                    {{ $announcement->title }}
                 </span>
                 @php
                     $creator = User::find($announcement->get_owner_id());
@@ -17,7 +17,7 @@
                     {{ $creator->role }} : {{ $creator->first_name }} {{ $creator->last_name }} 
                 </span>
             </div>
-            <div class="border-2 p-3">{{$announcement->text}}</div>
+            <div class="border-2 p-3">{{ $announcement->text }}</div>
             @php
                 $isCreator = AnnouncementCreator::where('annc_id', $announcement->id)->where('u_id', Auth::id())->exists();
             @endphp

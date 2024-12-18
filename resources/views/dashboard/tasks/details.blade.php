@@ -8,8 +8,8 @@
     <div class="flex items-start">
         <!-- Icons Section -->
         <!-- <div class="flex flex-col items-center justify-start mr-12"> -->
-            <!-- <img src="{{asset('no-picture.png')}}" alt="Icon 1" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='tasks'"> -->
-            <!-- <img src="{{asset('no-picture.png')}}" alt="Icon 2" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='dashboard'"> -->
+            <!-- <img src="{{ asset('no-picture.png') }}" alt="Icon 1" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='tasks'"> -->
+            <!-- <img src="{{ asset('no-picture.png') }}" alt="Icon 2" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='dashboard'"> -->
         <!-- </div> -->
 
         <!-- Tasks Column -->

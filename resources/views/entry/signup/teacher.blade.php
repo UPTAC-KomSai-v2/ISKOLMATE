@@ -2,7 +2,7 @@
     <!-- Form Container -->
     <div>
         <h2 class="text-xl font-semibold mb-6">Sign up as a Teacher</h2>
-        <form action="{{route('signup.teacher')}}" method="POST" class="space-y-4">
+        <form action="{{ route('signup.teacher') }}" method="POST" class="space-y-4">
             @csrf
 
             <div class="flex w-full gap-4">

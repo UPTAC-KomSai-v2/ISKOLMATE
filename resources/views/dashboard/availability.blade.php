@@ -37,7 +37,7 @@
                         <span class="sm:text-xs">{{ $position }}</span>
                     </p>
                     <a href="{{ route('user.profile') }}">
-                        <img src="{{asset('no-picture.png')}}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer">
+                        <img src="{{ asset('no-picture.png') }}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer">
                     </a>
                     <a href="{{ route('logout' ) }}" class="text-base float-right bottom-[-10px] hover:duration-300 hover:text-[#8D1436]">Logout</a>
                 </div>

@@ -13,7 +13,7 @@
         <div class="text-center w-[90%] max-w-[400px] p-8 bg-slate-900 text-white border-2 border-white rounded-2xl shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434] relative">
             @if (isset($back) && $back != '')
                 <div class="absolute top-5 left-5">
-                    {{-- We are using p-2 to center the arrow horizontally since we want it to visually look centered not actually be centered --}}
+                    <!--  We are using p-2 to center the arrow horizontally since we want it to visually look centered not actually be centered  -->
                     <a href={{ $back }} class="w-10 h-10 flex items-center p-2 text-white text-lg font-bold border-2 border-white rounded-full from-slate-800 to-slate-950 hover:bg-gradient-to-tr cursor-pointer hover:text-hover hover:border-hover hover:duration-500">
                         &#9664;
                     </a>
