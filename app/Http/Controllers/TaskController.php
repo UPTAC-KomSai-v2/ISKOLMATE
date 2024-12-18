@@ -41,7 +41,9 @@ class TaskController extends Controller
             'description' => 'required|string',
         ]);
 
-        DB::transaction(function () use ($validated, $id, $user) {
+        try {
+            DB::beginTransaction();
+
             $task = Activity::create([
                 'title' => $validated['title'],
                 'description' => $validated['description'],
@@ -52,9 +54,13 @@ class TaskController extends Controller
                 'act_id' => $task->id,
                 'u_id' => $user->id,
             ]);
-        });
 
-        return redirect()->route('tasks.list', $task->id)->with('success', 'Task posted successfully!');
+            DB::commit();
+
+            return redirect()->route('tasks.list', $task->id)->with('success', 'Task posted successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
     }
 
     public function destroy(Request $request, $id)
