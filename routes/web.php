@@ -62,18 +62,13 @@ Route::get('/teacher_signup', function () {
 Route::get('/dashboard/announcements', function () {
     $user = Auth::user();
     $announcements = Announcement::all();
-    return view('announcements', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'announcements' => $announcements ]);
+    return view('announcements.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'announcements' => $announcements ]);
 })->middleware('auth')->name('announcements.view');
 
 Route::get('/dashboard/announcements/create', function () {
     $user = Auth::user();
-    return view('announcements2', [ 'name' => $user->name, 'position' => $user->role ]);
+    return view('announcements.create', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth')->name('announcements.create');
-
-Route::get('/announcements3', function () {
-    $user = Auth::user();
-    return view('announcements3', [ 'name' => $user->name, 'position' => $user->role ]);
-})->middleware('auth');
 
 Route::post('/announcements', [AnnouncementController::class, 'store'])->middleware('auth')->name('announcements.store');
 
