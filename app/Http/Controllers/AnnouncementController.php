@@ -17,20 +17,22 @@ class AnnouncementController extends Controller
             'content' => 'required|string',
         ]);
 
-        $announcement = Announcement::create([
-            'title' => $validated['title'],
-            'text' => $validated['content'],
-        ]);
-
-        AnnouncementCreator::create([
-            'annc_id' => $announcement->id,
-            'u_id' => Auth::id(),
-        ]);
+        DB::transaction(function () use ($validated) {
+            $announcement = Announcement::create([
+                'title' => $validated['title'],
+                'text' => $validated['content'],
+            ]);
+    
+            AnnouncementCreator::create([
+                'annc_id' => $announcement->id,
+                'u_id' => Auth::id(),
+            ]);
+        });
 
         return redirect()->route('announcements.view')->with('success', 'Announcement posted successfully!');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $user = $request->user();
 

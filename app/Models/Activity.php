@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\ActivityCreator;
 
 class Activity extends Model
 {
@@ -17,6 +18,6 @@ class Activity extends Model
 
     public function get_owner_id()
     {
-        return DB::select("SELECT u_id FROM activity_creator WHERE act_id = ?", [ $this->id ])[0]->u_id;
+        return ActivityCreator::find($this->id)->u_id;
     }
 }
