@@ -14,13 +14,21 @@ Route::get('/', function () {
     return view('entry.loading');
 });
 
+Route::get('/choice', [UserController::class, 'show'])->name('choice');
+
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+
+Route::get('/login/student', function () {
+    return view('entry.login.student');
+})->name('login.student');
+
+Route::get('/login/teacher', function () {
+    return view('entry.login.teacher');
+})->name('login.teacher');
 
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-
-Route::get('/choice', [UserController::class, 'show'])->name('choice');
 
 Route::get('/signup', function () {
     return view('entry.signup.choice');

@@ -1,118 +1,81 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<x-entry-layout :back="route('signup.choice')">
+    <!-- Form Container -->
+    <div>
+        <h2 class="text-xl font-semibold">Sign up as a Student</h2>
+        <form action="{{ route('signup.student') }}" method="POST" class="space-y-4">
+            @csrf
+            
+            <div class="flex w-full gap-4">
+                <!-- First Name -->
+                <input type="text" name="first_name" placeholder="First Name" required value="{{ old('name') }}"
+                    class="w-full p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
 
-        <title>ISKOLMATE</title>
-        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/script.js'])
-        @endif
-    </head>
-    <body class="bg-[#1e1e2f] text-white font-sans min-h-screen flex items-center justify-center">
-        <div
-            class="mx-auto w-[90%] max-w-md p-10 bg-[#1e1e2f] rounded-[20px] shadow-[10px_10px_20px_#141418,-10px_-10px_20px_#282838] text-center relative">
-            <!-- Back Button -->
-            <div class="absolute top-3 left-3">
-                <a href="{{ route('signup.choice') }}" title="Go Back"
-                    class="block w-10 h-10 bg-[#1e1e2f] text-white text-center leading-[40px] text-2xl rounded-full shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] transition hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838]">
-                    ◁
-                </a>
+                <!-- Last Name -->
+                <input type="text" name="last_name" placeholder="Last Name" required value="{{ old('name') }}"
+                    class="w-full p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
             </div>
 
-            <!-- Logo -->
-            <div class="flex justify-center items-center mb-6">
-                <img src="/asset('images/up.png')" alt="UP Logo"
-                    class="w-32 rounded-full p-2.5" />
+            @if ($errors->has('first_name'))
+                <div class="text-red-500 text-sm">{{ $errors->first('first_name') }}</div>
+            @endif
+
+            @if ($errors->has('last_name'))
+                <div class="text-red-500 text-sm">{{ $errors->first('last_name') }}</div>
+            @endif
+
+            <!-- Student Number -->
+            <input type="text" name="student_id" placeholder="Student Number" required value="{{ old('student_number') }}"
+            class="w-full p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
+
+            @if ($errors->has('student_id'))
+                <div class="text-red-500 text-sm">{{ $errors->first('student_id') }}</div>
+            @endif
+
+            <!-- Dropdown for Degree Program -->
+            <select name="affiliation" value="{{ old('affiliation') }}"
+                class="w-full p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500"
+                required>
+                <option value="" disabled selected>Select your program</option>
+                <option value="BS Computer Science">BS Computer Science</option>
+                <option value="BS Biology">BS Biology</option>
+                <option value="BS Applied Mathematics">BS Applied Mathematics</option>
+                <option value="BS Accountancy">BS Accountancy</option>
+                <option value="BA Literature">BA Literature</option>
+                <option value="BA Political Science">BA Political Science</option>
+                <option value="BA Political Science">BA Multimedia Arts</option>
+                <option value="BA Political Science">BA Economics</option>
+                <option value="BA Political Science">BA Psychology</option>
+            </select>
+
+            @if ($errors->has('affiliation'))
+                <div class="text-red-500 text-sm">{{ $errors->first('affiliation') }}</div>
+            @endif
+
+            <!-- Password -->
+            <div class="relative w-full">
+                <input type="password" name="password" placeholder="Password" required id="passInput"
+                class="w-full p-2 pr-12 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500">
+                <span class="absolute h-full flex items-center top-0 right-3 text-black cursor-pointer" id="togglePass">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 opacity-50" id="passHide">
+                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 opacity-50" id="passShow" style="display: none;">
+                        <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+                        <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+                        <path d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+                    </svg>
+                </span>
             </div>
 
-            <!-- Title and Tagline -->
-            <div class="text-2xl font-bold mb-2">Iskolmate</div>
-            <div class="text-gray-400 mb-8">your partner in suffering</div>
+            @if ($errors->has('password'))
+                <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
+            @endif
 
-            <!-- Form Container -->
-            <div>
-                <h2 class="text-xl font-semibold mb-6">Sign-up as a Student</h2>
-                <form action="{{route('signup.student')}}" method="POST" class="space-y-4">
-                    @csrf
-                    
-                    <!-- First Name -->
-                    <input type="text" name="first_name" placeholder="First Name" required value="{{ old('name') }}"
-                        class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-
-                    @if ($errors->has('first_name'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('first_name') }}</div>
-                    @endif
-
-                    <!-- Last Name -->
-                    <input type="text" name="last_name" placeholder="Last Name" required value="{{ old('name') }}"
-                        class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-
-                    @if ($errors->has('last_name'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('last_name') }}</div>
-                    @endif
-
-                    <!-- Student Number -->
-                    <input type="text" name="student_id" placeholder="Student Number" required value="{{ old('student_number') }}"
-                        class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-
-                    @if ($errors->has('student_id'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('student_id') }}</div>
-                    @endif
-
-                    <!-- Dropdown for Degree Program -->
-                    <select name="affiliation" value="{{ old('affiliation') }}"
-                        class="w-full p-4 bg-[#1e1e2f] rounded-md shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] focus:outline-none focus:ring-2 focus:ring-green-500"
-                        required>
-                        <option value="" disabled selected>Select your program</option>
-                        <option value="BS Computer Science">BS Computer Science</option>
-                        <option value="BS Biology">BS Biology</option>
-                        <option value="BS Applied Mathematics">BS Applied Mathematics</option>
-                        <option value="BS Accountancy">BS Accountancy</option>
-                        <option value="BA Literature">BA Literature</option>
-                        <option value="BA Political Science">BA Political Science</option>
-                        <option value="BA Political Science">BA Multimedia Arts</option>
-                        <option value="BA Political Science">BA Economics</option>
-                        <option value="BA Political Science">BA Psychology</option>
-                    </select>
-
-                    @if ($errors->has('affiliation'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('affiliation') }}</div>
-                    @endif
-
-                    <!-- Password -->
-                    <div>
-                        <input type="password" name="password" placeholder="Password" required id="passwordEl"
-                        class="w-full p-4 bg-[#1e1e2f] rounded-lg shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] text-white text-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                        <span class="cursor-pointer hover:text-orange-400 w-full" onclick="togglePassword()" id="togglePass">Show Password</span>
-                    </div>
-
-                    <script>
-                        function togglePassword(){
-                            var togglePassEl = document.getElementById("togglePass");
-                            var passwordEl = document.getElementById("passwordEl");
-                            if (passwordEl.type === "password") {
-                                passwordEl.type = "text";
-                                togglePassEl.innerHTML = "Hide Password";
-
-                            } else {
-                                passwordEl.type = "password";
-                                togglePassEl.innerHTML = "Show Password";
-                            }
-                        }
-                    </script>
-
-                    @if ($errors->has('password'))
-                        <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
-                    @endif
-
-                    <!-- Submit Button -->
-                    <button type="submit"
-                        class="w-full p-4 text-lg font-bold bg-[#1e1e2f] text-white rounded-lg shadow-[5px_5px_10px_#141418,-5px_-5px_10px_#282838] hover:bg-[#252538] hover:shadow-[inset_5px_5px_10px_#141418,inset_-5px_-5px_10px_#282838] transition">
-                        Submit
-                    </button>
-                </form>
-            </div>
-        </div>
-    </body>
-</html>
+            <!-- Submit Button -->
+            <button type="submit" class="w-[45%] max-w-[300px] px-4 py-2 rounded-lg font-bold text-lg bg-slate-900 text-white border-2 border-white from-slate-800 to-slate-950 hover:bg-gradient-to-tr cursor-pointer hover:text-hover hover:border-hover hover:duration-500">
+                Sign up
+            </button>
+        </form>
+    </div>
+</x-entry-layout>
