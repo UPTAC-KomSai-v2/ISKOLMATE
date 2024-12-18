@@ -49,9 +49,9 @@ class AnnouncementController extends Controller
         }
 
         DB::transaction(function () use ($id, $announcement, $creator) {
-            $announcement->delete();
-            DB::delete('delete from annc_visibility where annc_id = ?', [ $id ]);
             $creator->delete();
+            DB::delete('delete from annc_visibility where annc_id = ?', [ $id ]);
+            $announcement->delete();
         });
 
         return redirect()->route('announcements.view')->with('success', 'Announcement deleted successfully!');
