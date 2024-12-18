@@ -19,12 +19,23 @@ class UserController extends Controller
         $user = $request->user();
 
         return view('dashboard.user.profile', [
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
-            'position' => $user->role,
-            'program' => $user->affiliation,
-            'is_teacher' => $user->is_teacher(),
-            'courses' => $user->get_courses()
+            'user' => $user,
+            'self' => true
+        ]);
+    }
+
+    public function showOtherProfile(Request $request, $user_id)
+    {
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return redirect()->route('dashboard')->with('error', 'That user does not exist!');
+        }
+
+        return view('dashboard.user.profile', [
+            'user' => $user,
+            'self' => false,
+            'return' => url()->previous()
         ]);
     }
 

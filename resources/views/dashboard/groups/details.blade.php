@@ -34,7 +34,9 @@
             <ul>
                 @foreach ($members as $member)
                     <li class="flex gap-3">
-                        {{ $member->first_name }} {{ $member->last_name }}
+                        <a href="{{ route('user.profile.other', $member->id) }}">
+                            {{ $member->first_name }} {{ $member->last_name }}
+                        </a>
                         @if ($user->id != $member->id && $user->is_teacher())
                         <form action="{{ route('group.exclude', $group->group_id) }}" method="post">
                             @csrf

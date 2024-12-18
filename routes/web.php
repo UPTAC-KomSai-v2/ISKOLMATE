@@ -49,7 +49,7 @@ Route::post('/signup/teacher', [UserController::class, 'storeTeacher'])->name('s
 Route::get('/dashboard', function() {
     $user = Auth::user();
     return view('dashboard.main', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role ]);
-})->name('dashboard')->middleware('auth');
+})->middleware('auth')->name('dashboard');
 
 Route::post('/dashboard/availability', [AvailabilityController::class, 'storeAvailability'])->middleware('auth')->name('availability.store');
 
@@ -108,6 +108,8 @@ Route::get('/dashboard/availability', function () {
 })->middleware('auth')->name('availability');
 
 Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');
+
+Route::get('/dashboard/profile/{user_id}', [UserController::class, 'showOtherProfile'])->middleware('auth')->name('user.profile.other');
 
 // Course routes
 Route::post('/dashboard/courses/create', [CourseController::class, 'storeGroup'])->middleware('auth')->name('group.create');
