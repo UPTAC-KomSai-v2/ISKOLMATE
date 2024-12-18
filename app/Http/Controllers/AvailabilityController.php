@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class AvailabilityController extends Controller
 {
-    public function storeAvailability(Request $request) {
+    public function storeAvailability(Request $request)
+    {
         //validate the input
         $validated = $request->validate([
             'availability_date' => 'required|date',

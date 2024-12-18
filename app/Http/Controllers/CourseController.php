@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Group;
-use GuzzleHttp\Psr7\Message;
+use App\Models\Teaches;
 
 class CourseController extends Controller
 {
@@ -33,9 +33,9 @@ class CourseController extends Controller
                 'group_name' => $request->name
             ]);
 
-            DB::insert('insert into teaches (ins_id, g_id) values (?, ?)', [
-                $user->id,
-                $group->group_id
+            Teaches::create([
+                'ins_id' => $user->id,
+                'g_id' => $group->group_id
             ]);
         });
 
@@ -68,16 +68,16 @@ class CourseController extends Controller
             return redirect()->route('group.view');
         }
 
-        if ($group->get_owner_id() != $user->id) {
+        $teaches = $group->get_teaches();
+
+        if ($teaches->ins_id != $user->id) {
             return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to delete this course!');
         }
 
-        DB::transaction(function () use ($group_id) {
-            DB::delete('delete from user_group where g_id = ?', [ $group_id ]);
-
-            DB::delete('delete from teaches where g_id = ?', [$group_id]);
-
-            DB::delete('delete from groups where group_id = ?', [$group_id]);
+        DB::transaction(function () use ($group) {
+            DB::delete('delete from user_group where g_id = ?', [ $group->group_id ]);
+            $teaches->destroy();
+            $group->destroy();
         });
 
         return redirect()->route('group.view')->with('message', 'Course deleted successfully!');
@@ -182,7 +182,8 @@ class CourseController extends Controller
         return redirect()->route('group.members', $group_id);
     }
 
-    public function viewCreate() {
+    public function viewCreate()
+    {
         return view('dashboard.groups.create');
     }
 }
