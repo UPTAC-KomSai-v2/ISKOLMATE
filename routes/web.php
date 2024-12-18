@@ -108,6 +108,10 @@ Route::get('/dashboard/tasks/{id}', function ($id) {
     $user = Auth::user();
     $task = Activity::find($id);
 
+    if (!$task) {
+        return redirect()->route('tasks.list');
+    }
+
     if ($task->get_owner_id() != $user->id) {
         return redirect()->route('tasks.list');
     }
@@ -128,18 +132,18 @@ Route::get('/dashboard/availability', function () {
 Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');
 
 // Group routes
-Route::post('/dashboard/groups/create', [GroupController::class, 'storeGroup'])->middleware('auth')->name('group.create');
+Route::post('/dashboard/courses/create', [GroupController::class, 'storeGroup'])->middleware('auth')->name('group.create');
 
-Route::get('/dashboard/groups/create', function () {
+Route::get('/dashboard/courses/create', function () {
     return view('groups.create');
 })->middleware('auth');
 
-Route::get('/dashboard/groups', [GroupController::class, 'viewGroups'])->middleware('auth')->name('group.view');
+Route::get('/dashboard/courses', [GroupController::class, 'viewGroups'])->middleware('auth')->name('group.view');
 
-Route::get('/dashboard/groups/{group_id}', [GroupController::class, 'viewGroupMembers'])->middleware('auth')->name('group.members');
+Route::get('/dashboard/courses/{group_id}', [GroupController::class, 'viewGroupMembers'])->middleware('auth')->name('group.members');
 
-Route::post('/dashboard/groups/{group_id}', [GroupController::class, 'deleteGroups'])->middleware('auth')->name('group.delete');
+Route::post('/dashboard/courses/{group_id}', [GroupController::class, 'deleteGroups'])->middleware('auth')->name('group.delete');
 
-Route::post('/dashboard/groups/{group_id}/include', [GroupController::class, 'includeUser'])->middleware('auth')->name('group.include');
+Route::post('/dashboard/courses/{group_id}/include', [GroupController::class, 'includeUser'])->middleware('auth')->name('group.include');
 
-Route::post('/dashboard/groups/{group_id}/exclude', [GroupController::class, 'excludeUser'])->middleware('auth')->name('group.exclude');
+Route::post('/dashboard/courses/{group_id}/exclude', [GroupController::class, 'excludeUser'])->middleware('auth')->name('group.exclude');

@@ -10,6 +10,6 @@
         AVAILABILITY
     </a>
     <a href="{{ route('group.view') }}" class="col-span-3 bg-slate-900 text-white rounded-3xl flex border-2 hover:bg-gradient-to-tr from-slate-800 to-slate-950 hover:cursor-pointer hover:text-[#FEB71C] hover:border-[#FEB71C] hover:duration-500 border-whitex h-80 justify-center items-center md:text-2xl font-bold">
-        GROUPS
+        COURSES
     </a>
 </x-dashboard-layout>

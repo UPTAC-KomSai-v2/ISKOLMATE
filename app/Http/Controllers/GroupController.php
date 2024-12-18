@@ -18,22 +18,22 @@ class GroupController extends Controller
             return redirect()->route('/');
         }
 
-        if (!$users->is_teacher()) {
-            return redirect()->route('group.view')->with('message', 'You are not permitted to create courses!');
+        $user = $request->user();
+
+        if (!$user->is_teacher()) {
+            return redirect()->route('group.create')->with('error', 'You are not permitted to create courses!');
         }
 
         $request->validate([
             'name' => 'required|string|max:255|min:1'
         ]);
 
-        $user = $request->user();
-
         DB::transaction(function () use ($request, $user) {
             $group = Group::create([
                 'group_name' => $request->name
             ]);
 
-            DB::insert('insert into user_group (u_id, g_id) values (?, ?)', [
+            DB::insert('insert into teaches (ins_id, g_id) values (?, ?)', [
                 $user->id,
                 $group->group_id
             ]);
@@ -47,15 +47,20 @@ class GroupController extends Controller
         $user = $request->user();
 
         $user_groups = DB::select('select * from user_group where u_id = ?', [ $user->id ]);
+        $user_owned_groups = DB::select('select * from teaches where ins_id = ?', [ $user->id ]);
 
         $user_group_ids = array_column($user_groups, 'g_id');
+        $user_owned_groups = array_column($user_owned_groups, 'g_id');
 
-        $groups = Group::whereIn('group_id', $user_group_ids)
+        $group_ids = array_unique(array_merge($user_group_ids, $user_owned_groups));
+
+        $groups = Group::whereIn('group_id', $group_ids)
             ->whereNotIn('group_id', [1, 2])
             ->get();
 
         return view('groups.view', [
-            'groups' => $groups
+            'groups' => $groups,
+            'user' => $request->user(),
         ]);
     }
 
@@ -63,18 +68,24 @@ class GroupController extends Controller
     {
         $user = $request->user();
 
-        if (!$users->is_teacher()) {
-            return redirect()->route('group.view')->with('message', 'You are not permitted to delete courses!');
+        if (!$user->is_teacher()) {
+            return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to delete courses!');
         }
 
-        $group = DB::select('select * from groups where group_id = ? limit 1', [ $group_id ]);
+        $group = Group::find($group_id);
 
         if(!$group) {
             return redirect()->route('group.view');
         }
 
+        if ($group->get_owner_id() != $user->id) {
+            return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to delete this course!');
+        }
+
         DB::transaction(function () use ($group_id) {
             DB::delete('delete from user_group where g_id = ?', [ $group_id ]);
+
+            DB::delete('delete from teaches where g_id = ?', [$group_id]);
 
             DB::delete('delete from groups where group_id = ?', [$group_id]);
         });
@@ -101,8 +112,20 @@ class GroupController extends Controller
 
     public function includeUser(Request $request, $group_id)
     {
-        if (!$users->is_teacher()) {
-            return redirect()->route('group.view')->with('message', 'You are not permitted to edit courses!');
+        $user = $request->user();
+
+        if (!$user->is_teacher()) {
+            return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to edit courses!');
+        }
+
+        $group = Group::find($group_id);
+
+        if(!$group) {
+            return redirect()->route('group.view')->with('error', 'That course does not exist!');
+        }
+
+        if ($group->get_owner_id() != $user->id) {
+            return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to edit this course!');
         }
 
         $request->validate([
@@ -131,8 +154,20 @@ class GroupController extends Controller
 
     public function excludeUser(Request $request, $group_id)
     {
-        if (!$users->is_teacher()) {
-            return redirect()->route('group.view')->with('message', 'You are not permitted to edit courses!');
+        $user = $request->user();
+
+        if (!$user->is_teacher()) {
+            return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to edit courses!');
+        }
+
+        $group = Group::find($group_id);
+
+        if(!$group) {
+            return redirect()->route('group.view')->with('error', 'That course does not exist!');
+        }
+
+        if ($group->get_owner_id() != $user->id) {
+            return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to edit this course!');
         }
 
         $request->validate([

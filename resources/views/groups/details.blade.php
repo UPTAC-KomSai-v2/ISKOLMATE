@@ -2,6 +2,7 @@
     <div class="flex flex-col gap-2">
         <div class="flex justify-between">
             <div class="lg:text-2xl font-bold">{{ $group->group_name }} (ID: {{ $group->group_id }})</div>    
+            @if ($user->is_teacher())
             <form action="{{ route('group.delete', $group->group_id) }}" method="post">
                 @csrf
                 <button type="submit">
@@ -10,10 +11,25 @@
                     </svg>
                 </button>
             </form>
+            @endif
         </div>
 
+        {{-- Display Error Message --}}
+        @if (session('error'))
+            <div class="text-red-500 text-sm mb-2">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        {{-- Display Success Message --}}
+        @if (session('message'))
+            <div class="text-green-500 text-sm mb-2">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <div>
-            <h2>Group members:</h2>
+            <h2>Course participants:</h2>
 
             <ul>
                 @foreach ($members as $member)
@@ -33,23 +49,11 @@
                     </li>
                 @endforeach
             </ul>
-            {{-- Display Error Message --}}
-            @if (session('error'))
-                <div class="text-red-500 text-sm mb-2">
-                    {{ session('error') }}
-                </div>
-            @endif
-
-            {{-- Display Success Message --}}
-            @if (session('message'))
-                <div class="text-red-500 text-sm mb-2">
-                    {{ session('message') }}
-                </div>
-            @endif
         </div>
 
+        @if ($user->is_teacher())
         <div>
-            <h2>Add members:</h2>
+            <h2>Add participants:</h2>
 
             <form action="{{ route('group.include', $group->group_id) }}" method="post" class="flex">
                 @csrf
@@ -67,5 +71,6 @@
                 @endif
             </form>
         </div>
+        @endif
     </div>
 </x-dashboard-no-time-layout>

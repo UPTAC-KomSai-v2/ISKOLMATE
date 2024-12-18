@@ -46,24 +46,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    /**
-     * The sections that belong to the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function takes_sections(): BelongsToMany
-    {
-        return $this->belongsToMany(Section::class, 'takes', 'stu_id', 'sec_id');
-    }
-    /**
-     * The teaches_sections that belong to the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function teaches_sections(): BelongsToMany
-    {
-        return $this->belongsToMany(Section::class, 'teaches', 'ins_id', 'sec_id');
-    }
 
     /**
      * Specifies whether the User is a teacher or not
