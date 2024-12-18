@@ -8,6 +8,8 @@ class ActivityCreator extends Model
 {
     protected $table = 'activity_creator';
 
+    protected $primaryKey = 'act_id';
+
     public $timestamps = false;
 
     protected $fillable = [

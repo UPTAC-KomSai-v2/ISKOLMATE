@@ -16,51 +16,22 @@ class TaskController extends Controller
         return view('tasks');
     }
 
-    public function storeInputTask(Request $request)
-    {
-        // Ensure we are logged in to a session
-        if (!Auth::check()) {
-            return redirect()->route('/');
-        }
-
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'deadline' => 'required|date'
-        ]);
-
-        DB::transaction(function () use ($request, $task) {
-            $task = Activity::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'deadline' => $request->deadline
-            ]);
-
-            DB::insert('insert into activity_creator (act_id, u_id) values (?, ?)', [
-                $task->id,
-                $request->user()->id,
-            ]);
-        });
-
-        return redirect()->route('tasks');
-    }
-
     public function store(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
 
         $validated = $request->validate([
-            'title' => 'required|string',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
         ]);
 
-        $task = Activity::create([
+        Activity::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'deadline' => '2025-01-01 05:06:49.000000',
         ]);
 
-        $activityCreator = ActivityCreator::create([
+        ActivityCreator::create([
             'act_id' => $task->id,
             'u_id' => $user->id,
         ]);
@@ -70,8 +41,25 @@ class TaskController extends Controller
 
     public function destroy($id)
     {
-        $activityCreator = ActivityCreator::where('act_id', $id)->delete();
-        $task = Activity::find($id)->delete();
+        $user = $request->user();
+
+        $activity = Activity::find($id);
+
+        if (!$activity) {
+            return redirect()->route('tasks.list')->with('error', 'Task does not exist!');
+        }
+
+        $creator = ActivityCreator::find($id);
+
+        if ($creator->u_id != $user->id) {
+            return redirect()->route('tasks.list')->with('error', 'You are not permitted to delete someone else\'s task!');
+        }
+
+        DB::transaction(function () use ($id, $activity, $creator) {
+            $creator->delete();
+            DB::delete('delete from act_visibility where act_id = ?', [ $id ]);
+            $activity->delete();
+        });
 
         return redirect()->route('tasks.list')->with('success', 'Task deleted successfully!');
     }

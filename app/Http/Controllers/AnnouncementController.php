@@ -32,15 +32,25 @@ class AnnouncementController extends Controller
 
     public function destroy($id)
     {
-        $announcement = DB::select('select * from announcements where id = ? limit 1', [$id]);
-        $creator = AnnouncementCreator::where('annc_id', $id)->where('u_id', Auth::id())->first();
+        $user = $request->user();
 
-        if(!$creator){
-            return redirect()->route('announcements.view')->with('error', 'You are not the announcement creator! User not authorized to delete this announcement!');
+        $announcement = Announcement::find($id);
+
+        if (!$announcement) {
+            return redirect()->route('announcements.view')->with('error', 'Announcement does not exist!');
         }
 
-        DB::transaction(function () use ($id, $announcement, $creator) {DB::delete('delete from announcement_creator where annc_id = ?', [$id]);});
-        DB::delete('delete from announcements where id = ?', [$id]);
+        $creator = AnnouncementCreator::find($id);
+
+        if($creator->u_id != $user->id){
+            return redirect()->route('announcements.view')->with('error', 'You are not permitted to delete someone else\'s announcement!');
+        }
+
+        DB::transaction(function () use ($id, $announcement, $creator) {
+            $announcement->delete();
+            DB::delete('delete from annc_visibility where annc_id = ?', [ $id ]);
+            $creator->delete();
+        });
 
         return redirect()->route('announcements.view')->with('success', 'Announcement deleted successfully!');
     }
