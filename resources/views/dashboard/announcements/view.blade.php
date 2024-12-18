@@ -13,16 +13,16 @@
                 @php
                     $creator = User::find($announcement->get_owner_id());
                 @endphp
-                <span>
+                <a href="{{ route('user.profile.other', $creator->id) }}">
                     {{ $creator->role }} : {{ $creator->first_name }} {{ $creator->last_name }} 
-                </span>
+                </a>
             </div>
             <div class="border-2 p-3">{{ $announcement->text }}</div>
             @php
-                $isCreator = AnnouncementCreator::where('annc_id', $announcement->id)->where('u_id', Auth::id())->exists();
+                $is_creator = AnnouncementCreator::find($announcement->id)->u_id == Auth::id();
             @endphp
-            @if($isCreator)
-                <form class="relative" action="{{route('announcement.destroy', [$announcement->id]) }}" method="POST" onsubmit="return confirm('Are you sure you wish to delete this announcement?');">
+            @if($is_creator)
+                <form class="relative" action="{{ route('announcement.destroy', [$announcement->id]) }}" method="POST" onsubmit="return confirm('Are you sure you wish to delete this announcement?');">
                     @csrf @method('DELETE')
                     <button type="submit" class="absolute right-2.5 top-[-3.5rem] px-4 py-2 rounded-md bg-[#1e1e2f] text-white
                     hover:shadow-lg m-2 h-10 flex justify-center items-center font-bold hover:bg-gradient-to-tr from-slate-800 to-slate-950 transition duration-500 hover:text-hover hover:border-hover"> DELETE </button>

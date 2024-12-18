@@ -34,7 +34,7 @@ class UserController extends Controller
 
         return view('dashboard.user.profile', [
             'user' => $user,
-            'self' => false,
+            'self' => $user_id == $request->user()->id,
             'return' => url()->previous()
         ]);
     }
