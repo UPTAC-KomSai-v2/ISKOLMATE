@@ -46,17 +46,7 @@ class GroupController extends Controller
     {
         $user = $request->user();
 
-        $user_groups = DB::select('select * from user_group where u_id = ?', [ $user->id ]);
-        $user_owned_groups = DB::select('select * from teaches where ins_id = ?', [ $user->id ]);
-
-        $user_group_ids = array_column($user_groups, 'g_id');
-        $user_owned_groups = array_column($user_owned_groups, 'g_id');
-
-        $group_ids = array_unique(array_merge($user_group_ids, $user_owned_groups));
-
-        $groups = Group::whereIn('group_id', $group_ids)
-            ->whereNotIn('group_id', [1, 2])
-            ->get();
+        $groups = $user->get_courses();
 
         return view('groups.view', [
             'groups' => $groups,

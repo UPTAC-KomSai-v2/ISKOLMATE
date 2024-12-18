@@ -23,7 +23,8 @@ class UserController extends Controller
             'last_name' => $user->last_name,
             'position' => $user->role,
             'program' => $user->affiliation,
-            'is_teacher' => $user->is_teacher()
+            'is_teacher' => $user->is_teacher(),
+            'courses' => $user->get_courses()
         ]);
     }
 
