@@ -122,7 +122,15 @@ class GroupController extends Controller
             'uid' => 'required|numeric|digits:9',
         ]);
 
-        // $group_pair = DB::select('select * from user_group where g_id = ? and u_id = ? limit 1', [ $group_id, $request->uid ]);
+        $target_user = User::find($request->uid);
+
+        if (!$target_user) {
+            return redirect()->route('group.members', $group_id)->with('error', 'User does not exist!');
+        }
+
+        if ($target_user->is_teacher()) {
+            return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to add teachers to courses!');
+        }
 
         try {
             DB::transaction(function () use ($request, $group_id) {
