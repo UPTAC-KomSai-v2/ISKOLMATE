@@ -13,7 +13,7 @@ class Teaches extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'u_id',
+        'g_id',
         'ins_id',
     ];
 }
