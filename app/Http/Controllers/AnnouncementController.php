@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\DB;
 
 class AnnouncementController extends Controller
 {
+    public function show(Request $request)
+    {
+        $user = $request->user();
+        $announcements = Announcement::all();
+
+        return view('dashboard.announcements.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'announcements' => $announcements ]);
+    }
+
+    public function showCreateForm(Request $request)
+    {
+        $user = $request->user();
+
+        return view('dashboard.announcements.create', [ 'name' => $user->name, 'position' => $user->role ]);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

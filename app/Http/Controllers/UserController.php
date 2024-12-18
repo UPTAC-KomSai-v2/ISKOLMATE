@@ -39,6 +39,21 @@ class UserController extends Controller
         ]);
     }
 
+    public function showSignupForm()
+    {
+        return view('entry.signup.choice');
+    }
+
+    public function showStudentSignupForm()
+    {
+        return view('entry.signup.student');
+    }
+
+    public function showTeacherSignupForm()
+    {
+        return view('entry.signup.teacher');
+    }
+
     public function storeStudent(Request $request)
     {
         $request->validate([
@@ -90,7 +105,17 @@ class UserController extends Controller
         return view('entry.login.choice');
     }
 
-    public function login(Request $request)
+    public function showStudentLoginForm()
+    {
+        return view('entry.login.student');
+    }
+
+    public function showTeacherLoginForm()
+    {
+        return view('entry.login.teacher');
+    }
+
+    public function loginStudent(Request $request)
     {
         $request->validate([
             'uid' => 'required|string',
@@ -108,8 +133,31 @@ class UserController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return redirect()->route('login')->withErrors([
-            'uid' => 'The provided credentials or role do not match our records.',
+        return redirect()->route('login.student')->withErrors([
+            'uid' => 'The provided credentials are not valid or you are not a student.',
+        ]);
+    }
+
+    public function loginTeacher(Request $request)
+    {
+        $request->validate([
+            'uid' => 'required|string',
+            'password' => 'required|string',
+            'role' => 'required|string|in:Student,Teacher',
+        ]);
+
+        if (Auth::attempt([
+            'id' => $request->uid, 
+            'password' => $request->password,
+            'role' => $request->role
+        ])) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
+
+        return redirect()->route('login.teacher')->withErrors([
+            'uid' => 'The provided credentials are not valid or you are not a teacher.',
         ]);
     }
 

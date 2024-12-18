@@ -26,6 +26,11 @@ class TaskController extends Controller
 
         return view('dashboard.tasks.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'tasks' => $user_tasks]);
     }
+    
+    public function showCreateForm()
+    {
+        return view('dashboard.tasks.create');
+    }
 
     public function store(Request $request)
     {
@@ -49,7 +54,7 @@ class TaskController extends Controller
             ]);
         });
 
-        return redirect()->route('tasks.message', $task->id)->with('success', 'Task posted successfully!');
+        return redirect()->route('tasks.list', $task->id)->with('success', 'Task posted successfully!');
     }
 
     public function destroy(Request $request, $id)
@@ -75,5 +80,21 @@ class TaskController extends Controller
         });
 
         return redirect()->route('tasks.list')->with('success', 'Task deleted successfully!');
+    }
+    
+    public function showTask(Request $request, $id)
+    {
+        $user = $request->user();
+        $task = Activity::find($id);
+
+        if (!$task) {
+            return redirect()->route('tasks.list');
+        }
+
+        if ($task->get_owner_id() != $user->id) {
+            return redirect()->route('tasks.list');
+        }
+
+        return view('dashboard.tasks.details', [ 'name' => $user->name, 'position' => $user->role, 'task' => $task ]);
     }
 }

@@ -2,7 +2,7 @@
     <!-- Form Container -->
     <div>
         <h2 class="text-xl font-semibold">Login as a Student</h2>
-        <form action="{{ route('login') }}" method="POST" class="space-y-4">
+        <form action="{{ route('login.student') }}" method="POST" class="space-y-4">
             @csrf
             <input type="hidden" name="role" value="Student">
 
