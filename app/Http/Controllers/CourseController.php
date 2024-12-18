@@ -74,10 +74,10 @@ class CourseController extends Controller
             return redirect()->route('group.members', $group_id)->with('error', 'You are not permitted to delete this course!');
         }
 
-        DB::transaction(function () use ($group) {
+        DB::transaction(function () use ($group, $teaches) {
             DB::delete('delete from user_group where g_id = ?', [ $group->group_id ]);
-            $teaches->destroy();
-            $group->destroy();
+            $teaches->delete();
+            $group->delete();
         });
 
         return redirect()->route('group.view')->with('message', 'Course deleted successfully!');
