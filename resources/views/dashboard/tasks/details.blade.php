@@ -6,12 +6,6 @@
 
     <!-- Main Section -->
     <div class="flex items-start">
-        <!-- Icons Section -->
-        <!-- <div class="flex flex-col items-center justify-start mr-12"> -->
-            <!-- <img src="{{ asset('no-picture.png') }}" alt="Icon 1" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='tasks'"> -->
-            <!-- <img src="{{ asset('no-picture.png') }}" alt="Icon 2" class="rounded-full ml-5 w-20 cursor-pointer m-5" onclick="location.href='dashboard'"> -->
-        <!-- </div> -->
-
         <!-- Tasks Column -->
         <div class="overflow-auto flex-col bg-white text-black rounded-3xl flex border-2 cursor-pointer border-white m-2 h-80 ml-0 md:text-2xl font-bold w-full">
             <div class="border-2 p-2">{{ $task->description }}</div>

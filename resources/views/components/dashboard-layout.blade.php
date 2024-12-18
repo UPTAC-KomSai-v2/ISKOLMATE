@@ -9,16 +9,18 @@
             <h2 class="lg:text-4xl cursor-pointer" id="currentDate"></h2>
             <h2 class="lg:text-4xl cursor-pointer" id="checkTime"></h2>
         </div>
-        <div class="absolute flex items-center right-10 top-8 clear-left">
-            <p class="text-right leading-4">
-                <span class="sm:text-xs">{{ $first_name }}</span> 
-                <span class="sm:text-xs">{{ $last_name }}</span><br>
-                <span class="sm:text-xs">{{ $position }}</span>
-            </p>
-            <a href="{{ route('user.profile') }}">
-                <img src="{{ asset('images/no-picture.png') }}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer">
-            </a>
-            <a href="{{ route('logout') }}" class="text-base float-right bottom-[-10px] hover:duration-300 hover:text-[#8D1436]">
+        <div class="absolute flex flex-col right-10 top-8 gap-2">
+            <div class="flex items-center gap-5">
+                <p class="text-right leading-4">
+                    <span class="sm:text-xs">{{ $first_name }}</span> 
+                    <span class="sm:text-xs">{{ $last_name }}</span><br>
+                    <span class="sm:text-xs">{{ $position }}</span>
+                </p>
+                <a href="{{ route('user.profile') }}">
+                    <img src="{{ asset('images/no-picture.png') }}" alt="Picture" class="float-right w-12 lg:w-20 cursor-pointer">
+                </a>
+            </div>
+            <a href="{{ route('logout') }}" class="text-base w-full text-right bottom-[-10px] hover:duration-300 hover:text-[#8D1436]">
                 Logout
             </a>
         </div>
