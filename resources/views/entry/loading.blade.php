@@ -7,13 +7,13 @@
 
         <title>ISKOLMATE</title>
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/script.js, resources/js/startJS.js'])
+            @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/script.js'])
         @endif
     </head>
 
 <body class="flex justify-center items-center h-dvh bg-slate-900 font-['Poppins'_,_sans-serif] text-white"></body>
     <div class="text-center w-[90%] max-w-[300px] p-8 rounded-lg relative shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434]">
-        <div><img src="up.png" class="mb-2.5 rounded-full w-24 inline-block"></div>
+        <div><img src="asset('images/up.png')" class="mb-2.5 rounded-full w-24 inline-block"></div>
         <div class="text-4xl mx-5">Iskolmate</div>
         <div class="text-base mb-8">your partner in suffering</div>
         <div class="w-full h-3.5 rounded-lg overflow-hidden m-[20px_auto]">
@@ -24,7 +24,7 @@
 
     <script>
         setInterval(() => {
-            location.href = "/start2";
+            location.href = "/choice";
         }, 3000);
     </script>
 </body>

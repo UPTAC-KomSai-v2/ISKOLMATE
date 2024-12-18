@@ -48,7 +48,7 @@ class CourseController extends Controller
 
         $groups = $user->get_courses();
 
-        return view('groups.view', [
+        return view('dashboard.groups.view', [
             'groups' => $groups,
             'user' => $request->user(),
         ]);
@@ -93,7 +93,7 @@ class CourseController extends Controller
 
         $members = DB::select('select users.first_name, users.last_name, users.id from users join user_group on users.id = user_group.u_id where user_group.g_id = ?', [ $group_id ]);
 
-        return view('groups.details', [
+        return view('dashboard.groups.details', [
             'members' => $members,
             'group' => $group[0],
             'user' => $request->user(),
@@ -183,6 +183,6 @@ class CourseController extends Controller
     }
 
     public function viewCreate() {
-        return view('groups.create');
+        return view('dashboard.groups.create');
     }
 }

@@ -10,12 +10,15 @@
         @endif
     </head>
     <body class="bg-slate-900 font-['Poppins'_,_sans-serif] text-white">
-        @if (isset($back) && $back != '')
-        <div class="absolute top-10 left-8 z-20">
-            <a href={{$back}} title="Go Back" class="text-2xl p-2.5 rounded-full">&#9664;</a>
-        </div>
-        @endif
-        <div class="flex-col justify-center m-8 rounded-3xl bg-slate-900 p-8 w-auto h-auto border-2 border-white shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434]">
+        <div class="justify-center m-8 rounded-3xl bg-slate-900 p-8 w-auto h-auto border-2 border-white shadow-[5px_5px_30px_#181824_,-15px_-15px_30px_#242434] relative">
+            @if (isset($back) && $back != '')
+                <div class="absolute top-0 left-0">
+                    <a href="{{ $back }}" class="w-12 h-12 flex text-2xl justify-center items-center text-white font-bold cursor-pointer hover:text-hover hover:duration-500">
+                        &#9664;
+                    </a>
+                </div>
+            @endif
+
             {{ $slot }}
         </div>
     </body>

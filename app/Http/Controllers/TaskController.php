@@ -11,9 +11,20 @@ use App\Models\Activity;
 
 class TaskController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
-        return view('tasks');
+        $user = $request->user();
+        $tasks = Activity::all();
+
+        $user_tasks = [];
+
+        foreach ($tasks as $task) {
+            if ($task->get_owner_id() == $user->id) {
+                array_push($user_tasks, $task);
+            }
+        }
+
+        return view('dashboard.tasks.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'tasks' => $user_tasks]);
     }
 
     public function store(Request $request)

@@ -1,62 +1,42 @@
-let time = document.getElementById("currentTime");
-let date = document.getElementById("currentDate");
-let timeCheckEl = document.getElementById("checkTime");
-let checkAnnouncementsEl = document.getElementById("checkAnnouncements");
-let toggle = document.getElementById("togglePass");
-
-// let passwordEl = document.getElementById("password");
-
-let announcementNum = 1; //Placeholder only for testing announcement popup
+const time = document.getElementById("currentTime");
+const date = document.getElementById("currentDate");
+const timeCheckEl = document.getElementById("checkTime");
+const toggle = document.getElementById("togglePass");
 
 window.onload = updateScreen; //load update screen
 
 //update screen every 1 second
 function updateScreen(){
-  updateTime();
+    if (!time || !date || !timeCheckEl)
+        return;
 
-  setInterval(() => {
     updateTime();
-    updateAnnouncement();
-  }, 1000);
-}
 
-function updateAnnouncement() {
-  if (!checkAnnouncementsEl)
-    return;
-
-  if(announcementNum > 0) {
-    checkAnnouncementsEl.removeAttribute("hidden");
-  }
-  else {
-    checkAnnouncementsEl.setAttribute("hidden");
-  }
+    setInterval(updateTime, 1000);
 }
 
 function updateTime(){
-    let now = new Date();
+    const now = new Date();
     let hour = now.getHours();
     let min = now.getMinutes();
     let sec = now.getSeconds();
 
-    if(now.getMinutes() < 10){
-      min = "0" + min;
+    if (now.getMinutes() < 10){
+        min = "0" + min;
     }
 
-    if(now.getSeconds() < 10){
+    if (now.getSeconds() < 10){
       sec = "0" + sec;
     }
 
-    if(hour < 12) {
-      timeCheckEl.innerHTML = "AM";
-    }
-    else if(hour >= 12) {
-      timeCheckEl.innerHTML = "PM";
-    }
-    else if(hour == 12 && min == 0) {
-      timeCheckEl.innerHTML = "NN";
-    }
-    else if(hour == 0 && min == 0) {
-      timeCheckEl.innerHTML = "MN";
+    if (hour < 12) {
+        timeCheckEl.innerHTML = "AM";
+    } else if (hour >= 12) {
+        timeCheckEl.innerHTML = "PM";
+    } else if (hour == 12 && min == 0) {
+        timeCheckEl.innerHTML = "NN";
+    } else if (hour == 0 && min == 0) {
+        timeCheckEl.innerHTML = "MN";
     }
 
     time.innerHTML = (hour % 12 || 12) + ":" + min + ":" + sec;
@@ -64,12 +44,11 @@ function updateTime(){
 }
 
 function togglePassword() {
-  var passwordEl = document.getElementById("passwordEl");
-  console.log("NADARA AKO");
-  // var x = document.getElementById("myInput");
-  if (passwordEl.type === "password") {
-    passwordEl.type = "text";
-  } else {
-    passwordEl.type = "password";
-  }
+    const passwordEl = document.getElementById("passwordEl");
+
+    if (passwordEl.type === "password") {
+        passwordEl.type = "text";
+    } else {
+        passwordEl.type = "password";
+    }
 }

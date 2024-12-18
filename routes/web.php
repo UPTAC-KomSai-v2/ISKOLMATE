@@ -11,11 +11,7 @@ use App\Http\Controllers\AvailabilityController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('start');
-});
-
-Route::get('/start', function () {
-    return view('start');
+    return view('entry.loading');
 });
 
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
@@ -24,27 +20,27 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/start2', [UserController::class, 'show'])->name('start2');
+Route::get('/choice', [UserController::class, 'show'])->name('choice');
 
 Route::get('/signup', function () {
-    return view('choices');
+    return view('entry.signup.choice');
 })->name('signup.choice');
 
-Route::get('/student_signup', function () {
-    return view('student_signup');
+Route::get('/signup/student', function () {
+    return view('entry.signup.student');
 })->name('signup.student');
 
-Route::get('/teacher_signup', function () {
-    return view('teacher_signup');
+Route::get('/signup/teacher', function () {
+    return view('entry.signup.teacher');
 })->name('signup.teacher');
 
-Route::post('/student_signup', [UserController::class, 'storeStudent'])->name('signup.student');
+Route::post('/signup/student', [UserController::class, 'storeStudent'])->name('signup.student');
 
-Route::post('/teacher_signup', [UserController::class, 'storeTeacher'])->name('signup.teacher');
+Route::post('/signup/teacher', [UserController::class, 'storeTeacher'])->name('signup.teacher');
 
 Route::get('/dashboard', function() {
     $user = Auth::user();
-    return view('dashboard', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role ]);
+    return view('dashboard.main', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role ]);
 })->name('dashboard')->middleware('auth');
 
 Route::post('/dashboard/availability', [AvailabilityController::class, 'storeAvailability'])->middleware('auth')->name('availability.store');
@@ -56,39 +52,26 @@ Route::delete('/dashboard/delete-availability/{id}', [AvailabilityController::cl
 Route::get('/dashboard/announcements', function () {
     $user = Auth::user();
     $announcements = Announcement::all();
-    return view('announcements.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'announcements' => $announcements ]);
+    return view('dashboard.announcements.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'announcements' => $announcements ]);
 })->middleware('auth')->name('announcements.view');
 
 Route::get('/dashboard/announcements/create', function () {
     $user = Auth::user();
-    return view('announcements.create', [ 'name' => $user->name, 'position' => $user->role ]);
+    return view('dashboard.announcements.create', [ 'name' => $user->name, 'position' => $user->role ]);
 })->middleware('auth')->name('announcements.create');
 
 Route::post('/dashboard/announcements', [AnnouncementController::class, 'store'])->middleware('auth')->name('announcements.store');
 
 Route::delete('/dashboard/announcements/{announcement}', [AnnouncementController::class, 'destroy'])->middleware('auth')->name('announcement.destroy');
 
-Route::get('/dashboard/tasks', function () {
-    $user = Auth::user();
-    $tasks = Activity::all();
-
-    $user_tasks = [];
-
-    foreach ($tasks as $task) {
-        if ($task->get_owner_id() == $user->id) {
-            array_push($user_tasks, $task);
-        }
-    }
-
-    return view('tasks.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'tasks' => $user_tasks]);
-})->middleware('auth')->name('tasks.list');
+Route::get('/dashboard/tasks', [TaskController::class, 'show'])->middleware('auth')->name('tasks.list');
 
 Route::get('/dashboard/tasks/create', function () {
-    return view('tasks.create');
+    return view('dashboard.tasks.create');
 })->middleware('auth')->name('tasks.create');
 
 Route::get('/dashboard/tasks/success', function () {
-    return view('tasks.success');
+    return view('dashboard.tasks.success');
 })->middleware('auth')->name('tasks.message');
 
 Route::get('/dashboard/tasks/{id}', function ($id) {
@@ -103,7 +86,7 @@ Route::get('/dashboard/tasks/{id}', function ($id) {
         return redirect()->route('tasks.list');
     }
 
-    return view('tasks.details', [ 'name' => $user->name, 'position' => $user->role, 'task' => $task ]);
+    return view('dashboard.tasks.details', [ 'name' => $user->name, 'position' => $user->role, 'task' => $task ]);
 })->middleware('auth')->name('tasks.show');
 
 Route::post('/dashboard/tasks/store', [TaskController::class, 'store'])->middleware('auth')->name('tasks.store');
@@ -113,7 +96,7 @@ Route::delete('/dashboard/tasks/{id}', [TaskController::class, 'destroy'])->midd
 Route::get('/dashboard/availability', function () {
     $user = Auth::user();
     $personalAvailabilities = \App\Models\Availability::where('user_id', $user->id)->get();
-    return view('availability', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role , 'personal_availabilities' => $personalAvailabilities]);
+    return view('dashboard.availability', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role , 'personal_availabilities' => $personalAvailabilities]);
 })->middleware('auth')->name('availability');
 
 Route::get('/dashboard/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('user.profile');

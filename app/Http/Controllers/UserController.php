@@ -11,14 +11,14 @@ class UserController extends Controller
 {
     public function show()
     {
-        return view('start2');
+        return view('entry.choice');
     }
 
     public function showProfile(Request $request)
     {
         $user = $request->user();
 
-        return view('user_profile', [
+        return view('dashboard.user.profile', [
             'first_name' => $user->first_name,
             'last_name' => $user->last_name,
             'position' => $user->role,
@@ -48,7 +48,7 @@ class UserController extends Controller
         $user->role = 'Student';
 
         $user->save();
-        return redirect()->route('start2');
+        return redirect()->route('choice');
     }
 
     public function storeTeacher(Request $request)
@@ -71,12 +71,12 @@ class UserController extends Controller
         $user->role = 'Teacher';
 
         $user->save();
-        return redirect()->route('start2');
+        return redirect()->route('choice');
     }
 
     public function showLoginForm()
     {
-        return view('login');
+        return view('entry.login.choice');
     }
 
     public function login(Request $request)

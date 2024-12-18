@@ -11,10 +11,10 @@
                 id="content"
                 placeholder="Enter the content"></textarea>
 
-            <button type="submit" class="bg-fuchsia-900 w-80 text-white rounded-3xl flex border-2 hover:shadow-[inset_35px_35px_20px_#181824_,_inset_-35px_-35px_20px_#242434] hover:cursor-pointer border-white m-2 h-20 justify-center items-center md:text-2xl font-bold">
+            <button type="submit" class="bg-fuchsia-900 w-80 text-white rounded-3xl flex border-2 hover:shadow-[inset_35px_35px_20px_#181824_,_inset_-35px_-35px_20px_#242434] cursor-pointer border-white m-2 h-20 justify-center items-center md:text-2xl font-bold">
                 Post
             </button>
-            <a href="{{ route('announcements.view') }}" class="bg-fuchsia-900 w-80 text-white rounded-3xl flex border-2 hover:shadow-[inset_35px_35px_20px_#181824_,_inset_-35px_-35px_20px_#242434] hover:cursor-pointer border-white m-2 h-20 justify-center items-center md:text-2xl font-bold">Cancel</a>
+            <a href="{{ route('announcements.view') }}" class="bg-fuchsia-900 w-80 text-white rounded-3xl flex border-2 hover:shadow-[inset_35px_35px_20px_#181824_,_inset_-35px_-35px_20px_#242434] cursor-pointer border-white m-2 h-20 justify-center items-center md:text-2xl font-bold">Cancel</a>
         </div>
         
     </form>

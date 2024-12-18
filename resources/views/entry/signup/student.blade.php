@@ -22,8 +22,8 @@
 
             <!-- Logo -->
             <div class="flex justify-center items-center mb-6">
-                <img src="up.png" alt="UP Logo"
-                    class="w-[100px] rounded-full p-2.5 bg-[#1e1e2f] shadow-[inset_10px_10px_20px_#181824,inset_-10px_-10px_20px_#242434]" />
+                <img src="/asset('images/up.png')" alt="UP Logo"
+                    class="w-32 rounded-full p-2.5" />
             </div>
 
             <!-- Title and Tagline -->
