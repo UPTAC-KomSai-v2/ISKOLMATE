@@ -1,4 +1,18 @@
 <x-dashboard-layout :first_name="$first_name" :last_name="$last_name" :position="$position" :back="route('dashboard')">
+    {{-- Display Error Message --}}
+    @if (session('error'))
+        <div class="text-red-500 text-sm mb-2">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    {{-- Display Success Message --}}
+    @if (session('message'))
+        <div class="text-green-500 text-sm mb-2">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <div class="col-span-6 overflow-auto flex-col bg-white text-black rounded-3xl flex border-2 hover:cursor-pointer border-white m-2 h-80 ml-0  md:text-2xl font-bold hover:duration-500 hover:border-[#FEB71C]">
         @foreach($tasks as $task)
             <a href="{{ route('tasks.show', $task->id) }}" class="border-2 p-2">{{ $task->title }}</a>

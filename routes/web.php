@@ -91,17 +91,15 @@ Route::get('/dashboard/tasks', function () {
         }
     }
 
-    return view('tasks', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'tasks' => $user_tasks]);
+    return view('tasks.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'tasks' => $user_tasks]);
 })->middleware('auth')->name('tasks.list');
 
 Route::get('/dashboard/tasks/create', function () {
-    return view('input_tasks');
-    return view('tasks', [ 'title' => $task->title, 'description' => $task->description, 'deadline' => $task->deadline ]);
+    return view('tasks.create');
 })->middleware('auth')->name('tasks.create');
 
 Route::get('/dashboard/tasks/success', function () {
-    return view('input_tasks1');
-    return view('tasks', [ 'title' => $task->title, 'description' => $task->description, 'deadline' => $task->deadline ]);
+    return view('tasks.success');
 })->middleware('auth')->name('tasks.message');
 
 Route::get('/dashboard/tasks/{id}', function ($id) {
@@ -116,7 +114,7 @@ Route::get('/dashboard/tasks/{id}', function ($id) {
         return redirect()->route('tasks.list');
     }
 
-    return view('show_tasks', [ 'name' => $user->name, 'position' => $user->role, 'task' => $task ]);
+    return view('tasks.details', [ 'name' => $user->name, 'position' => $user->role, 'task' => $task ]);
 })->middleware('auth')->name('tasks.show');
 
 Route::post('/tasks/store', [TaskController::class, 'store'])->middleware('auth')->name('tasks.store');
