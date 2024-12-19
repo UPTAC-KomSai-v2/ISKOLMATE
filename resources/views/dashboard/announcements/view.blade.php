@@ -1,18 +1,35 @@
-@php use App\Models\AnnouncementCreator; @endphp
-@php use App\Models\User; @endphp
+@php
+use App\Models\AnnouncementCreator;
+use App\Models\AnnouncementVisibility;
+use App\Models\User;
+use App\Models\Group;
+
+$user_courses = Auth::user()->get_all_courses();
+@endphp
+
 <x-dashboard-layout :first_name="$first_name" :last_name="$last_name" :position="$position" :back="route('dashboard')">
     <div
         class="col-span-6 overflow-auto flex-col  bg-white text-black rounded-3xl flex border-2  border-white m-2 h-80 ml-0  md:text-2xl">
         <div class="text-left bg-[#8D1436] text-[white] p-[10pt]">All Announcements</div>
 
         @foreach($announcements as $announcement)
+            @php
+                $creator = User::find($announcement->get_owner_id());
+                $visibility = AnnouncementVisibility::find($announcement->id);
+                
+                if ($visibility && !Auth::user()->in_course($visibility->g_id)) {
+                    continue;
+                }
+            @endphp
+
             <div class="border-2 p-2 font-bold flex justify-between">
                 <span>
+                    @if ($visibility)
+                    [{{ Group::find($visibility->g_id)->group_name }}] {{ $announcement->title }}
+                    @else
                     {{ $announcement->title }}
+                    @endif
                 </span>
-                @php
-                    $creator = User::find($announcement->get_owner_id());
-                @endphp
                 <a href="{{ route('user.profile.other', $creator->id) }}">
                     {{ $creator->role }} : {{ $creator->first_name }} {{ $creator->last_name }} 
                 </a>

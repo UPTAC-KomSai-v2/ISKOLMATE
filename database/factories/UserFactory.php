@@ -23,16 +23,16 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $role = fake()->randomElement(['student', 'instructor']);
+        $role = fake()->randomElement(['Student', 'Teacher']);
         return [
-            'uid' => fake()->numberBetween(1987,2024) . fake()->unique()->numberbetween(1,99999), # create more realistic fake data, despite uniqueness being only on the 5digit code
-            'name' => fake()->name(),
-            'program' => $role === 'instructor'
-                ? fake()->randomElement(['DNSM', 'DH', 'DSS', 'DM'])
-                : fake()->randomElement(['BS Computer Science', 'BS Biology']),
+            'id' => fake()->numberBetween(1987,2024) . fake()->unique()->randomNumber(5,true), # create more realistic fake data, despite uniqueness being only on the 5digit code
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
             'password' => static::$password ??= Hash::make('password'),
-            'availability' => fake()->numberBetween(0,1),
-            'role' => $role
+            'role' => $role,
+            'affiliation' => $role === 'Teacher'
+                ? fake()->randomElement(['Division of Humanities', 'Division of Social Sciences', 'Division of Natural Sciences and Management', 'Division of Management'])
+                : fake()->randomElement(['BS Computer Science', 'BS Biology', 'BS Applied Mathematics', 'BS Accountancy', 'BA Literature', 'BA Political Science', 'BA Multimedia Arts', 'BA Economics', 'BA Psychology']),
         ];
     }
 

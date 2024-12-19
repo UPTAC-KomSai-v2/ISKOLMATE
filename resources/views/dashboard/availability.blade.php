@@ -37,7 +37,7 @@
                         <span class="sm:text-xs">{{ $position }}</span>
                     </p>
                     <a href="{{ route('user.profile') }}">
-                        <img src="{{ asset('no-picture.png') }}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer">
+                        <img src="{{ asset('images/no-picture.png') }}" alt="Picture" class="float-right rounded-full ml-5 w-20 cursor-pointer">
                     </a>
                     <a href="{{ route('logout' ) }}" class="text-base float-right bottom-[-10px] hover:duration-300 hover:text-[#8D1436]">Logout</a>
                 </div>
@@ -114,6 +114,15 @@
                     let date = document.getElementById("search-date");
                     let startTime = document.getElementById("search-start-time");
                     let endTime = document.getElementById("search-end-time");
+
+                    if (!date.value || !startTime.value || !endTime.value) {
+                        showErrorMessage("Please fill in all fields.");
+                        return;
+                    }
+                    if (startTime.value >= endTime.value) {
+                        showErrorMessage("The end time must be a date after start time.");
+                        return;
+                    }
 
                     let data = {
                         date: date.value,
@@ -216,6 +225,17 @@
                         personalAvailabilityDiv.appendChild(timeEndHeader);
                         personalAvailabilityDiv.appendChild(actionHeader);
                     }
+                }
+
+                function showErrorMessage(message) {
+                    let searchResultDiv = document.getElementById('search-result');
+                        searchResultDiv.innerHTML = ''; // Clear previous results or messages
+
+                    let errorDiv = document.createElement('div');
+                    errorDiv.classList.add('text-red-500', 'font-bold', 'text-center', 'mt-4');
+                    errorDiv.textContent = message;
+
+                    searchResultDiv.appendChild(errorDiv);
                 }
             </script>
     </body>

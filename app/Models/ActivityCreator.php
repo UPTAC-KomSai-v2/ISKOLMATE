@@ -16,4 +16,8 @@ class ActivityCreator extends Model
         'act_id',
         'u_id',
     ];
+    public function visibility(): HasOne
+    {
+        return $this->hasOne(Availability::class, 'user_id', 'id');
+    }
 }

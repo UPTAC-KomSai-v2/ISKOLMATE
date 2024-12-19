@@ -1,38 +1,56 @@
 <x-dashboard-no-time-layout :back="route('tasks.list')">
-    <div class="absolute bg-red-400 w-10 h-10 right-[-10px] top-[-10px]" hidden></div>
-    <div class="relative flex items-center bg-slate-900 text-white md:text-5xl w-auto h-1/2">
-        <div class="lg:text-2xl font-bold">INPUT TASKS</div>
-        <div class="absolute bg-red-400 w-10 h-10 right-[-10px] top-[-10px]" id="checkAnnouncements" hidden></div>
-    </div>
-    <div class="flex-col border-solid border-[#f3e7e7] items-center p-10 rounded-lg">
-        <form name="form" action="{{ route('tasks.store') }}" method="post">
-            @csrf
-            <div class="flex mb-5">
-                <label for="title" class="form-label">Title</label>
-            </div>
+    <form action="{{ route('tasks.store') }}" method="POST">
+        @csrf
 
-            <div class="flex mb-5">
-                <input name="title" id="title" type="text" class="w-[300px] p-2 rounded-md border border-solid border-[#ccc] text-[#505050]" placeholder="Title" required />
-            </div>
+        <div class="flex flex-col col-span-6 h-full">
+            <textarea class="col-span-6 overflow-auto resize-none border-2 border-black m-2 p-2 rounded-lg w-full h-12 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-900"
+                name="title"
+                id="title" value="{{ old('title') }}"
+                placeholder="Enter the title"></textarea>
 
-            <div class="flex justify-between items-center">
-                <div class="w-3/4">
-                    <label for="description" class="form-label"> Description </label>
-                    <textarea name="description" id="description" class="p-2 form-control w-full rounded-md border border-solid border-[#ccc] text-[#505050]" rows="5" placeholder="Enter details here" required></textarea>
+            <textarea class="overflow-auto resize-none border-2 border-black m-2 p-2 rounded-lg w-full h-40 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-900"
+                name="description"
+                id="description" value="{{ old('description') }}"
+                placeholder="Enter the content"></textarea>
+
+            <select name="visibility_group" value="{{ old('visibility_group') }}"
+                class="w-full m-2 p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500"
+                required>
+                <option value="global" selected>Personal</option>
+                @if ($user->is_teacher())
+                <option value="2">Teachers</option>
+                @else
+                <option value="1">Students</option>
+                @endif
+                @foreach ($user->get_courses() as $course)
+                    <option value="{{ $course->group_id }}">{{ $course->group_name }}</option>
+                @endforeach
+            </select>
+
+            <!--  Display Error Message  -->
+            @if (session('error'))
+                <div class="text-red-500 text-sm mb-2 mx-2">
+                    {{ session('error') }}
                 </div>
+            @endif
 
-                <div class="flex flex-col justify-center items-end w-1/4">
-                    <button type="submit" class="bg-[#8D1436] border cursor-pointer px-4 py-2 w-32 rounded border-solid border-[#ccc] mb-4 hover:border-hover hover:text-hover hover:font-bold hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">
-                        Confirm
-                    </button>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="text-red-500 text-sm mb-2 mx-2">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
 
-                    <a href="{{ route('tasks.list') }}">
-                        <button class="bg-[#8D1436] border cursor-pointer px-4 py-2 w-32 rounded border-solid border-[#ccc] hover:border-hover hover:text-hover hover:font-bold hover:duration-500 hover:bg-gradient-to-tr from-slate-800 to-slate-950">
-                            Cancel
-                        </button>
-                    </a>
-                </div>
+            <div class="flex gap-2">
+                <button type="submit" class="bg-[#8D1436] w-80 text-white rounded-3xl flex border-2 hover:shadow-[inset_35px_35px_20px_#181824_,_inset_-35px_-35px_20px_#242434] cursor-pointer border-white m-2 h-20 justify-center items-center md:text-2xl font-bold">
+                    Post
+                </button>
+    
+                <a href="{{ route('tasks.list') }}" class="bg-[#8D1436] w-80 text-white rounded-3xl flex border-2 hover:shadow-[inset_35px_35px_20px_#181824_,_inset_-35px_-35px_20px_#242434] cursor-pointer border-white m-2 h-20 justify-center items-center md:text-2xl font-bold">
+                    Cancel
+                </a>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </x-dashboard-no-time-layout>

@@ -4,10 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -77,5 +79,57 @@ class User extends Authenticatable
         return Group::whereIn('group_id', $group_ids)
             ->whereNotIn('group_id', [1, 2])
             ->get();
+    }
+
+    /**
+     * Returns all the user groups/courses.
+     *
+     * @var Collection
+     */
+    public function get_all_courses(): Collection
+    {
+        $user_groups = DB::select('select * from user_group where u_id = ?', [ $this->id ]);
+        $user_owned_groups = DB::select('select * from teaches where ins_id = ?', [ $this->id ]);
+
+        $user_group_ids = array_column($user_groups, 'g_id');
+        $user_owned_groups = array_column($user_owned_groups, 'g_id');
+
+        $group_ids = array_unique(array_merge($user_group_ids, $user_owned_groups));
+
+        return Group::whereIn('group_id', $group_ids)->get();
+    }
+
+    public function in_course($course_id): bool
+    {
+        foreach ($this->get_all_courses() as $course) {
+            if ($course->group_id == $course_id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    /**
+     * The announcements that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function announcements(): BelongsToMany
+    {
+        return $this->belongsToMany(Announcement::class, 'announcement_creator', 'u_id', 'annc_id');
+    }
+    /**
+     * The tasks that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+
+    public function tasks(): BelongsToMany
+    {
+        return $this->belongsToMany(Activity::class, 'activity_creator', 'u_id', 'act_id');
+    }
+    public function availabilities(): HasMany
+    {
+        return $this->hasMany(Availability::class, 'user_id', 'id');
     }
 }
