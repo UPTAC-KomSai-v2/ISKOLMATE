@@ -54,7 +54,7 @@ class TaskController extends Controller
             ]);
         });
 
-        return redirect()->route('tasks.list', $task->id)->with('success', 'Task posted successfully!');
+        return redirect()->route('tasks.list')->with('success', 'Task posted successfully!');
     }
 
     public function destroy(Request $request, $id)
