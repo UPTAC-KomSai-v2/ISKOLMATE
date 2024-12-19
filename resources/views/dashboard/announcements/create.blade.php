@@ -1,6 +1,7 @@
 <x-dashboard-no-time-layout :back="route('announcements.view')">
     <form action="{{ route('announcements.store') }}" method="POST">
         @csrf
+
         <div class="flex flex-col col-span-6 h-full">
             <textarea class="col-span-6 overflow-auto resize-none border-2 border-black m-2 p-2 rounded-lg w-full h-12 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-900"
                 name="title"
@@ -43,6 +44,5 @@
                 </a>
             </div>
         </div>
-        
     </form>
-</x-dashboard-layout>
+</x-dashboard-no-time-layout>
