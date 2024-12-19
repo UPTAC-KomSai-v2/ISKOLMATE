@@ -4,10 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -106,5 +108,28 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+    /**
+     * The announcements that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function announcements(): BelongsToMany
+    {
+        return $this->belongsToMany(Announcement::class, 'announcement_creator', 'u_id', 'annc_id');
+    }
+    /**
+     * The tasks that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+
+    public function tasks(): BelongsToMany
+    {
+        return $this->belongsToMany(Activity::class, 'activity_creator', 'u_id', 'act_id');
+    }
+    public function availabilities(): HasMany
+    {
+        return $this->hasMany(Availability::class, 'user_id', 'id');
     }
 }
