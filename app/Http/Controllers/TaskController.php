@@ -41,26 +41,20 @@ class TaskController extends Controller
             'description' => 'required|string',
         ]);
 
-        try {
-            DB::beginTransaction();
-
+        DB::transaction(function () use ($validated, $user) {
             $task = Activity::create([
                 'title' => $validated['title'],
                 'description' => $validated['description'],
                 'deadline' => '2025-01-01 05:06:49.000000',
             ]);
-    
+
             ActivityCreator::create([
                 'act_id' => $task->id,
                 'u_id' => $user->id,
             ]);
+        });
 
-            DB::commit();
-
-            return redirect()->route('tasks.list', $task->id)->with('success', 'Task posted successfully!');
-        } catch (\Exception $e) {
-            DB::rollBack();
-        }
+        return redirect()->route('tasks.list', $task->id)->with('success', 'Task posted successfully!');
     }
 
     public function destroy(Request $request, $id)
