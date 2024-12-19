@@ -78,4 +78,33 @@ class User extends Authenticatable
             ->whereNotIn('group_id', [1, 2])
             ->get();
     }
+
+    /**
+     * Returns all the user groups/courses.
+     *
+     * @var Collection
+     */
+    public function get_all_courses(): Collection
+    {
+        $user_groups = DB::select('select * from user_group where u_id = ?', [ $this->id ]);
+        $user_owned_groups = DB::select('select * from teaches where ins_id = ?', [ $this->id ]);
+
+        $user_group_ids = array_column($user_groups, 'g_id');
+        $user_owned_groups = array_column($user_owned_groups, 'g_id');
+
+        $group_ids = array_unique(array_merge($user_group_ids, $user_owned_groups));
+
+        return Group::whereIn('group_id', $group_ids)->get();
+    }
+
+    public function in_course($course_id): bool
+    {
+        foreach ($this->get_all_courses() as $course) {
+            if ($course->group_id == $course_id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

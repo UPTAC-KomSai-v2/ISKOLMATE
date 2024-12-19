@@ -22,7 +22,7 @@ class AnnouncementController extends Controller
     {
         $user = $request->user();
 
-        return view('dashboard.announcements.create', [ 'name' => $user->name, 'position' => $user->role ]);
+        return view('dashboard.announcements.create', [ 'user' => $user ]);
     }
 
     public function store(Request $request)
@@ -30,9 +30,20 @@ class AnnouncementController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'visibility_group' => 'string'
         ]);
 
-        DB::transaction(function () use ($validated) {
+        $has_group = isset($validated["visibility_group"]) && $validated["visibility_group"] != "" && $validated["visibility_group"] != "global";
+
+        if ($has_group) {
+            $group = Group::find($validated["visibility_group"]);
+
+            if (!$group) {
+                return redirect()->route('announcements.create')->with('error', 'Target group does not exist!');
+            }
+        }
+
+        DB::transaction(function () use ($validated, $has_group) {
             $announcement = Announcement::create([
                 'title' => $validated['title'],
                 'text' => $validated['content'],
@@ -42,6 +53,13 @@ class AnnouncementController extends Controller
                 'annc_id' => $announcement->id,
                 'u_id' => Auth::id(),
             ]);
+
+            if ($has_group) {
+                AnnouncementVisibility::create([
+                    'annc_id' => $announcement->id,
+                    'g_id' => $validated["visibility_group"],
+                ]);
+            }
         });
 
         return redirect()->route('announcements.view')->with('success', 'Announcement posted successfully!');
@@ -59,7 +77,7 @@ class AnnouncementController extends Controller
 
         $creator = AnnouncementCreator::find($id);
 
-        if($creator->u_id != $user->id){
+        if ($creator->u_id != $user->id) {
             return redirect()->route('announcements.view')->with('error', 'You are not permitted to delete someone else\'s announcement!');
         }
 
