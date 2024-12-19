@@ -21,12 +21,14 @@ class TaskController extends Controller
         $user_tasks = [];
 
         foreach ($tasks as $task) {
-            if ($task->get_owner_id() == $user->id) {
+            $visibility = ActivityVisibility::find($task->id);
+            
+            if ($task->get_owner_id() == $user->id || ($visibility && $user->in_course($visibility->g_id))) {
                 array_push($user_tasks, $task);
             }
         }
 
-        return view('dashboard.tasks.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'tasks' => $user_tasks]);
+        return view('dashboard.tasks.view', [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'position' => $user->role, 'tasks' => $user_tasks ]);
     }
     
     public function showCreateForm(Request $request)
@@ -54,7 +56,7 @@ class TaskController extends Controller
             }
         }
 
-        DB::transaction(function () use ($validated, $user) {
+        DB::transaction(function () use ($validated, $user, $has_group) {
             $task = Activity::create([
                 'title' => $validated['title'],
                 'description' => $validated['description'],
@@ -111,7 +113,9 @@ class TaskController extends Controller
             return redirect()->route('tasks.list');
         }
 
-        if ($task->get_owner_id() != $user->id) {
+        $visibility = ActivityVisibility::find($id);
+
+        if ($task->get_owner_id() != $user->id && ($visibility && !$user->in_course($visibility->g_id))) {
             return redirect()->route('tasks.list');
         }
 

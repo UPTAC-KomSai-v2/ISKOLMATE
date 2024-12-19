@@ -5,18 +5,18 @@
         <div class="flex flex-col col-span-6 h-full">
             <textarea class="col-span-6 overflow-auto resize-none border-2 border-black m-2 p-2 rounded-lg w-full h-12 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-900"
                 name="title"
-                id="title"
+                id="title" value="{{ old('title') }}"
                 placeholder="Enter the title"></textarea>
 
             <textarea class="overflow-auto resize-none border-2 border-black m-2 p-2 rounded-lg w-full h-40 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-900"
-                name="content"
-                id="content"
+                name="description"
+                id="description" value="{{ old('description') }}"
                 placeholder="Enter the content"></textarea>
 
             <select name="visibility_group" value="{{ old('visibility_group') }}"
                 class="w-full m-2 p-2 rounded-md border border-solid border-[#ccc] text-[#505050] focus:outline-none focus:ring-2 focus:ring-green-500"
                 required>
-                <option value="global" selected>Global</option>
+                <option value="global" selected>Personal</option>
                 @if ($user->is_teacher())
                 <option value="2">Teachers</option>
                 @else
@@ -29,9 +29,17 @@
 
             <!--  Display Error Message  -->
             @if (session('error'))
-                <div class="text-red-500 text-sm mb-2">
+                <div class="text-red-500 text-sm mb-2 mx-2">
                     {{ session('error') }}
                 </div>
+            @endif
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="text-red-500 text-sm mb-2 mx-2">
+                        {{ $error }}
+                    </div>
+                @endforeach
             @endif
 
             <div class="flex gap-2">
